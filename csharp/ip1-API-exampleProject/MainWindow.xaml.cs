@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -24,7 +24,6 @@ namespace ip1_API_exampleProject
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public MainWindow()
         {
             InitializeComponent();
@@ -54,7 +53,7 @@ namespace ip1_API_exampleProject
                 HttpResponseMessage response = await client.PostAsJsonAsync("batches", sms);
                 treeView_response.Items.Clear();
                 treeView_response.ProcessJson(await response.Content.ReadAsStringAsync());
-                label_status.Content = "StatusCode: "+(int)response.StatusCode;
+                label_status.Content = "StatusCode: " + (int)response.StatusCode;
                 if (response.IsSuccessStatusCode)
                 {
                     Console.WriteLine("Sent");
@@ -64,9 +63,9 @@ namespace ip1_API_exampleProject
                     Console.WriteLine("Failed, " + response.StatusCode + ": " + await response.Content.ReadAsStringAsync());
                 }
             }
+        }
     }
 
-    }
     public class OutgoingSMS
     {
         public string Sender { get; set; }
