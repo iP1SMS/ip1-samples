@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 using System.Text.Json;
 using JSONTreeView;
 
-namespace ip1_API_exampleProject
+namespace IP1.Samples
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -29,7 +29,7 @@ namespace ip1_API_exampleProject
             InitializeComponent();
         }
 
-        private async void button_ClickAsync(object sender, RoutedEventArgs e)
+        private async void buttonSend_Click(object sender, RoutedEventArgs e)
         {
             using (var client = new HttpClient())
             {
@@ -40,27 +40,27 @@ namespace ip1_API_exampleProject
 
                 var sms = new OutgoingSMS()
                 {
-                    Sender = textBox_sender.Text,
-                    Recipients = new List<string> { textBox_recipients.Text },
-                    Body = textBox_body.Text,
-                    Type = textBox_type.Text,
-                    Datacoding = textBox_datacoding.Text,
-                    Priority = int.Parse(textBox_priority.Text),
-                    Reference = textBox_reference.Text,
-                    Tags = new List<string> { textBox_tags.Text }
+                    Sender = textBoxSender.Text,
+                    Recipients = new List<string> { textBoxRecipients.Text },
+                    Body = textBoxBody.Text,
+                    Type = textBoxType.Text,
+                    Datacoding = textBoxDatacoding.Text,
+                    Priority = int.Parse(textBoxPriority.Text),
+                    Reference = textBoxReference.Text,
+                    Tags = new List<string> { textBoxTags.Text }
                 };
 
                 HttpResponseMessage response = await client.PostAsJsonAsync("batches", sms);
                 treeView_response.Items.Clear();
                 treeView_response.ProcessJson(await response.Content.ReadAsStringAsync());
-                label_status.Content = "StatusCode: " + (int)response.StatusCode;
+
                 if (response.IsSuccessStatusCode)
                 {
-                    Console.WriteLine("Sent");
+                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
                 }
                 else
                 {
-                    Console.WriteLine("Failed, " + response.StatusCode + ": " + await response.Content.ReadAsStringAsync());
+                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
                 }
             }
         }

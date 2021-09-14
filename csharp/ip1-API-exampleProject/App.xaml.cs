@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace ip1_API_exampleProject
+namespace IP1.Samples
 {
     /// <summary>
     /// Interaction logic for App.xaml

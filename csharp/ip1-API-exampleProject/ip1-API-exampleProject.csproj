@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>ip1_API_exampleProject</RootNamespace>
+    <RootNamespace>IP1.Samples</RootNamespace>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
