@@ -28,6 +28,7 @@ namespace IP1.Samples
         public MainWindow()
         {
             InitializeComponent();
+            tabItemSendMessage.IsSelected = true;
         }
 
         private async void buttonSend_Click(object sender, RoutedEventArgs e)
@@ -64,6 +65,88 @@ namespace IP1.Samples
                     label_status.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
                 }
             }
+        }
+
+        private async void buttonGetAllSenders_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBox_API_key.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"me/senders");
+                treeView_response.Items.Clear();
+                treeView_response.ProcessJson(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                }
+                else
+                {
+                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                }
+            }
+        }
+
+        private async void buttonAddNewSender_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBox_API_key.Text);
+
+                HttpResponseMessage response = await client.PutAsync($"me/senders/{textBoxAddNewSender.Text}", null);
+                treeView_response.Items.Clear();
+                treeView_response.ProcessJson(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                }
+                else
+                {
+                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                }
+            }
+        }
+
+        private async void buttonDeleteSender_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBox_API_key.Text);
+
+                HttpResponseMessage response = await client.DeleteAsync($"me/senders/{textBoxDeleteSender.Text}");
+                treeView_response.Items.Clear();
+                treeView_response.ProcessJson(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                }
+                else
+                {
+                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                }
+            }
+        }
+
+        private void ListViewItemRegisterSender_Selected(object sender, RoutedEventArgs e)
+        {
+            tabItemRegisterSender.IsSelected = true;
+        }
+
+        private void ListViewItemSendingSMS_Selected(object sender, RoutedEventArgs e)
+        {
+            tabItemSendMessage.IsSelected = true;
         }
     }
 }
