@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.Json;
 using JSONTreeView;
+using IP1.Samples.Models;
 
 namespace IP1.Samples
 {
@@ -64,17 +65,5 @@ namespace IP1.Samples
                 }
             }
         }
-    }
-
-    public class OutgoingSMS
-    {
-        public string Sender { get; set; }
-        public List<string> Recipients { get; set; }
-        public string Body { get; set; }
-        public string Type { get; set; }
-        public string Datacoding { get; set; }
-        public int Priority { get; set; }
-        public string Reference { get; set; }
-        public List<string> Tags { get; set; }
     }
 }
