@@ -7,20 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="469" Width="842" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="NoResize">
     <Grid Width="800" Margin="10,0,10,7" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <GroupBox x:Name="groupBox_API" Header="Choose API" Canvas.Left="10" HorizontalAlignment="Left" VerticalAlignment="Top" Height="424" Margin="10,0,0,0">
-            <Grid HorizontalAlignment="Left" Width="141" VerticalAlignment="Top">
-                <ListView Margin="0,0,0,319">
-                    <ListViewItem Name="ListViewItemSendingSMS" Selected="ListViewItemSendingSMS_Selected">Sending SMS</ListViewItem>
-                    <ListViewItem Name="ListViewItemRegisterSender" Selected="ListViewItemRegisterSender_Selected">Register Sender</ListViewItem>
-                </ListView>
-            </Grid>
-        </GroupBox>
-        <GroupBox x:Name="groupBox_API_key" Header="API Key" Canvas.Left="168" Margin="168,0,0,0" HorizontalAlignment="Left" Width="430" Height="80" VerticalAlignment="Top">
-            <Grid Height="49" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="418">
-                <TextBox x:Name="textBox_API_key" HorizontalAlignment="Left" Margin="65,14,0,0" Text="2ve6kgCo0ID6nhgtkMqcaZeEQz1p8EI17VBZfdFRaBlDTpSE" TextWrapping="Wrap" VerticalAlignment="Top" Width="321" />
-                <Label x:Name="label_API_key" Content="API Key" HorizontalAlignment="Left" Margin="10,10,0,0" Height="26" VerticalAlignment="Top" />
-            </Grid>
-        </GroupBox>
         <TabControl x:Name="tabControl" Margin="168,85,202,10">
             <TabItem x:Name="tabItemSendMessage"  Visibility="Hidden">
                 <Grid HorizontalAlignment="Stretch" Width="418">
@@ -54,7 +40,31 @@
                     <Button x:Name="buttonDeleteSender" Content="Delete new sender" HorizontalAlignment="Left" Margin="234,37,0,0" VerticalAlignment="Top" Width="120" Height="20" Click="buttonDeleteSender_Click" />
                 </Grid>
             </TabItem>
+            <TabItem x:Name="tabItemReadingBatches" Visibility="Hidden">
+                <Grid HorizontalAlignment="Stretch" Width="418">
+                    <Label x:Name="labelGetBatch" Content="Batch id" Margin="5,18,0,0" />
+                    <TextBox x:Name="textBoxGetBatch" Text="" Width="220" Margin="60,22,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                    <Button x:Name="buttonGetBatch" Content="Get batch by id" HorizontalAlignment="Left" Margin="10,53,0,0" VerticalAlignment="Top" Width="120" Height="20" Click="buttonGetBatch_Click" />
+                    <Button x:Name="buttonGetAllBatches" Content="Get all batches" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Click="buttonGetAllBatches_Click" Width="120" Height="20" />
+                </Grid>
+            </TabItem>
         </TabControl>
+
+        <GroupBox x:Name="groupBox_API" Header="Choose API" Canvas.Left="10" HorizontalAlignment="Left" VerticalAlignment="Top" Height="424" Margin="10,0,0,0">
+            <Grid HorizontalAlignment="Left" Width="141" VerticalAlignment="Top">
+                <ListView Margin="0,0,0,319">
+                    <ListViewItem x:Name="ListViewItemSendingSMS" Selected="ListViewItemSendingSMS_Selected" Content="Sending SMS" />
+                    <ListViewItem x:Name="ListViewItemRegisterSender" Selected="ListViewItemRegisterSender_Selected" Content="Register Sender" />
+                    <ListViewItem x:Name="ListViewItemReadingBatches" Selected="ListViewItemReadingBatches_Selected" Content="Reading Batches" />
+                </ListView>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="groupBox_API_key" Header="API Key" Canvas.Left="168" Margin="168,0,0,0" HorizontalAlignment="Left" Width="430" Height="80" VerticalAlignment="Top">
+            <Grid Height="49" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="418">
+                <TextBox x:Name="textBox_API_key" HorizontalAlignment="Left" Margin="65,14,0,0" Text="2ve6kgCo0ID6nhgtkMqcaZeEQz1p8EI17VBZfdFRaBlDTpSE" TextWrapping="Wrap" VerticalAlignment="Top" Width="321" />
+                <Label x:Name="label_API_key" Content="API Key" HorizontalAlignment="Left" Margin="10,10,0,0" Height="26" VerticalAlignment="Top" />
+            </Grid>
+        </GroupBox>
 
         <GroupBox x:Name="groupBox_response" Header="Response" Height="424" Width="187" Canvas.Left="603" Margin="603,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Grid>
