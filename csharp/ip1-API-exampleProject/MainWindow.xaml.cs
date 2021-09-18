@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -28,7 +28,6 @@ namespace IP1.Samples
         public MainWindow()
         {
             InitializeComponent();
-            tabItemSendMessage.IsSelected = true;
         }
 
         private async void buttonSend_Click(object sender, RoutedEventArgs e)
@@ -38,31 +37,30 @@ namespace IP1.Samples
                 client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBox_API_key.Text);
-
-                var sms = new OutgoingSMS()
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+                var sms = new BatchRequest()
                 {
                     Sender = textBoxSender.Text,
                     Recipients = new List<string> { textBoxRecipients.Text },
                     Body = textBoxBody.Text,
-                    Type = textBoxType.Text,
-                    Datacoding = textBoxDatacoding.Text,
-                    Priority = int.Parse(textBoxPriority.Text),
+                    Type = (SmsType)Enum.Parse(typeof(SmsType), comboBoxSMSType.Text),
+                    Datacoding = (Datacoding)Enum.Parse(typeof(Datacoding), comboBoxDatacoding.Text),
+                    Priority = (Priority)Enum.Parse(typeof(Priority), comboBoxPriority.Text),
                     Reference = textBoxReference.Text,
                     Tags = new List<string> { textBoxTags.Text }
                 };
 
                 HttpResponseMessage response = await client.PostAsJsonAsync("batches", sms);
-                treeView_response.Items.Clear();
-                treeView_response.ProcessJson(await response.Content.ReadAsStringAsync());
+                treeViewResponse.Items.Clear();
+                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
                 }
                 else
                 {
-                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
                 }
             }
         }
@@ -74,19 +72,19 @@ namespace IP1.Samples
                 client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBox_API_key.Text);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"me/senders");
-                treeView_response.Items.Clear();
-                treeView_response.ProcessJson(await response.Content.ReadAsStringAsync());
+                treeViewResponse.Items.Clear();
+                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
                 }
                 else
                 {
-                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
                 }
             }
         }
@@ -98,19 +96,19 @@ namespace IP1.Samples
                 client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBox_API_key.Text);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.PutAsync($"me/senders/{textBoxAddNewSender.Text}", null);
-                treeView_response.Items.Clear();
-                treeView_response.ProcessJson(await response.Content.ReadAsStringAsync());
+                treeViewResponse.Items.Clear();
+                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
                 }
                 else
                 {
-                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
                 }
             }
         }
@@ -122,19 +120,19 @@ namespace IP1.Samples
                 client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBox_API_key.Text);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.DeleteAsync($"me/senders/{textBoxDeleteSender.Text}");
-                treeView_response.Items.Clear();
-                treeView_response.ProcessJson(await response.Content.ReadAsStringAsync());
+                treeViewResponse.Items.Clear();
+                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
                 }
                 else
                 {
-                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
                 }
             }
         }
@@ -146,19 +144,19 @@ namespace IP1.Samples
                 client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBox_API_key.Text);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"batches");
-                treeView_response.Items.Clear();
-                treeView_response.ProcessJson(await response.Content.ReadAsStringAsync());
+                treeViewResponse.Items.Clear();
+                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
                 }
                 else
                 {
-                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
                 }
             }
         }
@@ -170,19 +168,19 @@ namespace IP1.Samples
                 client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBox_API_key.Text);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"batches/{textBoxGetBatch.Text}");
-                treeView_response.Items.Clear();
-                treeView_response.ProcessJson(await response.Content.ReadAsStringAsync());
+                treeViewResponse.Items.Clear();
+                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
                 }
                 else
                 {
-                    label_status.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
                 }
             }
         }
