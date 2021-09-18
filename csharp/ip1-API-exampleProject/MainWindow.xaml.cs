@@ -28,6 +28,10 @@ namespace IP1.Samples
         public MainWindow()
         {
             InitializeComponent();
+            comboBoxSMSType.SelectedItem = comboBoxItemSMS;
+            comboBoxPriority.SelectedItem = comboBoxItemNormal;
+            comboBoxDatacoding.SelectedItem = comboBoxItemGSM;
+            datePickerDeliveryWindow.SelectedDate = DateTime.Today;
         }
 
         private async void buttonSend_Click(object sender, RoutedEventArgs e)
@@ -46,6 +50,7 @@ namespace IP1.Samples
                     Type = (SmsType)Enum.Parse(typeof(SmsType), comboBoxSMSType.Text),
                     Datacoding = (Datacoding)Enum.Parse(typeof(Datacoding), comboBoxDatacoding.Text),
                     Priority = (Priority)Enum.Parse(typeof(Priority), comboBoxPriority.Text),
+                    DeliveryWindows = new List<DeliveryWindow> { new DeliveryWindow { Opens = datePickerDeliveryWindow.SelectedDate.Value.AddHours(12) } },
                     Reference = textBoxReference.Text,
                     Tags = new List<string> { textBoxTags.Text }
                 };
