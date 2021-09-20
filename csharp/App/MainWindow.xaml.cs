@@ -30,7 +30,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
-                
+
                 var sms = new BatchRequest()
                 {
                     Sender = textBoxSender.Text,
@@ -303,12 +303,12 @@ namespace IP1.Samples
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://api.ip1sms.com/");
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
-                HttpResponseMessage response = await client.GetAsync($"api/blacklist");
+                HttpResponseMessage response = await client.GetAsync($"blacklist");
                 treeViewResponse.Items.Clear();
                 treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
 
@@ -327,15 +327,12 @@ namespace IP1.Samples
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://api.ip1sms.com/");
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
-                var phoneNumber = new IBlacklistEntry();
-                phoneNumber.Phone = textBoxPhoneNumber.Text;
-
-                HttpResponseMessage response = await client.PostAsJsonAsync($"api/blacklist", phoneNumber);
+                HttpResponseMessage response = await client.PutAsync($"blacklist/{textBoxPhoneNumber.Text}", null);
                 treeViewResponse.Items.Clear();
                 treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
 
@@ -354,12 +351,12 @@ namespace IP1.Samples
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://api.ip1sms.com/");
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
-                HttpResponseMessage response = await client.DeleteAsync($"api/blacklist/{textBoxIdNumber.Text}");
+                HttpResponseMessage response = await client.DeleteAsync($"blacklist/{textBoxPhoneNumber.Text}");
                 treeViewResponse.Items.Clear();
                 treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
 

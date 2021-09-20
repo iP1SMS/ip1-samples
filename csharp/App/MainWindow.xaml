@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IP1.Samples"
         mc:Ignorable="d"
-        Title="Ip1 Samples" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="CanResize" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ShowInTaskbar="False" Width="1412" Height="857" Background="#fff5f5f5" Icon="/favicon.png">
+        Title="Ip1 Samples" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="CanResize" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ShowInTaskbar="False" Width="1412" Height="857" Background="#fff5f5f5" Icon="/Icons/favicon.png">
     <Grid Margin="10,10,10,10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="149*" />
@@ -89,9 +89,7 @@
                         <Label x:Name="labelPhoneNumber" Content="Phone Number" Margin="5,36,5,6" HorizontalAlignment="Left" VerticalAlignment="Top" />
                         <TextBox x:Name="textBoxPhoneNumber" Text="" Width="220" Margin="102,39,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
                         <Button x:Name="buttonAddPhoneNumber" Content="Add phone number" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonAddPhoneNumber_Click" />
-                        <Button x:Name="buttonRemovePhoneNumber" Content="Remove phone number" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonRemovePhoneNumber_Click" />
-                        <Label x:Name="labelIdNumber" Content="Id Number" Margin="5,99,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxIdNumber" Text="" Width="220" Margin="102,103,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Button x:Name="buttonRemovePhoneNumber" Content="Remove phone number" HorizontalAlignment="Left" Margin="172,70,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonRemovePhoneNumber_Click" />
                     </Grid>
                 </TabItem>
             </TabControl>
