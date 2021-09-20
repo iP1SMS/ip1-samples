@@ -33,10 +33,10 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    sourceFolder: '$(System.DefaultWorkingDirectory)\csharp\App\bin\$(buildConfiguration)\netcoreapp3.1\publish'
+    sourceFolder: '$(System.DefaultWorkingDirectory)\csharp\App\bin\$(buildConfiguration)\netcoreapp3.1'
     contents: '**'
     targetFolder: '$(Build.ArtifactStagingDirectory)'
-  displayName: 'Copy $(System.DefaultWorkingDirectory)\csharp\App\bin\$(buildConfiguration)\netcoreapp3.1\publish to $(Build.ArtifactStagingDirectory)'
+  displayName: 'Copy $(System.DefaultWorkingDirectory)\csharp\App\bin\$(buildConfiguration)\netcoreapp3.1 to $(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
   inputs:
