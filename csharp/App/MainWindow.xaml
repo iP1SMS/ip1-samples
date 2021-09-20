@@ -1,0 +1,91 @@
+<Window x:Class="IP1.Samples.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IP1.Samples"
+        mc:Ignorable="d"
+        Title="Ip1 Samples" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="CanResize" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ShowInTaskbar="False" Width="1412" Height="857" Background="#fff5f5f5">
+    <Grid Margin="10,10,10,10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="149*" />
+            <ColumnDefinition Width="106*" />
+        </Grid.ColumnDefinitions>
+        <GroupBox x:Name="groupBoxInputs" Header="Inputs" Margin="168,90,5,0" BorderBrush="#FF89B642">
+            <TabControl x:Name="tabControl">
+                <TabItem x:Name="tabItemSendMessage">
+                    <Grid Margin="0,0,0,0" Background="#fff5f5f5">
+                        <Label x:Name="labelSender" Content="Sender" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxSender" HorizontalAlignment="Left" Margin="57,14,0,0" Text="iP1" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" />
+                        <Label x:Name="labelRecipients" Content="Recipients" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxRecipients" HorizontalAlignment="Left" Margin="74,40,0,0" Text="46729333028" TextWrapping="Wrap" VerticalAlignment="Top" Width="229" />
+                        <Label x:Name="labelBody" Content="Body" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxBody" HorizontalAlignment="Left" Margin="47,66,0,0" Text="Test message rest v2" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" />
+                        <Label x:Name="labelType" Content="Type " HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top" />
+                        <ComboBox x:Name="comboBoxSMSType" HorizontalAlignment="Left" Margin="48,90,0,0" VerticalAlignment="Top" Width="120">
+                            <ComboBoxItem x:Name="comboBoxItemSMS" >SMS</ComboBoxItem>
+                            <ComboBoxItem x:Name="comboBoxItemFlash">Flash</ComboBoxItem>
+                        </ComboBox>
+                        <Label x:Name="labelDatacoding" Content="Datacoding " HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" />
+                        <ComboBox x:Name="comboBoxDatacoding" HorizontalAlignment="Left" Margin="84,116,0,0" VerticalAlignment="Top" Width="120">
+                            <ComboBoxItem x:Name="comboBoxItemGSM">GSM</ComboBoxItem>
+                            <ComboBoxItem x:Name="comboBoxItemUCS">UCS</ComboBoxItem>
+                        </ComboBox>
+                        <Label x:Name="labelPriority" Content="Priority" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top" />
+                        <ComboBox x:Name="comboBoxPriority" HorizontalAlignment="Left" Margin="63,143,0,0" VerticalAlignment="Top" Width="120">
+                            <ComboBoxItem x:Name="comboBoxItemNormal">Normal</ComboBoxItem>
+                            <ComboBoxItem x:Name="comboBoxItemHigh">High</ComboBoxItem>
+                        </ComboBox>
+                        <Label x:Name="labelDeliveryWindow" Content="Delivery Window" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" />
+                        <DatePicker x:Name="datePickerDeliveryWindow" HorizontalAlignment="Left" Margin="115,169,0,0" VerticalAlignment="Top" />
+                        <Label x:Name="labelReference" Content="Reference" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxReference" HorizontalAlignment="Left" Margin="72,197,0,0" Text="Test" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" />
+                        <Label x:Name="labelTags" Content="Tags" HorizontalAlignment="Left" Margin="10,219,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxTags" HorizontalAlignment="Left" Margin="42,223,0,0" Text="Test SMS" TextWrapping="Wrap" VerticalAlignment="Top" Width="261" />
+                        <Button x:Name="buttonSend" Content="Send" HorizontalAlignment="Left" Margin="15,250,0,0" VerticalAlignment="Top" Width="120" Height="30" Click="buttonSend_Click" Background="#FF89B642" />
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="tabItemRegisterSender">
+                    <Grid Background="#fff5f5f5">
+                        <Button x:Name="buttonGetAllSenders" Content="Get all senders" HorizontalAlignment="Left" Margin="104,70,0,0" Width="120" Height="30" Click="buttonGetAllSenders_Click" VerticalAlignment="Top" Background="#FF89B642" />
+                        <Label x:Name="labelAddNewSender" Content="Add new sender" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxAddNewSender" Text="" TextWrapping="Wrap" Width="120" Margin="104,8,194,-8" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Button x:Name="buttonAddNewSender" Content="Add new sender" HorizontalAlignment="Left" Margin="234,8,0,0" VerticalAlignment="Top" Width="120" Height="20" Click="buttonAddNewSender_Click" Background="#FF89B642" />
+                        <Label x:Name="labelDeleteSender" Content="Delete sender" HorizontalAlignment="Left" Margin="5,35,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxDeleteSender" Text="" TextWrapping="Wrap" Width="120" Margin="104,38,194,-8" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Button x:Name="buttonDeleteSender" Content="Delete new sender" HorizontalAlignment="Left" Margin="234,37,0,0" VerticalAlignment="Top" Width="120" Height="20" Click="buttonDeleteSender_Click" Background="#FF89B642" />
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="tabItemReadingBatches">
+                    <Grid Background="#fff5f5f5">
+                        <Label x:Name="labelGetBatch" Content="Batch id" Margin="5,18,0,0" />
+                        <TextBox x:Name="textBoxGetBatch" Text="" Width="220" Margin="60,22,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Button x:Name="buttonGetBatch" Content="Get batch by id" HorizontalAlignment="Left" Margin="60,55,0,0" VerticalAlignment="Top" Width="120" Height="20" Click="buttonGetBatch_Click" Background="#FF89B642" />
+                        <Button x:Name="buttonGetAllBatches" Content="Get all batches" HorizontalAlignment="Left" Margin="60,85,0,0" VerticalAlignment="Top" Click="buttonGetAllBatches_Click" Width="120" Height="20" Background="#FF89B642" />
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </GroupBox>
+        <GroupBox x:Name="groupBoxAPI" Header="Choose API" HorizontalAlignment="Left" Margin="10,10,0,0" Width="153" BorderBrush="#FF89B642">
+            <Grid HorizontalAlignment="Left" Width="141" VerticalAlignment="Stretch">
+                <ListView VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5">
+                    <ListViewItem x:Name="ListViewItemSendingSMS" Selected="ListViewItemSendingSMS_Selected" Content="Sending SMS" />
+                    <ListViewItem x:Name="ListViewItemRegisterSender" Selected="ListViewItemRegisterSender_Selected" Content="Register Sender" />
+                    <ListViewItem x:Name="ListViewItemReadingBatches" Selected="ListViewItemReadingBatches_Selected" Content="Reading Batches" />
+                </ListView>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="groupBoxAPIkey" Header="API Key" Margin="168,10,5,0" Height="80" VerticalAlignment="Top" BorderBrush="#FF89B642">
+            <Grid Height="49" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="418" Margin="10,0,0,0">
+                <TextBox x:Name="textBoxAPIKey" HorizontalAlignment="Left" Margin="65,14,0,0" Text="2ve6kgCo0ID6nhgtkMqcaZeEQz1p8EI17VBZfdFRaBlDTpSE" TextWrapping="Wrap" VerticalAlignment="Top" Width="321" />
+                <Label x:Name="labelAPIKey" Content="API Key" HorizontalAlignment="Left" Margin="10,10,0,0" Height="26" VerticalAlignment="Top" />
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="groupBoxResponse" Header="Response" Margin="5,10,10,0" Grid.Column="1" BorderBrush="#FF89B642">
+            <Grid>
+                <TreeView x:Name="treeViewResponse" Margin="0,36,0,0" Background="#fff5f5f5" />
+                <Label x:Name="labelStatus" Content="StatusCode:" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" />
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>
