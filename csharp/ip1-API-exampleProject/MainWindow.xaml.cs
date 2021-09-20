@@ -42,14 +42,15 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+                
                 var sms = new BatchRequest()
                 {
                     Sender = textBoxSender.Text,
                     Recipients = new List<string> { textBoxRecipients.Text },
                     Body = textBoxBody.Text,
-                    Type = (SmsType)Enum.Parse(typeof(SmsType), comboBoxSMSType.Text),
-                    Datacoding = (Datacoding)Enum.Parse(typeof(Datacoding), comboBoxDatacoding.Text),
-                    Priority = (Priority)Enum.Parse(typeof(Priority), comboBoxPriority.Text),
+                    Type = Enum.Parse<SmsType>(comboBoxSMSType.Text),
+                    Datacoding = Enum.Parse<Datacoding>(comboBoxDatacoding.Text),
+                    Priority = Enum.Parse<Priority>(comboBoxPriority.Text),
                     DeliveryWindows = new List<DeliveryWindow> { new DeliveryWindow { Opens = datePickerDeliveryWindow.SelectedDate.Value.AddHours(12) } },
                     Reference = textBoxReference.Text,
                     Tags = new List<string> { textBoxTags.Text }
