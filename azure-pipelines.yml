@@ -9,34 +9,27 @@ trigger:
 pool: Default
 
 variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
 steps:
-- task: DotNetCoreCLI@2
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
   inputs:
     command: 'restore'
-    projects: '**/*.csproj'
+    restoreSolution: '$(solution)'
     feedsToUse: 'select'
     vstsFeed: 'a4fc0951-8a36-4d30-acbd-1e7922434c40'
-  displayName: 'dotnet restore'
 
-- task: DotNetCoreCLI@2
+- task: VSBuild@1
   inputs:
-    command: 'build'
-    projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
-  displayName: 'dotnet build $(buildConfiguration)'
+    solution: '$(solution)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
 
-- task: DotNetCoreCLI@2
+- task: VSTest@2
   inputs:
-    command: publish
-    projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: true
-  displayName: 'dotnet publish $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: '$(Build.SourceBranchName)'
-  displayName: 'Publish artifact'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
