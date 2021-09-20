@@ -6,8 +6,7 @@
 trigger:
 - main
 
-pool:
-  vmImage: 'windows-latest'
+pool: Default
 
 variables:
   solution: '**/*.sln'
@@ -19,7 +18,10 @@ steps:
 
 - task: NuGetCommand@2
   inputs:
+    command: 'restore'
     restoreSolution: '$(solution)'
+    feedsToUse: 'select'
+    vstsFeed: 'a4fc0951-8a36-4d30-acbd-1e7922434c40'
 
 - task: VSBuild@1
   inputs:
