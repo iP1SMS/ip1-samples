@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <None Remove="favicon.png" />
-    <None Remove="Icons\favicon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Icons\favicon.png" />
+    <Resource Include="favicon.png" />
   </ItemGroup>
 
 </Project>
