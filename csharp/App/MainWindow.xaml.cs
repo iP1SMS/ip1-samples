@@ -1,22 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Text.Json;
-using JSONTreeView;
 using IP1.Samples.Models;
+using JSONTreeView;
 
 namespace IP1.Samples
 {
@@ -42,7 +30,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
-                
+
                 var sms = new BatchRequest()
                 {
                     Sender = textBoxSender.Text,
@@ -191,6 +179,198 @@ namespace IP1.Samples
             }
         }
 
+        private async void buttonGetBatchMessages_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"batches/{textBoxBatchId.Text}/messages");
+                treeViewResponse.Items.Clear();
+                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                }
+                else
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                }
+            }
+        }
+
+        private async void buttonGetSingleMessage_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"batches/{textBoxBatchId.Text}/messages/{textBoxMessageId.Text}");
+                treeViewResponse.Items.Clear();
+                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                }
+                else
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                }
+            }
+        }
+
+        private async void buttonGetAllMessages_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"conversations/{textBoxParticipant.Text}");
+                treeViewResponse.Items.Clear();
+                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                }
+                else
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                }
+            }
+        }
+
+        private async void buttonGetOutgoingMessages_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"conversations/{textBoxParticipant.Text}/mt");
+                treeViewResponse.Items.Clear();
+                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                }
+                else
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                }
+            }
+        }
+
+        private async void buttonGetIncomingMessages_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"conversations/{textBoxParticipant.Text}/mo");
+                treeViewResponse.Items.Clear();
+                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                }
+                else
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                }
+            }
+        }
+
+        private async void buttonGetBlackList_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"blacklist");
+                treeViewResponse.Items.Clear();
+                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                }
+                else
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                }
+            }
+        }
+
+        private async void buttonAddPhoneNumber_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.PutAsync($"blacklist/{textBoxPhoneNumber.Text}", null);
+                treeViewResponse.Items.Clear();
+                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                }
+                else
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                }
+            }
+        }
+
+        private async void buttonRemovePhoneNumber_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.DeleteAsync($"blacklist/{textBoxPhoneNumber.Text}");
+                treeViewResponse.Items.Clear();
+                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                }
+                else
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                }
+            }
+        }
+
         private void ListViewItemRegisterSender_Selected(object sender, RoutedEventArgs e)
         {
             tabItemRegisterSender.IsSelected = true;
@@ -204,6 +384,21 @@ namespace IP1.Samples
         private void ListViewItemReadingBatches_Selected(object sender, RoutedEventArgs e)
         {
             tabItemReadingBatches.IsSelected = true;
+        }
+
+        private void ListViewItemReadingMessages_Selected(object sender, RoutedEventArgs e)
+        {
+            tabItemReadingMessages.IsSelected = true;
+        }
+
+        private void ListViewItemConversations_Selected(object sender, RoutedEventArgs e)
+        {
+            tabItemConversations.IsSelected = true;
+        }
+
+        private void ListViewItemBlackList_Selected(object sender, RoutedEventArgs e)
+        {
+            tabItemBlackList.IsSelected = true;
         }
     }
 }
