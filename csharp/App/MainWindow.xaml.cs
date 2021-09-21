@@ -371,6 +371,30 @@ namespace IP1.Samples
             }
         }
 
+        private async void buttonGetAllSurveys_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"surveys");
+                treeViewResponse.Items.Clear();
+                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                }
+                else
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                }
+            }
+        }
+
         private void ListViewItemRegisterSender_Selected(object sender, RoutedEventArgs e)
         {
             tabItemRegisterSender.IsSelected = true;
@@ -399,6 +423,11 @@ namespace IP1.Samples
         private void ListViewItemBlackList_Selected(object sender, RoutedEventArgs e)
         {
             tabItemBlackList.IsSelected = true;
+        }
+
+        private void ListViewItemGetSurveys_Selected(object sender, RoutedEventArgs e)
+        {
+            tabItemGetSurveys.IsSelected = true;
         }
     }
 }

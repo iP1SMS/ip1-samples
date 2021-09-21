@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IP1.Samples"
         mc:Ignorable="d"
-        Title="Ip1 Samples" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="CanResize" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ShowInTaskbar="False" Width="1412" Height="857" Background="#fff5f5f5" Icon="/Icons/favicon.png">
+        Title="Ip1 Samples" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="CanResize" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ShowInTaskbar="False" Width="1412" Height="857" Background="#fff5f5f5" Icon="favicon.png">
     <Grid Margin="10,10,10,10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="149*" />
@@ -92,18 +92,34 @@
                         <Button x:Name="buttonRemovePhoneNumber" Content="Remove phone number" HorizontalAlignment="Left" Margin="172,70,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonRemovePhoneNumber_Click" />
                     </Grid>
                 </TabItem>
+                <TabItem x:Name="tabItemGetSurveys" Height="4" VerticalAlignment="Top">
+                    <Grid Background="#fff5f5f5">
+                        <Button x:Name="buttonGetAllSurveys" Content="Get all surveys" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" Height="20" Background="#FF89B642" Click="buttonGetAllSurveys_Click" />
+                    </Grid>
+                </TabItem>
             </TabControl>
         </GroupBox>
         <GroupBox x:Name="groupBoxAPI" Header="Choose API" HorizontalAlignment="Left" Margin="10,10,0,0" Width="153" BorderBrush="#FF89B642">
             <Grid HorizontalAlignment="Left" Width="141" VerticalAlignment="Stretch">
-                <ListView VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5">
-                    <ListViewItem x:Name="ListViewItemSendingSMS" Selected="ListViewItemSendingSMS_Selected" Content="Sending SMS" />
-                    <ListViewItem x:Name="ListViewItemRegisterSender" Selected="ListViewItemRegisterSender_Selected" Content="Register Sender" />
-                    <ListViewItem x:Name="ListViewItemReadingBatches" Selected="ListViewItemReadingBatches_Selected" Content="Reading Batches" />
-                    <ListViewItem x:Name="ListViewItemReadingMessages" Selected="ListViewItemReadingMessages_Selected" Content="Reading Messages" />
-                    <ListViewItem x:Name="ListViewItemConversations" Selected="ListViewItemConversations_Selected" Content="Conversations" />
-                    <ListViewItem x:Name="ListViewItemBlackList" Selected="ListViewItemBlackList_Selected" Content="Black List" />
-                </ListView>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Expander Name="ExpanderControl" Header="SMS API's"  HorizontalAlignment="Left">
+                    <ListView VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderBrush="#FF89B642">
+                        <ListViewItem x:Name="ListViewItemSendingSMS" Selected="ListViewItemSendingSMS_Selected" Content="Sending SMS" />
+                        <ListViewItem x:Name="ListViewItemRegisterSender" Selected="ListViewItemRegisterSender_Selected" Content="Register Sender" />
+                        <ListViewItem x:Name="ListViewItemReadingBatches" Selected="ListViewItemReadingBatches_Selected" Content="Reading Batches" />
+                        <ListViewItem x:Name="ListViewItemReadingMessages" Selected="ListViewItemReadingMessages_Selected" Content="Reading Messages" />
+                        <ListViewItem x:Name="ListViewItemConversations" Selected="ListViewItemConversations_Selected" Content="Conversations" />
+                        <ListViewItem x:Name="ListViewItemBlackList" Selected="ListViewItemBlackList_Selected" Content="Black List" />
+                    </ListView>
+                </Expander>
+                <Expander Name="ExpanderControlSurvey" Header="Survey API's"  HorizontalAlignment="Left" Grid.Row="1">
+                    <ListView VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderBrush="#FF89B642">
+                        <ListViewItem x:Name="ListViewItemGetSurveys"  Content="Get Surveys" Selected="ListViewItemGetSurveys_Selected" />
+                    </ListView>
+                </Expander>
             </Grid>
         </GroupBox>
         <GroupBox x:Name="groupBoxAPIkey" Header="API Key" Margin="168,10,5,0" Height="80" VerticalAlignment="Top" BorderBrush="#FF89B642">
