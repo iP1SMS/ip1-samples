@@ -102,11 +102,10 @@
                         <Button x:Name="buttonAddSubAccount" Content="Add New Sub Account" HorizontalAlignment="Left" Margin="279,101,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonAddSubAccount_Click" />
                         <Label x:Name="labelEditSubAccountName" Content="Edit Sub Account Name" Margin="10,132,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
                         <Label x:Name="labelSubAccountId" Content="Sub Account ID" Margin="10,158,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxSubAccountID" Text="" Width="120" Margin="127,161,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="ip1-12345"/>
+                        <TextBox x:Name="textBoxSubAccountID" Text="" Width="120" Margin="127,161,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="ip1-12345" />
                         <Label x:Name="labelSubAccountName" Content="Sub Account Name" Margin="10,184,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxSubAccountName" Text="" Width="120" Margin="127,187,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="ip1-12345"/>
+                        <TextBox x:Name="textBoxSubAccountName" Text="" Width="120" Margin="127,187,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="ip1-12345" />
                         <Button x:Name="buttonEditSubAccount" Content="Edit New Sub Account" HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top" Width="237" Height="20" Background="#FF89B642" Click="buttonEditSubAccount_Click" />
-
                     </Grid>
                 </TabItem>
             </TabControl>
@@ -133,13 +132,12 @@
         <GroupBox x:Name="groupBoxResponse" Header="Response" Margin="5,10,10,0" Grid.Column="1" BorderBrush="#FF89B642">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="400*"/>
-                    <RowDefinition Height="400*"/>
+                    <RowDefinition Height="400*" />
+                    <RowDefinition Height="400*" />
                 </Grid.RowDefinitions>
                 <Label x:Name="labelStatus" Content="StatusCode:" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" />
-                <TextBox x:Name="textBlockResponse" IsReadOnly="True" Background="Transparent" Margin="0,40,0,5" TextWrapping="Wrap" BorderBrush="#FF89B642"/>
+                <TextBox x:Name="textBoxResponse" IsReadOnly="True" Background="Transparent" Margin="0,40,0,5" TextWrapping="Wrap" BorderBrush="#FF89B642" />
                 <TreeView x:Name="treeViewResponse" Background="#fff5f5f5" Grid.Row="1" Margin="0,5,0,13" BorderBrush="#FF89B642" />
-
             </Grid>
         </GroupBox>
     </Grid>
