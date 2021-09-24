@@ -46,7 +46,7 @@ namespace IP1.Samples
                 };
 
                 HttpResponseMessage response = await client.PostAsJsonAsync("batches", sms);
-                showResult(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -69,7 +69,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"me/senders");
-                showResult(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -92,7 +92,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.PutAsync($"me/senders/{textBoxAddNewSender.Text}", null);
-                showResult(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -115,7 +115,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.DeleteAsync($"me/senders/{textBoxDeleteSender.Text}");
-                showResult(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -138,7 +138,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"batches");
-                showResult(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -161,7 +161,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"batches/{textBoxGetBatch.Text}");
-                showResult(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -184,7 +184,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"batches/{textBoxBatchId.Text}/messages");
-                showResult(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -207,7 +207,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"batches/{textBoxBatchId.Text}/messages/{textBoxMessageId.Text}");
-                showResult(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -230,7 +230,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"conversations/{textBoxParticipant.Text}");
-                showResult(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -253,7 +253,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"conversations/{textBoxParticipant.Text}/mt");
-                showResult(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -276,7 +276,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"conversations/{textBoxParticipant.Text}/mo");
-                showResult(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -299,7 +299,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"blacklist");
-                showResult(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -322,7 +322,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.PutAsync($"blacklist/{textBoxPhoneNumber.Text}", null);
-                showResult(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -345,7 +345,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.DeleteAsync($"blacklist/{textBoxPhoneNumber.Text}");
-                showResult(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -368,7 +368,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"api/me");
-                showResult(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -391,7 +391,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"api/me/account");
-                showResult(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -414,7 +414,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"api/me/children");
-                showResult(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -442,7 +442,7 @@ namespace IP1.Samples
                 };
 
                 HttpResponseMessage response = await client.PostAsJsonAsync($"api/me/children", sub);
-                showResult(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -471,7 +471,7 @@ namespace IP1.Samples
                 };
 
                 HttpResponseMessage response = await client.PutAsJsonAsync($"api/me/children/{textBoxSubAccountID.Text}", child);
-                showResult(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -519,7 +519,7 @@ namespace IP1.Samples
             tabItemAccountManagement.IsSelected = true;
         }
 
-        private void showResult(string response)
+        private void ShowResult(string response)
         {
             JsonSerializerOptions options = new JsonSerializerOptions()
             {
