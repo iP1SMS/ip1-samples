@@ -12,8 +12,10 @@ namespace IP1.Samples.Models
 
         public string Body { get; set; }
 
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public SmsType Type { get; set; } = SmsType.SMS;
 
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public Datacoding Datacoding { get; set; } = Datacoding.UCS;
 
         public Priority Priority { get; set; } = Priority.Normal;
