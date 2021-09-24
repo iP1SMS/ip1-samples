@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.Json;
 using System.Windows;
 using IP1.Samples.Models;
 using JSONTreeView;
@@ -45,16 +46,15 @@ namespace IP1.Samples
                 };
 
                 HttpResponseMessage response = await client.PostAsJsonAsync("batches", sms);
-                treeViewResponse.Items.Clear();
-                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
                 else
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + response.ReasonPhrase;
                 }
             }
         }
@@ -69,16 +69,15 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"me/senders");
-                treeViewResponse.Items.Clear();
-                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
                 else
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
             }
         }
@@ -93,16 +92,15 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.PutAsync($"me/senders/{textBoxAddNewSender.Text}", null);
-                treeViewResponse.Items.Clear();
-                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
                 else
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
             }
         }
@@ -117,16 +115,15 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.DeleteAsync($"me/senders/{textBoxDeleteSender.Text}");
-                treeViewResponse.Items.Clear();
-                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
                 else
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
             }
         }
@@ -141,16 +138,15 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"batches");
-                treeViewResponse.Items.Clear();
-                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
                 else
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
             }
         }
@@ -165,16 +161,15 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"batches/{textBoxGetBatch.Text}");
-                treeViewResponse.Items.Clear();
-                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
                 else
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
             }
         }
@@ -189,16 +184,15 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"batches/{textBoxBatchId.Text}/messages");
-                treeViewResponse.Items.Clear();
-                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
                 else
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
             }
         }
@@ -213,16 +207,15 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"batches/{textBoxBatchId.Text}/messages/{textBoxMessageId.Text}");
-                treeViewResponse.Items.Clear();
-                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
                 else
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
             }
         }
@@ -237,16 +230,15 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"conversations/{textBoxParticipant.Text}");
-                treeViewResponse.Items.Clear();
-                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
                 else
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
             }
         }
@@ -261,16 +253,15 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"conversations/{textBoxParticipant.Text}/mt");
-                treeViewResponse.Items.Clear();
-                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
                 else
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
             }
         }
@@ -285,16 +276,15 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"conversations/{textBoxParticipant.Text}/mo");
-                treeViewResponse.Items.Clear();
-                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
                 else
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
             }
         }
@@ -309,16 +299,15 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"blacklist");
-                treeViewResponse.Items.Clear();
-                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
                 else
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
             }
         }
@@ -333,16 +322,15 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.PutAsync($"blacklist/{textBoxPhoneNumber.Text}", null);
-                treeViewResponse.Items.Clear();
-                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
                 else
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
             }
         }
@@ -357,16 +345,141 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.DeleteAsync($"blacklist/{textBoxPhoneNumber.Text}");
-                treeViewResponse.Items.Clear();
-                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
                 else
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+            }
+        }
+
+        private async void buttonOverviewAccount_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"api/me");
+                ShowResult(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+                else
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+            }
+        }
+
+        private async void buttonDetailsAccount_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"api/me/account");
+                ShowResult(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+                else
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+            }
+        }
+
+        private async void buttonGetAllSubAccounts_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"api/me/children");
+                ShowResult(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+                else
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+            }
+        }
+
+        private async void buttonAddSubAccount_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                Account sub = new Account()
+                {
+                    Name = textBoxNewSubAccountName.Text
+                };
+
+                HttpResponseMessage response = await client.PostAsJsonAsync($"api/me/children", sub);
+                ShowResult(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+                else
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+            }
+        }
+
+        private async void buttonEditSubAccount_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                Account child = new Account()
+                {
+                    ID = textBoxSubAccountID.Text,
+                    Name = textBoxSubAccountName.Text
+                };
+
+                HttpResponseMessage response = await client.PutAsJsonAsync($"api/me/children/{textBoxSubAccountID.Text}", child);
+                ShowResult(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+                else
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
             }
         }
@@ -425,9 +538,35 @@ namespace IP1.Samples
             tabItemBlackList.IsSelected = true;
         }
 
+        private void ListViewItemAccountManagement_Selected(object sender, RoutedEventArgs e)
+        {
+            tabItemAccountManagement.IsSelected = true;
+        }
+
         private void ListViewItemGetSurveys_Selected(object sender, RoutedEventArgs e)
         {
             tabItemGetSurveys.IsSelected = true;
         }
+        
+        private void ShowResult(string response)
+        {
+            JsonSerializerOptions options = new JsonSerializerOptions()
+            {
+                WriteIndented = true
+            };
+
+            treeViewResponse.Items.Clear();
+            treeViewResponse.ProcessJson(response);
+            try
+            {
+                var jsonElement = JsonSerializer.Deserialize<JsonElement>(response);
+                textBoxResponse.Text = JsonSerializer.Serialize(jsonElement, options);
+            }
+            catch
+            {
+                textBoxResponse.Text = response;
+            }
+        }
+
     }
 }
