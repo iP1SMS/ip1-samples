@@ -435,7 +435,11 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
-                Account sub = new Account() { Name = textBoxNewSubAccountName.Text };
+
+                Account sub = new Account()
+                {
+                    Name = textBoxNewSubAccountName.Text
+                };
 
                 HttpResponseMessage response = await client.PostAsJsonAsync($"api/me/children", sub);
                 showResult(await response.Content.ReadAsStringAsync());
@@ -459,6 +463,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
                 Account child = new Account()
                 {
                     ID = textBoxSubAccountID.Text,
