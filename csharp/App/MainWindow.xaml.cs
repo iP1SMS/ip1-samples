@@ -1,8 +1,9 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Windows;
 using IP1.Samples.Models;
 using JSONTreeView;
@@ -494,60 +495,248 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"surveys");
-                treeViewResponse.Items.Clear();
-                treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+                ShowResult(await response.Content.ReadAsStringAsync());
 
                 if (response.IsSuccessStatusCode)
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Sent";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
                 else
                 {
-                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " Failed";
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
                 }
+            }
+        }
+
+        private async void buttonGetSummary_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"surveys/summary");
+                ShowResult(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+                else
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+            }
+        }
+
+        private async void buttonGetPinned_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"surveys/pinned");
+                ShowResult(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+                else
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+            }
+        }
+
+        private async void buttonGetSurvey_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"surveys/{textBoxSurveyId.Text}");
+                ShowResult(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+                else
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+            }
+        }
+
+        private async void buttonGetSurveysummary_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"surveys/{textBoxSurveyId.Text}/summary");
+                ShowResult(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+                else
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+            }
+        }
+
+        private async void buttonDeleteSurvey_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.DeleteAsync($"surveys/{textBoxSurveyId.Text}");
+                ShowResult(await response.Content.ReadAsStringAsync());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+                else
+                {
+                    labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                }
+            }
+        }
+
+        private async void buttonUpdateSurvey_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+                options.Converters.Add(new JsonStringEnumConverter());
+                try
+                {
+                    Survey survey = JsonSerializer.Deserialize<Survey>(textBoxNewUpdateSurvey.Text, options);
+                    HttpResponseMessage response = await client.PutAsJsonAsync($"surveys/{survey.Id}", survey);
+                    ShowResult(await response.Content.ReadAsStringAsync());
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                    }
+                    else
+                    {
+                        labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                    }
+                }
+                catch (Exception ex) { MessageBox.Show("please check your inputs \n" + ex.Message); }
+            }
+        }
+
+        private async void buttonAddSurvey_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+                options.Converters.Add(new JsonStringEnumConverter());
+                try
+                {
+                    Survey survey = JsonSerializer.Deserialize<Survey>(textBoxNewUpdateSurvey.Text, options);
+                    HttpResponseMessage response = await client.PostAsJsonAsync($"surveys", survey);
+                    ShowResult(await response.Content.ReadAsStringAsync());
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                    }
+                    else
+                    {
+                        labelStatus.Content = "StatusCode: " + (int)response.StatusCode + " " + response.ReasonPhrase;
+                    }
+                }
+                catch (Exception ex) { MessageBox.Show("please check your inputs \n" + ex.Message); }
             }
         }
 
         private void ListViewItemRegisterSender_Selected(object sender, RoutedEventArgs e)
         {
             tabItemRegisterSender.IsSelected = true;
+            listViewSurveyApis.SelectedItem = null;
         }
 
         private void ListViewItemSendingSMS_Selected(object sender, RoutedEventArgs e)
         {
             tabItemSendMessage.IsSelected = true;
+            listViewSurveyApis.SelectedItem = null;
         }
 
         private void ListViewItemReadingBatches_Selected(object sender, RoutedEventArgs e)
         {
             tabItemReadingBatches.IsSelected = true;
+            listViewSurveyApis.SelectedItem = null;
         }
 
         private void ListViewItemReadingMessages_Selected(object sender, RoutedEventArgs e)
         {
             tabItemReadingMessages.IsSelected = true;
+            listViewSurveyApis.SelectedItem = null;
         }
 
         private void ListViewItemConversations_Selected(object sender, RoutedEventArgs e)
         {
             tabItemConversations.IsSelected = true;
+            listViewSurveyApis.SelectedItem = null;
         }
 
         private void ListViewItemBlackList_Selected(object sender, RoutedEventArgs e)
         {
             tabItemBlackList.IsSelected = true;
+            listViewSurveyApis.SelectedItem = null;
         }
 
         private void ListViewItemAccountManagement_Selected(object sender, RoutedEventArgs e)
         {
             tabItemAccountManagement.IsSelected = true;
+            listViewSurveyApis.SelectedItem = null;
         }
 
         private void ListViewItemGetSurveys_Selected(object sender, RoutedEventArgs e)
         {
             tabItemGetSurveys.IsSelected = true;
+            listViewSurveyApis.SelectedItem = null;
         }
-        
+
         private void ShowResult(string response)
         {
             JsonSerializerOptions options = new JsonSerializerOptions()
@@ -567,6 +756,5 @@ namespace IP1.Samples
                 textBoxResponse.Text = response;
             }
         }
-
     }
 }

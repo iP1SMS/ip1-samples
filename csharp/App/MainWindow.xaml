@@ -110,7 +110,17 @@
                 </TabItem>
                 <TabItem x:Name="tabItemGetSurveys" Height="4" VerticalAlignment="Top">
                     <Grid Background="#fff5f5f5">
-                        <Button x:Name="buttonGetAllSurveys" Content="Get all surveys" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" Height="20" Background="#FF89B642" Click="buttonGetAllSurveys_Click" />
+                        <Button x:Name="buttonGetAllSurveys" Content="Get all surveys" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" Height="30" Background="#FF89B642" Click="buttonGetAllSurveys_Click" />
+                        <Button x:Name="buttonGetSummary" Content="Get summary" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="120" Height="30" Background="#FF89B642" Click="buttonGetSummary_Click" />
+                        <Button x:Name="buttonGetPinned" Content="Get pinned" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="120" Height="30" Background="#FF89B642" Click="buttonGetPinned_Click" />
+                        <Label x:Name="labelSurveyId" Content="Survey id" Margin="10,111,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxSurveyId" Text="" Width="245" Margin="70,114,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Button x:Name="buttonGetSurvey" Content="Get Survey" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top" Width="100" Height="20" Background="#FF89B642" Click="buttonGetSurvey_Click" />
+                        <Button x:Name="buttonGetSurveysummary" Content="Get summary" HorizontalAlignment="Left" Margin="112,139,0,0" VerticalAlignment="Top" Width="100" Height="20" Background="#FF89B642" Click="buttonGetSurveysummary_Click" />
+                        <Button x:Name="buttonDeleteSurvey" Content="Delete survey" HorizontalAlignment="Left" Margin="215,139,0,0" VerticalAlignment="Top" Width="100" Height="20" Background="#FF89B642" Click="buttonDeleteSurvey_Click" />
+                        <Button x:Name="buttonUpdateSurvey" Content="Update survey" HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonUpdateSurvey_Click" />
+                        <TextBox x:Name="textBoxNewUpdateSurvey"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Left" Margin="10,189,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Height="405" />
+                        <Button x:Name="buttonAddSurvey" Content="Add survey" HorizontalAlignment="Left" Margin="165,164,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonAddSurvey_Click" />
                     </Grid>
                 </TabItem>
             </TabControl>
@@ -122,7 +132,7 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Expander Name="ExpanderControl" Header="SMS API's"  HorizontalAlignment="Left">
-                    <ListView VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderBrush="#FF89B642">
+                    <ListView Name="listViewSmsApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderBrush="#FF89B642">
                         <ListViewItem x:Name="ListViewItemSendingSMS" Selected="ListViewItemSendingSMS_Selected" Content="Sending SMS" />
                         <ListViewItem x:Name="ListViewItemRegisterSender" Selected="ListViewItemRegisterSender_Selected" Content="Register Sender" />
                         <ListViewItem x:Name="ListViewItemReadingBatches" Selected="ListViewItemReadingBatches_Selected" Content="Reading Batches" />
@@ -133,11 +143,10 @@
                     </ListView>
                 </Expander>
                 <Expander Name="ExpanderControlSurvey" Header="Survey API's"  HorizontalAlignment="Left" Grid.Row="1">
-                    <ListView VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderBrush="#FF89B642">
+                    <ListView Name="listViewSurveyApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderBrush="#FF89B642">
                         <ListViewItem x:Name="ListViewItemGetSurveys"  Content="Get Surveys" Selected="ListViewItemGetSurveys_Selected" />
                     </ListView>
                 </Expander>
-                    
             </Grid>
         </GroupBox>
         <GroupBox x:Name="groupBoxAPIkey" Header="API Key" Margin="168,10,5,0" Height="80" VerticalAlignment="Top" BorderBrush="#FF89B642">
