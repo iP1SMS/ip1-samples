@@ -325,7 +325,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"surveys");
-                ShowResult(await response.Content.ReadAsStringAsync());
+                ShowResultAsync(response);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -348,7 +348,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"surveys/summary");
-                ShowResult(await response.Content.ReadAsStringAsync());
+                ShowResultAsync(response);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -371,7 +371,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"surveys/pinned");
-                ShowResult(await response.Content.ReadAsStringAsync());
+                ShowResultAsync(response);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -394,7 +394,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"surveys/{textBoxSurveyId.Text}");
-                ShowResult(await response.Content.ReadAsStringAsync());
+                ShowResultAsync(response);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -417,7 +417,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.GetAsync($"surveys/{textBoxSurveyId.Text}/summary");
-                ShowResult(await response.Content.ReadAsStringAsync());
+                ShowResultAsync(response);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -440,7 +440,7 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
                 HttpResponseMessage response = await client.DeleteAsync($"surveys/{textBoxSurveyId.Text}");
-                ShowResult(await response.Content.ReadAsStringAsync());
+                ShowResultAsync(response);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -471,7 +471,7 @@ namespace IP1.Samples
                 {
                     Survey survey = JsonSerializer.Deserialize<Survey>(textBoxNewUpdateSurvey.Text, options);
                     HttpResponseMessage response = await client.PutAsJsonAsync($"surveys/{survey.Id}", survey);
-                    ShowResult(await response.Content.ReadAsStringAsync());
+                    ShowResultAsync(response);
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -504,7 +504,7 @@ namespace IP1.Samples
                 {
                     Survey survey = JsonSerializer.Deserialize<Survey>(textBoxNewUpdateSurvey.Text, options);
                     HttpResponseMessage response = await client.PostAsJsonAsync($"surveys", survey);
-                    ShowResult(await response.Content.ReadAsStringAsync());
+                    ShowResultAsync(response);
 
                     if (response.IsSuccessStatusCode)
                     {
