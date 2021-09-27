@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace IP1.Samples
+namespace IP1.Samples.Models
 {
     public abstract class Question
     {

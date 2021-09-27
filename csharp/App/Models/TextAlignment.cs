@@ -1,4 +1,4 @@
-﻿namespace IP1.Samples
+﻿namespace IP1.Samples.Models
 {
     public enum TextAlignment
     {

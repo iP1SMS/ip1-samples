@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Windows;
 
-namespace IP1.Samples
+namespace IP1.Samples.Models
 {
     public class Survey
     {
