@@ -51,9 +51,6 @@ namespace IP1.Samples
 
         public DateTime LastModified { get; set; }
 
-        [JsonIgnore]
-        public List<Question> Questions { get; set; } = new List<Question>();
-
         public Dictionary<string, Dictionary<string, string>> Translations { get; set; } = new Dictionary<string, Dictionary<string, string>>();
     }
 }
