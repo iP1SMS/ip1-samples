@@ -123,6 +123,21 @@
                         <Button x:Name="buttonAddSurvey" Content="Add survey" HorizontalAlignment="Left" Margin="165,164,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonAddSurvey_Click" />
                     </Grid>
                 </TabItem>
+                <TabItem x:Name="tabItemGetAnswers" Height="4" VerticalAlignment="Top">
+                    <Grid Background="#fff5f5f5">
+                        <Label x:Name="labelAnswers" Content="Answers" Margin="10,51,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                        <Label x:Name="labelSurveyIdAnswers" Content="Survey id" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxSurveyIdAnswers" Text="" Width="245" Margin="73,13,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Label x:Name="labelQuestionIdAnswers" Content="Question id" Margin="10,73,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxQuestionIdAnswers" Text="" Width="232" Margin="86,76,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Button x:Name="buttonGetAllAnswers" Content="Get all answers" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Width="120" Height="30" Background="#FF89B642" Click="buttonGetAllAnswers_Click" />
+                        <Label x:Name="labelParticipants" Content="Participants" Margin="10,146,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                        <Button x:Name="buttonGetAllParticipants" Content="Get all participants" HorizontalAlignment="Left" Margin="10,176,0,0" VerticalAlignment="Top" Width="120" Height="30" Background="#FF89B642" Click="buttonGetAllParticipants_Click" />
+                        <Label x:Name="labelParticipantId" Content="Participant id" Margin="10,209,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxParticipantId" Text="" Width="224" Margin="94,212,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Button x:Name="buttonGetParticipant" Content="Get participant" HorizontalAlignment="Left" Margin="10,240,0,0" VerticalAlignment="Top" Width="120" Height="30" Background="#FF89B642" Click="buttonGetParticipant_Click" />
+                    </Grid>
+                </TabItem>
             </TabControl>
         </GroupBox>
         <GroupBox x:Name="groupBoxAPI" Header="Choose API" HorizontalAlignment="Left" Margin="10,10,0,0" Width="153" BorderBrush="#FF89B642">
@@ -145,6 +160,7 @@
                 <Expander Name="ExpanderControlSurvey" Header="Survey API's"  HorizontalAlignment="Left" Grid.Row="1">
                     <ListView Name="listViewSurveyApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderBrush="#FF89B642">
                         <ListViewItem x:Name="ListViewItemGetSurveys"  Content="Get Surveys" Selected="ListViewItemGetSurveys_Selected" />
+                        <ListViewItem x:Name="ListViewItemGetAnswers"  Content="Get Answers" Selected="ListViewItemGetAnswers_Selected" />
                     </ListView>
                 </Expander>
             </Grid>
