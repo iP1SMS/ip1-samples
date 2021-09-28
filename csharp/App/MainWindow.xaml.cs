@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -447,6 +447,97 @@ namespace IP1.Samples
             }
         }
 
+        private async void buttonGetAllQuestions_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"surveys/{textBoxSurveyIdQuestion.Text}/questions");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonGetQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"surveys/{textBoxSurveyIdQuestion.Text}/questions/{textBoxQuestionId.Text}");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonDeleteQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.DeleteAsync($"surveys/{textBoxSurveyIdQuestion.Text}/questions/{textBoxQuestionId.Text}");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonUpdateQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+                options.Converters.Add(new JsonStringEnumConverter());
+                try
+                {
+                    MultipleDropdownQuestion question = JsonSerializer.Deserialize<MultipleDropdownQuestion>(textBoxNewUpdateQuestion.Text, options);
+                    MessageBox.Show(JsonSerializer.Serialize(question, options));
+                    HttpResponseMessage response = await client.PutAsJsonAsync($"surveys/{textBoxSurveyIdQuestion.Text}/questions/{textBoxQuestionId.Text}", question);
+                    await ShowResultAsync(response);
+                }
+                catch (Exception ex) { MessageBox.Show("please check your inputs \n" + ex.Message); }
+            }
+        }
+
+        private async void buttonAddQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+                options.Converters.Add(new JsonStringEnumConverter());
+                try
+                {
+                    Question question = JsonSerializer.Deserialize<Question>(textBoxNewUpdateQuestion.Text, options);
+                    HttpResponseMessage response = await client.PostAsJsonAsync($"surveys/{textBoxSurveyIdQuestion.Text}/questions/{textBoxQuestionId.Text}", question);
+                    await ShowResultAsync(response);
+                }
+                catch (Exception ex) { MessageBox.Show("please check your inputs \n" + ex.Message); }
+            }
+        }
+
         private void ListViewItemRegisterSender_Selected(object sender, RoutedEventArgs e)
         {
             tabItemRegisterSender.IsSelected = true;
@@ -489,9 +580,15 @@ namespace IP1.Samples
             listViewSurveyApis.SelectedItem = null;
         }
 
-        private void ListViewItemGetSurveys_Selected(object sender, RoutedEventArgs e)
+        private void ListViewItemManageSurveys_Selected(object sender, RoutedEventArgs e)
         {
             tabItemGetSurveys.IsSelected = true;
+            listViewSurveyApis.SelectedItem = null;
+        }
+
+        private void ListViewItemManageQuestions_Selected(object sender, RoutedEventArgs e)
+        {
+            tabItemGetquestions.IsSelected = true;
             listViewSurveyApis.SelectedItem = null;
         }
 
