@@ -8,6 +8,7 @@ using System.Text.Json.Serialization;
 using System.Windows;
 using IP1.Samples.Models;
 using JSONTreeView;
+using System.Text;
 
 namespace IP1.Samples
 {
@@ -645,6 +646,37 @@ namespace IP1.Samples
             }
         }
 
+        private async void buttonCreateSendAuthentication_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://api.ip1sms.com/api/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", "ip1-xxxxx", "API-Key"))));
+
+                var authentication = new AuthenticationDTO()
+                {
+                    Phone = "46712345678",
+                    From = "iP1sms",
+                    MessageFormat = "Use {0} to verify yourself",
+                    Length = "6",
+                    ExpirationTime = "1200"
+                };
+
+                HttpResponseMessage response = await client.PostAsJsonAsync("authentications", authentication);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("Sent");
+                }
+                else
+                {
+                    Console.WriteLine("Failed, " + response.StatusCode + ": " + await response.Content.ReadAsStringAsync());
+                }
+            }
+        }
+
         private void ListViewItemRegisterSender_Selected(object sender, RoutedEventArgs e)
         {
             tabItemRegisterSender.IsSelected = true;
@@ -711,6 +743,12 @@ namespace IP1.Samples
             listViewSurveyApis.SelectedItem = null;
         }
 
+        private void ListViewItemManage2FA_Selected(object sender, RoutedEventArgs e)
+        {
+            tabItemManage2FA.IsSelected = true;
+            listViewSurveyApis.SelectedItem = null;
+        }
+
         private async Task ShowResultAsync(HttpResponseMessage response)
         {
             JsonSerializerOptions options = new JsonSerializerOptions()
@@ -734,5 +772,7 @@ namespace IP1.Samples
                 textBoxResponse.Text = await response.Content.ReadAsStringAsync();
             }
         }
+
+        
     }
 }
