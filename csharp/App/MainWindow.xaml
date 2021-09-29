@@ -1,11 +1,11 @@
-﻿<Window x:Class="IP1.Samples.MainWindow"
+<Window x:Class="IP1.Samples.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IP1.Samples"
         mc:Ignorable="d"
-        Title="Ip1 Samples" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="CanResize" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ShowInTaskbar="False" Width="1412" Height="857" Background="#fff5f5f5" Icon="favicon.png">
+        Title="Ip1 Samples" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="CanResize" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="1412" Height="857" Background="#fff5f5f5" Icon="favicon.png">
     <Grid Margin="10,10,10,10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="149*" />
@@ -16,32 +16,32 @@
                 <TabItem x:Name="tabItemSendMessage" BorderBrush="#FF89B642">
                     <Grid Margin="0,0,0,0" Background="#fff5f5f5">
                         <Label x:Name="labelSender" Content="Sender" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxSender" HorizontalAlignment="Left" Margin="57,14,0,0" Text="iP1" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" Background="WhiteSmoke" BorderBrush="#FF89B642" />
+                        <TextBox x:Name="textBoxSender" HorizontalAlignment="Left" Margin="57,14,0,0" Text="iP1" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" BorderBrush="#FF89B642" />
                         <Label x:Name="labelRecipients" Content="Recipients" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxRecipients" HorizontalAlignment="Left" Margin="74,40,0,0" Text="46729333028" TextWrapping="Wrap" VerticalAlignment="Top" Width="229" Background="WhiteSmoke" BorderBrush="#FF89B642" />
+                        <TextBox x:Name="textBoxRecipients" HorizontalAlignment="Left" Margin="74,40,0,0" Text="46729333028" TextWrapping="Wrap" VerticalAlignment="Top" Width="229" BorderBrush="#FF89B642" />
                         <Label x:Name="labelBody" Content="Body" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxBody" HorizontalAlignment="Left" Margin="47,66,0,0" Text="Test message rest v2" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Background="WhiteSmoke" BorderBrush="#FF89B642" />
+                        <TextBox x:Name="textBoxBody" HorizontalAlignment="Left" Margin="47,66,0,0" Text="Test message rest v2" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" BorderBrush="#FF89B642" />
                         <Label x:Name="labelType" Content="Type " HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top" />
-                        <ComboBox x:Name="comboBoxSMSType" HorizontalAlignment="Left" Margin="48,90,0,0" VerticalAlignment="Top" Width="120" Background="WhiteSmoke" BorderBrush="#FF89B642">
+                        <ComboBox x:Name="comboBoxSMSType" HorizontalAlignment="Left" Margin="48,90,0,0" VerticalAlignment="Top" Width="120" BorderBrush="#FF89B642">
                             <ComboBoxItem x:Name="comboBoxItemSMS" >SMS</ComboBoxItem>
                             <ComboBoxItem x:Name="comboBoxItemFlash">Flash</ComboBoxItem>
                         </ComboBox>
                         <Label x:Name="labelDatacoding" Content="Datacoding " HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" />
-                        <ComboBox x:Name="comboBoxDatacoding" HorizontalAlignment="Left" Margin="84,116,0,0" VerticalAlignment="Top" Width="120" Background="WhiteSmoke" BorderBrush="#FF89B642">
+                        <ComboBox x:Name="comboBoxDatacoding" HorizontalAlignment="Left" Margin="84,116,0,0" VerticalAlignment="Top" Width="120" BorderBrush="#FF89B642">
                             <ComboBoxItem x:Name="comboBoxItemGSM">GSM</ComboBoxItem>
                             <ComboBoxItem x:Name="comboBoxItemUCS">UCS</ComboBoxItem>
                         </ComboBox>
                         <Label x:Name="labelPriority" Content="Priority" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top" />
-                        <ComboBox x:Name="comboBoxPriority" HorizontalAlignment="Left" Margin="63,143,0,0" VerticalAlignment="Top" Width="120" Background="WhiteSmoke" BorderBrush="#FF89B642">
+                        <ComboBox x:Name="comboBoxPriority" HorizontalAlignment="Left" Margin="63,143,0,0" VerticalAlignment="Top" Width="120" BorderBrush="#FF89B642">
                             <ComboBoxItem x:Name="comboBoxItemNormal">Normal</ComboBoxItem>
                             <ComboBoxItem x:Name="comboBoxItemHigh">High</ComboBoxItem>
                         </ComboBox>
                         <Label x:Name="labelDeliveryWindow" Content="Delivery Window" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" />
-                        <DatePicker x:Name="datePickerDeliveryWindow" HorizontalAlignment="Left" Margin="115,169,0,0" VerticalAlignment="Top" Background="WhiteSmoke" BorderBrush="#FF89B642" />
+                        <DatePicker x:Name="datePickerDeliveryWindow" HorizontalAlignment="Left" Margin="115,169,0,0" VerticalAlignment="Top" BorderBrush="#FF89B642" />
                         <Label x:Name="labelReference" Content="Reference" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxReference" HorizontalAlignment="Left" Margin="72,197,0,0" Text="Test" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" Background="WhiteSmoke" BorderBrush="#FF89B642" />
+                        <TextBox x:Name="textBoxReference" HorizontalAlignment="Left" Margin="72,197,0,0" Text="Test" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" BorderBrush="#FF89B642" />
                         <Label x:Name="labelTags" Content="Tags" HorizontalAlignment="Left" Margin="10,219,0,0" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxTags" HorizontalAlignment="Left" Margin="42,223,0,0" Text="Test SMS" TextWrapping="Wrap" VerticalAlignment="Top" Width="261" Background="WhiteSmoke" BorderBrush="#FF89B642" />
+                        <TextBox x:Name="textBoxTags" HorizontalAlignment="Left" Margin="42,223,0,0" Text="Test SMS" TextWrapping="Wrap" VerticalAlignment="Top" Width="261" BorderBrush="#FF89B642" />
                         <Button x:Name="buttonSend" Content="Send" HorizontalAlignment="Left" Margin="15,250,0,0" VerticalAlignment="Top" Width="120" Height="30" Click="buttonSend_Click" Background="#FF89B642" />
                     </Grid>
                 </TabItem>
@@ -124,7 +124,7 @@
                     </Grid>
                 </TabItem>
                 <TabItem x:Name="tabItemGetAnswers" Height="4" VerticalAlignment="Top">
-                    <Grid Background="#fff5f5f5">
+                    <Grid Margin="0,0,0,0" Background="#fff5f5f5">
                         <Label x:Name="labelAnswers" Content="Answers" Margin="10,51,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
                         <Label x:Name="labelSurveyIdAnswers" Content="Survey id" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
                         <TextBox x:Name="textBoxSurveyIdAnswers" Text="" Width="245" Margin="73,13,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
@@ -136,6 +136,31 @@
                         <Label x:Name="labelParticipantId" Content="Participant id" Margin="10,209,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
                         <TextBox x:Name="textBoxParticipantId" Text="" Width="224" Margin="94,212,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
                         <Button x:Name="buttonGetParticipant" Content="Get participant" HorizontalAlignment="Left" Margin="10,240,0,0" VerticalAlignment="Top" Width="120" Height="30" Background="#FF89B642" Click="buttonGetParticipant_Click" />
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="tabItemManageTemplates" Height="4" VerticalAlignment="Top">
+                    <Grid Margin="0,0,0,0" Background="#fff5f5f5">
+                        <Button x:Name="buttonGetAllTemplates" Content="Get all templates" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF89B642" Click="buttonGetAllTemplates_Click" />
+                        <Label x:Name="labelTemplateId" Content="Template id" Margin="10,41,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxTemplateId" Text="" Width="229" Margin="87,45,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Button x:Name="buttonGetTemplate" Content="Get template" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonGetTemplate_Click" />
+                        <Button x:Name="buttonDeleteTemplate" Content="Delete template" HorizontalAlignment="Left" Margin="165,70,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonDeleteTemplate_Click" />
+                        <Button x:Name="buttonAddTemplate" Content="Add template" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonAddTemplate_Click" />
+                        <TextBox x:Name="textBoxNewTemplate"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Left" Margin="10,120,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Height="405" />
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="tabItemManageLinks" Height="4" VerticalAlignment="Top">
+                    <Grid Margin="0,0,0,0" Background="#fff5f5f5">
+                        <Label x:Name="labelSurveyIdLinks" Content="Survey id" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxSurveyIdLinks" Text="" Width="245" Margin="73,13,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Button x:Name="buttonGetAllLinks" Content="Get all links" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF89B642" Click="buttonGetAllLinks_Click" />
+                        <Label x:Name="labelLinksId" Content="Link id" Margin="10,69,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxLinksId" Text="" Width="229" Margin="87,73,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Button x:Name="buttonGetLink" Content="Get link" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonGetLink_Click" />
+                        <Button x:Name="buttonDeleteLink" Content="Delete link" HorizontalAlignment="Left" Margin="165,98,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonDeleteLink_Click" />
+                        <Button x:Name="buttonAddLink" Content="Add link" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonAddLink_Click" />
+                        <Button x:Name="buttonUpdateLink" Content="update link" HorizontalAlignment="Left" Margin="166,123,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonUpdateLink_Click" />
+                        <TextBox x:Name="textBoxNewUpdateLink"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Left" Margin="10,149,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Height="405" />
                     </Grid>
                 </TabItem>
                 <TabItem x:Name="tabItemManageSendings" Height="4" VerticalAlignment="Top">
@@ -160,7 +185,7 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Expander Name="ExpanderControl" Header="SMS API's"  HorizontalAlignment="Left">
-                    <ListView Name="listViewSmsApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderBrush="#FF89B642">
+                    <ListView Name="listViewSmsApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderThickness="0">
                         <ListViewItem x:Name="ListViewItemSendingSMS" Selected="ListViewItemSendingSMS_Selected" Content="Sending SMS" />
                         <ListViewItem x:Name="ListViewItemRegisterSender" Selected="ListViewItemRegisterSender_Selected" Content="Register Sender" />
                         <ListViewItem x:Name="ListViewItemReadingBatches" Selected="ListViewItemReadingBatches_Selected" Content="Reading Batches" />
@@ -174,6 +199,8 @@
                     <ListView Name="listViewSurveyApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderBrush="#FF89B642">
                         <ListViewItem x:Name="ListViewItemGetSurveys"  Content="Get Surveys" Selected="ListViewItemGetSurveys_Selected" />
                         <ListViewItem x:Name="ListViewItemGetAnswers"  Content="Get Answers" Selected="ListViewItemGetAnswers_Selected" />
+                        <ListViewItem x:Name="ListViewItemManageTemplates"  Content="Manage Templates" Selected="ListViewItemManageTemplates_Selected" />
+                        <ListViewItem x:Name="ListViewItemManageLinks"  Content="Manage Links" Selected="ListViewItemManageLinks_Selected" />
                         <ListViewItem x:Name="ListViewItemManageSendings"  Content="Manage Sendings" Selected="ListViewItemManageSendings_Selected" />
                     </ListView>
                 </Expander>
