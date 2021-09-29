@@ -489,6 +489,162 @@ namespace IP1.Samples
             }
         }
 
+        private async void buttonGetAllTemplates_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"surveys/templates");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonGetTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"surveys/templates/{textBoxTemplateId.Text}");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonDeleteTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.DeleteAsync($"surveys/templates/{textBoxTemplateId.Text}");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonAddTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+                options.Converters.Add(new JsonStringEnumConverter());
+                try
+                {
+                    Survey survey = JsonSerializer.Deserialize<Survey>(textBoxNewTemplate.Text, options);
+                    HttpResponseMessage response = await client.PostAsJsonAsync($"surveys/templates", survey);
+                    await ShowResultAsync(response);
+                }
+                catch (Exception ex) { MessageBox.Show("please check your inputs \n" + ex.Message); }
+            }
+        }
+
+        private async void buttonGetAllLinks_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"surveys/{textBoxSurveyIdLinks.Text}/links");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonGetLink_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"surveys/{textBoxSurveyIdLinks.Text}/links/{textBoxLinksId.Text}");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonDeleteLink_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.DeleteAsync($"surveys/{textBoxSurveyIdLinks.Text}/links/{textBoxLinksId.Text}");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonAddLink_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+                options.Converters.Add(new JsonStringEnumConverter());
+                try
+                {
+                    SurveyLink link = JsonSerializer.Deserialize<SurveyLink>(textBoxNewUpdateLink.Text, options);
+                    HttpResponseMessage response = await client.PostAsJsonAsync($"surveys/{textBoxSurveyIdLinks.Text}/links", link);
+                    await ShowResultAsync(response);
+                }
+                catch (Exception ex) { MessageBox.Show("please check your inputs \n" + ex.Message); }
+            }
+        }
+
+        private async void buttonUpdateLink_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+                options.Converters.Add(new JsonStringEnumConverter());
+                try
+                {
+                    SurveyLink link = JsonSerializer.Deserialize<SurveyLink>(textBoxNewUpdateLink.Text, options);
+                    HttpResponseMessage response = await client.PutAsJsonAsync($"surveys/{textBoxSurveyIdLinks.Text}/links/{textBoxLinksId.Text}", link);
+                    await ShowResultAsync(response);
+                }
+                catch (Exception ex) { MessageBox.Show("please check your inputs \n" + ex.Message); }
+            }
+        }
+
         private void ListViewItemRegisterSender_Selected(object sender, RoutedEventArgs e)
         {
             tabItemRegisterSender.IsSelected = true;
@@ -540,6 +696,18 @@ namespace IP1.Samples
         private void ListViewItemGetAnswers_Selected(object sender, RoutedEventArgs e)
         {
             tabItemGetAnswers.IsSelected = true;
+            listViewSurveyApis.SelectedItem = null;
+        }
+
+        private void ListViewItemManageTemplates_Selected(object sender, RoutedEventArgs e)
+        {
+            tabItemManageTemplates.IsSelected = true;
+            listViewSurveyApis.SelectedItem = null;
+        }
+
+        private void ListViewItemManageLinks_Selected(object sender, RoutedEventArgs e)
+        {
+            tabItemManageLinks.IsSelected = true;
             listViewSurveyApis.SelectedItem = null;
         }
 
