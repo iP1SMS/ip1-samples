@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
 using System.Windows;
 using IP1.Samples.Models;
 using JSONTreeView;
@@ -408,18 +408,8 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
-                var options = new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                };
-                options.Converters.Add(new JsonStringEnumConverter());
-                try
-                {
-                    Survey survey = JsonSerializer.Deserialize<Survey>(textBoxNewUpdateSurvey.Text, options);
-                    HttpResponseMessage response = await client.PutAsJsonAsync($"surveys/{survey.Id}", survey);
-                    await ShowResultAsync(response);
-                }
-                catch (Exception ex) { MessageBox.Show("please check your inputs \n" + ex.Message); }
+                HttpResponseMessage response = await client.PutAsync($"surveys/{textBoxSurveyId.Text}", new StringContent(textBoxNewUpdateSurvey.Text, Encoding.UTF8, "application/json"));
+                await ShowResultAsync(response);
             }
         }
 
@@ -432,18 +422,8 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
-                var options = new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                };
-                options.Converters.Add(new JsonStringEnumConverter());
-                try
-                {
-                    Survey survey = JsonSerializer.Deserialize<Survey>(textBoxNewUpdateSurvey.Text, options);
-                    HttpResponseMessage response = await client.PostAsJsonAsync($"surveys", survey);
-                    await ShowResultAsync(response);
-                }
-                catch (Exception ex) { MessageBox.Show("please check your inputs \n" + ex.Message); }
+                HttpResponseMessage response = await client.PostAsync($"surveys", new StringContent(textBoxNewUpdateSurvey.Text, Encoding.UTF8, "application/json"));
+                await ShowResultAsync(response);
             }
         }
 
@@ -498,19 +478,8 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
-                var options = new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                };
-                options.Converters.Add(new JsonStringEnumConverter());
-                try
-                {
-                    MultipleDropdownQuestion question = JsonSerializer.Deserialize<MultipleDropdownQuestion>(textBoxNewUpdateQuestion.Text, options);
-                    MessageBox.Show(JsonSerializer.Serialize(question, options));
-                    HttpResponseMessage response = await client.PutAsJsonAsync($"surveys/{textBoxSurveyIdQuestion.Text}/questions/{textBoxQuestionId.Text}", question);
-                    await ShowResultAsync(response);
-                }
-                catch (Exception ex) { MessageBox.Show("please check your inputs \n" + ex.Message); }
+                HttpResponseMessage response = await client.PutAsync($"surveys/{textBoxSurveyIdQuestion.Text}/questions/{textBoxQuestionId.Text}", new StringContent(textBoxNewUpdateQuestion.Text, Encoding.UTF8, "application/json"));
+                await ShowResultAsync(response);
             }
         }
 
@@ -523,18 +492,8 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
-                var options = new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                };
-                options.Converters.Add(new JsonStringEnumConverter());
-                try
-                {
-                    Question question = JsonSerializer.Deserialize<Question>(textBoxNewUpdateQuestion.Text, options);
-                    HttpResponseMessage response = await client.PostAsJsonAsync($"surveys/{textBoxSurveyIdQuestion.Text}/questions/{textBoxQuestionId.Text}", question);
-                    await ShowResultAsync(response);
-                }
-                catch (Exception ex) { MessageBox.Show("please check your inputs \n" + ex.Message); }
+                HttpResponseMessage response = await client.PostAsync($"surveys/{textBoxSurveyIdQuestion.Text}/questions/{textBoxQuestionId.Text}", new StringContent(textBoxNewUpdateQuestion.Text, Encoding.UTF8, "application/json"));
+                await ShowResultAsync(response);
             }
         }
 
