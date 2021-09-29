@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
 using IP1.Samples.Models;
@@ -590,18 +591,8 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
 
-                var options = new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                };
-                options.Converters.Add(new JsonStringEnumConverter());
-                try
-                {
-                    Survey survey = JsonSerializer.Deserialize<Survey>(textBoxNewTemplate.Text, options);
-                    HttpResponseMessage response = await client.PostAsJsonAsync($"surveys/templates", survey);
-                    await ShowResultAsync(response);
-                }
-                catch (Exception ex) { MessageBox.Show("please check your inputs \n" + ex.Message); }
+                HttpResponseMessage response = await client.PostAsync($"surveys/templates", new StringContent(textBoxNewTemplate.Text, Encoding.UTF8, "application/json"));
+                await ShowResultAsync(response);
             }
         }
 
