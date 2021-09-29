@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IP1.Samples"
         mc:Ignorable="d"
-        Title="Ip1 Samples" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="CanResize" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ShowInTaskbar="False" Width="1412" Height="857" Background="#fff5f5f5" Icon="favicon.png">
+        Title="Ip1 Samples" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="CanResize" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="1412" Height="857" Background="#fff5f5f5" Icon="favicon.png">
     <Grid Margin="10,10,10,10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="149*" />
@@ -16,32 +16,32 @@
                 <TabItem x:Name="tabItemSendMessage" BorderBrush="#FF89B642">
                     <Grid Margin="0,0,0,0" Background="#fff5f5f5">
                         <Label x:Name="labelSender" Content="Sender" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxSender" HorizontalAlignment="Left" Margin="57,14,0,0" Text="iP1" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" Background="WhiteSmoke" BorderBrush="#FF89B642" />
+                        <TextBox x:Name="textBoxSender" HorizontalAlignment="Left" Margin="57,14,0,0" Text="iP1" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" BorderBrush="#FF89B642" />
                         <Label x:Name="labelRecipients" Content="Recipients" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxRecipients" HorizontalAlignment="Left" Margin="74,40,0,0" Text="46729333028" TextWrapping="Wrap" VerticalAlignment="Top" Width="229" Background="WhiteSmoke" BorderBrush="#FF89B642" />
+                        <TextBox x:Name="textBoxRecipients" HorizontalAlignment="Left" Margin="74,40,0,0" Text="46729333028" TextWrapping="Wrap" VerticalAlignment="Top" Width="229" BorderBrush="#FF89B642" />
                         <Label x:Name="labelBody" Content="Body" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxBody" HorizontalAlignment="Left" Margin="47,66,0,0" Text="Test message rest v2" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Background="WhiteSmoke" BorderBrush="#FF89B642" />
+                        <TextBox x:Name="textBoxBody" HorizontalAlignment="Left" Margin="47,66,0,0" Text="Test message rest v2" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" BorderBrush="#FF89B642" />
                         <Label x:Name="labelType" Content="Type " HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top" />
-                        <ComboBox x:Name="comboBoxSMSType" HorizontalAlignment="Left" Margin="48,90,0,0" VerticalAlignment="Top" Width="120" Background="WhiteSmoke" BorderBrush="#FF89B642">
+                        <ComboBox x:Name="comboBoxSMSType" HorizontalAlignment="Left" Margin="48,90,0,0" VerticalAlignment="Top" Width="120" BorderBrush="#FF89B642">
                             <ComboBoxItem x:Name="comboBoxItemSMS" >SMS</ComboBoxItem>
                             <ComboBoxItem x:Name="comboBoxItemFlash">Flash</ComboBoxItem>
                         </ComboBox>
                         <Label x:Name="labelDatacoding" Content="Datacoding " HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" />
-                        <ComboBox x:Name="comboBoxDatacoding" HorizontalAlignment="Left" Margin="84,116,0,0" VerticalAlignment="Top" Width="120" Background="WhiteSmoke" BorderBrush="#FF89B642">
+                        <ComboBox x:Name="comboBoxDatacoding" HorizontalAlignment="Left" Margin="84,116,0,0" VerticalAlignment="Top" Width="120" BorderBrush="#FF89B642">
                             <ComboBoxItem x:Name="comboBoxItemGSM">GSM</ComboBoxItem>
                             <ComboBoxItem x:Name="comboBoxItemUCS">UCS</ComboBoxItem>
                         </ComboBox>
                         <Label x:Name="labelPriority" Content="Priority" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top" />
-                        <ComboBox x:Name="comboBoxPriority" HorizontalAlignment="Left" Margin="63,143,0,0" VerticalAlignment="Top" Width="120" Background="WhiteSmoke" BorderBrush="#FF89B642">
+                        <ComboBox x:Name="comboBoxPriority" HorizontalAlignment="Left" Margin="63,143,0,0" VerticalAlignment="Top" Width="120" BorderBrush="#FF89B642">
                             <ComboBoxItem x:Name="comboBoxItemNormal">Normal</ComboBoxItem>
                             <ComboBoxItem x:Name="comboBoxItemHigh">High</ComboBoxItem>
                         </ComboBox>
                         <Label x:Name="labelDeliveryWindow" Content="Delivery Window" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" />
-                        <DatePicker x:Name="datePickerDeliveryWindow" HorizontalAlignment="Left" Margin="115,169,0,0" VerticalAlignment="Top" Background="WhiteSmoke" BorderBrush="#FF89B642" />
+                        <DatePicker x:Name="datePickerDeliveryWindow" HorizontalAlignment="Left" Margin="115,169,0,0" VerticalAlignment="Top" BorderBrush="#FF89B642" />
                         <Label x:Name="labelReference" Content="Reference" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxReference" HorizontalAlignment="Left" Margin="72,197,0,0" Text="Test" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" Background="WhiteSmoke" BorderBrush="#FF89B642" />
+                        <TextBox x:Name="textBoxReference" HorizontalAlignment="Left" Margin="72,197,0,0" Text="Test" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" BorderBrush="#FF89B642" />
                         <Label x:Name="labelTags" Content="Tags" HorizontalAlignment="Left" Margin="10,219,0,0" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxTags" HorizontalAlignment="Left" Margin="42,223,0,0" Text="Test SMS" TextWrapping="Wrap" VerticalAlignment="Top" Width="261" Background="WhiteSmoke" BorderBrush="#FF89B642" />
+                        <TextBox x:Name="textBoxTags" HorizontalAlignment="Left" Margin="42,223,0,0" Text="Test SMS" TextWrapping="Wrap" VerticalAlignment="Top" Width="261" BorderBrush="#FF89B642" />
                         <Button x:Name="buttonSend" Content="Send" HorizontalAlignment="Left" Margin="15,250,0,0" VerticalAlignment="Top" Width="120" Height="30" Click="buttonSend_Click" Background="#FF89B642" />
                     </Grid>
                 </TabItem>
@@ -147,7 +147,7 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Expander Name="ExpanderControl" Header="SMS API's"  HorizontalAlignment="Left">
-                    <ListView Name="listViewSmsApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderBrush="#FF89B642">
+                    <ListView Name="listViewSmsApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderThickness="0">
                         <ListViewItem x:Name="ListViewItemSendingSMS" Selected="ListViewItemSendingSMS_Selected" Content="Sending SMS" />
                         <ListViewItem x:Name="ListViewItemRegisterSender" Selected="ListViewItemRegisterSender_Selected" Content="Register Sender" />
                         <ListViewItem x:Name="ListViewItemReadingBatches" Selected="ListViewItemReadingBatches_Selected" Content="Reading Batches" />
