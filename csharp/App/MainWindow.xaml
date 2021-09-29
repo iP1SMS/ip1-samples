@@ -172,7 +172,6 @@
                         <TextBox x:Name="textBoxSendingId" Text="" Width="229" Margin="87,73,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
                         <Button x:Name="buttonGetSending" Content="Get sending" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonGetSending_Click" />
                         <Button x:Name="buttonAddSending" Content="Add sending" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonAddSending_Click" />
-                        <Button x:Name="buttonAddReminder" Content="Add reminder" HorizontalAlignment="Left" Margin="166,123,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonAddReminder_Click" />
                         <TextBox x:Name="textBoxNewSending"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Left" Margin="10,149,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Height="405" />
                     </Grid>
                 </TabItem>

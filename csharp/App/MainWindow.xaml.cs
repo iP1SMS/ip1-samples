@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 using System.Windows;
 using IP1.Samples.Models;
 using JSONTreeView;
@@ -697,30 +697,6 @@ namespace IP1.Samples
             }
         }
 
-        private async void buttonAddReminder_Click(object sender, RoutedEventArgs e)
-        {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
-
-                var options = new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                };
-                options.Converters.Add(new JsonStringEnumConverter());
-                try
-                {
-                    Sending sending = JsonSerializer.Deserialize<Sending>(textBoxNewUpdateSurvey.Text, options);
-                    HttpResponseMessage response = await client.PostAsJsonAsync($"surveys/{textBoxSurveyIdSendings.Text}/sendings", sending);
-                    await ShowResultAsync(response);
-                }
-                catch (Exception ex) { MessageBox.Show("please check your inputs \n" + ex.Message); }
-            }
-        }
-
         private void ListViewItemRegisterSender_Selected(object sender, RoutedEventArgs e)
         {
             tabItemRegisterSender.IsSelected = true;
@@ -816,6 +792,5 @@ namespace IP1.Samples
                 textBoxResponse.Text = await response.Content.ReadAsStringAsync();
             }
         }
-
     }
 }
