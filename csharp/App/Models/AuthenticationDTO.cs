@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace IP1.Samples.Models
+﻿namespace IP1.Samples.Models
 {
     public class AuthenticationDTO
     {

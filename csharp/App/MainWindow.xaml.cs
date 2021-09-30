@@ -10,8 +10,6 @@ using System.Windows;
 using IP1.Samples.Models;
 using JSONTreeView;
 
-using System.Text;
-
 namespace IP1.Samples
 {
     /// <summary>
