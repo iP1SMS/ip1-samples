@@ -686,6 +686,58 @@ namespace IP1.Samples
             }
         }
 
+        private async void buttonGetAllSendings_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"surveys/{textBoxSurveyIdSendings.Text}/sendings");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonGetSending_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"surveys/{textBoxSurveyIdSendings.Text}/sendings/{textBoxSendingId.Text}");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonAddSending_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+                options.Converters.Add(new JsonStringEnumConverter());
+                try
+                {
+                    SendingRequest sending = JsonSerializer.Deserialize<SendingRequest>(textBoxNewSending.Text, options);
+                    HttpResponseMessage response = await client.PostAsJsonAsync($"surveys/{textBoxSurveyIdSendings.Text}/sendings", sending);
+                    await ShowResultAsync(response);
+                }
+                catch (Exception ex) { MessageBox.Show("please check your inputs \n" + ex.Message); }
+            }
+        }
+
         private void ListViewItemRegisterSender_Selected(object sender, RoutedEventArgs e)
         {
             tabItemRegisterSender.IsSelected = true;
@@ -755,6 +807,12 @@ namespace IP1.Samples
         private void ListViewItemManageLinks_Selected(object sender, RoutedEventArgs e)
         {
             tabItemManageLinks.IsSelected = true;
+            listViewSurveyApis.SelectedItem = null;
+        }
+
+        private void ListViewItemManageSendings_Selected(object sender, RoutedEventArgs e)
+        {
+            tabItemManageSendings.IsSelected = true;
             listViewSurveyApis.SelectedItem = null;
         }
 
