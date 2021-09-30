@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using IP1.Samples.Models;
 using JSONTreeView;
+
 using System.Text;
 
 namespace IP1.Samples
@@ -746,27 +747,39 @@ namespace IP1.Samples
                 client.BaseAddress = new Uri("http://api.ip1sms.com/api/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", "ip1-xxxxx", "API-Key"))));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountId.Text, textBoxBasicApiKey.Text))));
 
                 var authentication = new AuthenticationDTO()
                 {
-                    Phone = "46712345678",
-                    From = "iP1sms",
-                    MessageFormat = "Use {0} to verify yourself",
-                    Length = "6",
-                    ExpirationTime = "1200"
+                    Phone = textBoxPhone.Text,
+                    From = textBoxFrom.Text,
+                    MessageFormat = textBoxMessage.Text,
+                    Length = textBoxLength.Text,
+                    ExpirationTime = textBoxExpirationTime.Text
                 };
 
                 HttpResponseMessage response = await client.PostAsJsonAsync("authentications", authentication);
+                await ShowResultAsync(response);
+            }
+        }
 
-                if (response.IsSuccessStatusCode)
+        private async void buttonValidate_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://api.ip1sms.com/api/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountIdValidate.Text, textBoxBasicApiKeyValidate.Text))));
+
+                var validation = new AuthenticationValidationRequest()
                 {
-                    Console.WriteLine("Sent");
-                }
-                else
-                {
-                    Console.WriteLine("Failed, " + response.StatusCode + ": " + await response.Content.ReadAsStringAsync());
-                }
+                    Phone = textBoxPhoneValidate.Text,
+                    Code = textBoxSubmittedCode.Text,
+                };
+
+                HttpResponseMessage response = await client.PostAsJsonAsync("authentications/validate", validation);
+                await ShowResultAsync(response);
             }
         }
 
@@ -877,7 +890,5 @@ namespace IP1.Samples
                 textBoxResponse.Text = await response.Content.ReadAsStringAsync();
             }
         }
-
-        
     }
 }
