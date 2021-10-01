@@ -189,6 +189,36 @@
                         <TextBox x:Name="textBoxNewSending"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Left" Margin="10,149,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Height="405" />
                     </Grid>
                 </TabItem>
+                <TabItem x:Name="tabItemManage2FA" Height="4" VerticalAlignment="Top">
+                    <Grid Margin="0,0,0,0" Background="#fff5f5f5">
+                        <Label x:Name="labelCreateAndSendAuthentication" Content="Create and send authentication" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                        <Label x:Name="labelBasicApiKey" Content="Basic Api Key" Margin="10,35,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxBasicApiKey" Text="abcdefghijklmnopqrst" Width="150" Margin="95,38,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Label x:Name="labelAccountId" Content="Account id" Margin="10,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxAccountId" Text="ip1-12345" Width="163" Margin="82,63,0,0" ToolTip="ip1-12345" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Label x:Name="labelPhone" Content="Phone" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxPhone" Text="46123456789" Width="186" Margin="59,88,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Label x:Name="labelFrom" Content="From" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxFrom" Text="iP1sms" Width="193" Margin="52,113,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Label x:Name="labelMessage" Content="Message" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxMessage" Text="Use {0} to verify yourself" Width="173" Margin="72,138,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Label x:Name="labelLength" Content="Length" HorizontalAlignment="Left" Margin="10,163,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxLength" Text="6" Width="183" Margin="62,163,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Label x:Name="labelExpirationTime" Content="Expiration time" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxExpirationTime" Text="1200" Width="141" Margin="104,188,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Button x:Name="buttonCreateSendAuthentication" Content="Create and send authentication"  HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonCreateSendAuthentication_Click" />
+                        <Label x:Name="labelValidateAuthentication" Content="Validate Authentication" Margin="311,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                        <Label x:Name="labelBasicApiKeyValidate" Content="Basic Api Key" Margin="311,35,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxBasicApiKeyValidate" Text="abcdefghijklmnopqrst" Width="150" Margin="396,38,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Label x:Name="labelAccountIdValidate" Content="Account id" Margin="311,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxAccountIdValidate" Text="ip1-12345" Width="163" Margin="383,63,0,0" ToolTip="ip1-12345" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Label x:Name="labelPhoneValidate" Content="Phone validate" HorizontalAlignment="Left" Margin="311,85,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxPhoneValidate" Text="46123456789" Width="142" Margin="404,88,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Label x:Name="labelSubmittedCode" Content="Submitted code" HorizontalAlignment="Left" Margin="311,110,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxSubmittedCode" Text="123456" Width="136" Margin="410,113,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Button x:Name="buttonValidate" Content="Validate"  HorizontalAlignment="Left" Margin="311,138,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonValidate_Click" />
+                    </Grid>
+                </TabItem>
             </TabControl>
         </GroupBox>
         <GroupBox x:Name="groupBoxAPI" Header="Choose API" HorizontalAlignment="Left" Margin="10,10,0,0" Width="153" BorderBrush="#FF89B642">
@@ -216,6 +246,7 @@
                         <ListViewItem x:Name="ListViewItemManageTemplates"  Content="Manage Templates" Selected="ListViewItemManageTemplates_Selected" />
                         <ListViewItem x:Name="ListViewItemManageLinks"  Content="Manage Links" Selected="ListViewItemManageLinks_Selected" />
                         <ListViewItem x:Name="ListViewItemManageSendings"  Content="Manage Sendings" Selected="ListViewItemManageSendings_Selected" />
+                        <ListViewItem x:Name="ListViewItemManage2FA"  Content="Manage 2FA" Selected="ListViewItemManage2FA_Selected" />
                     </ListView>
                 </Expander>
             </Grid>

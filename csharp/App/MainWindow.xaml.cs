@@ -738,6 +738,49 @@ namespace IP1.Samples
             }
         }
 
+        private async void buttonCreateSendAuthentication_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://api.ip1sms.com/api/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountId.Text, textBoxBasicApiKey.Text))));
+
+                var authentication = new AuthenticationDTO()
+                {
+                    Phone = textBoxPhone.Text,
+                    From = textBoxFrom.Text,
+                    MessageFormat = textBoxMessage.Text,
+                    Length = textBoxLength.Text,
+                    ExpirationTime = textBoxExpirationTime.Text
+                };
+
+                HttpResponseMessage response = await client.PostAsJsonAsync("authentications", authentication);
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonValidate_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://api.ip1sms.com/api/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountIdValidate.Text, textBoxBasicApiKeyValidate.Text))));
+
+                var validation = new AuthenticationValidationRequest()
+                {
+                    Phone = textBoxPhoneValidate.Text,
+                    Code = textBoxSubmittedCode.Text,
+                };
+
+                HttpResponseMessage response = await client.PostAsJsonAsync("authentications/validate", validation);
+                await ShowResultAsync(response);
+            }
+        }
+
         private void ListViewItemRegisterSender_Selected(object sender, RoutedEventArgs e)
         {
             tabItemRegisterSender.IsSelected = true;
@@ -813,6 +856,12 @@ namespace IP1.Samples
         private void ListViewItemManageSendings_Selected(object sender, RoutedEventArgs e)
         {
             tabItemManageSendings.IsSelected = true;
+            listViewSurveyApis.SelectedItem = null;
+        }
+
+        private void ListViewItemManage2FA_Selected(object sender, RoutedEventArgs e)
+        {
+            tabItemManage2FA.IsSelected = true;
             listViewSurveyApis.SelectedItem = null;
         }
 
