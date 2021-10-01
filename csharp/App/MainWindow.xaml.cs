@@ -768,7 +768,7 @@ namespace IP1.Samples
                 client.BaseAddress = new Uri("http://api.ip1sms.com/api/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountIdValidate.Text, textBoxBasicApiKeyValidate.Text))));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountIdValidate.Text, textBoxBasicApiKey.Text))));
 
                 var validation = new AuthenticationValidationRequest()
                 {

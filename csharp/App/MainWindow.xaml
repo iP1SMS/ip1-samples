@@ -11,7 +11,7 @@
             <ColumnDefinition Width="149*" />
             <ColumnDefinition Width="106*" />
         </Grid.ColumnDefinitions>
-        <GroupBox x:Name="groupBoxInputs" Header="Inputs" Margin="168,90,5,0" BorderBrush="#FF89B642">
+        <GroupBox x:Name="groupBoxInputs" Header="Inputs" Margin="168,110,5,0" BorderBrush="#FF89B642">
             <TabControl x:Name="tabControl" BorderBrush="#FF89B642">
                 <TabItem x:Name="tabItemSendMessage" BorderBrush="#FF89B642">
                     <Grid Margin="0,0,0,0" Background="#fff5f5f5">
@@ -192,31 +192,27 @@
                 <TabItem x:Name="tabItemManage2FA" Height="4" VerticalAlignment="Top">
                     <Grid Margin="0,0,0,0" Background="#fff5f5f5">
                         <Label x:Name="labelCreateAndSendAuthentication" Content="Create and send authentication" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
-                        <Label x:Name="labelBasicApiKey" Content="Basic Api Key" Margin="10,35,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxBasicApiKey" Text="abcdefghijklmnopqrst" Width="150" Margin="95,38,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <Label x:Name="labelAccountId" Content="Account id" Margin="10,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxAccountId" Text="ip1-12345" Width="163" Margin="82,63,0,0" ToolTip="ip1-12345" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <Label x:Name="labelPhone" Content="Phone" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxPhone" Text="46123456789" Width="186" Margin="59,88,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <Label x:Name="labelFrom" Content="From" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxFrom" Text="iP1sms" Width="193" Margin="52,113,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <Label x:Name="labelMessage" Content="Message" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxMessage" Text="Use {0} to verify yourself" Width="173" Margin="72,138,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <Label x:Name="labelLength" Content="Length" HorizontalAlignment="Left" Margin="10,163,0,0" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxLength" Text="6" Width="183" Margin="62,163,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <Label x:Name="labelExpirationTime" Content="Expiration time" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxExpirationTime" Text="1200" Width="141" Margin="104,188,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <Button x:Name="buttonCreateSendAuthentication" Content="Create and send authentication"  HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonCreateSendAuthentication_Click" />
-                        <Label x:Name="labelValidateAuthentication" Content="Validate Authentication" Margin="311,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
-                        <Label x:Name="labelBasicApiKeyValidate" Content="Basic Api Key" Margin="311,35,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxBasicApiKeyValidate" Text="abcdefghijklmnopqrst" Width="150" Margin="396,38,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <Label x:Name="labelAccountIdValidate" Content="Account id" Margin="311,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxAccountIdValidate" Text="ip1-12345" Width="163" Margin="383,63,0,0" ToolTip="ip1-12345" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <Label x:Name="labelPhoneValidate" Content="Phone validate" HorizontalAlignment="Left" Margin="311,85,0,0" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxPhoneValidate" Text="46123456789" Width="142" Margin="404,88,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <Label x:Name="labelSubmittedCode" Content="Submitted code" HorizontalAlignment="Left" Margin="311,110,0,0" VerticalAlignment="Top" />
-                        <TextBox x:Name="textBoxSubmittedCode" Text="123456" Width="136" Margin="410,113,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <Button x:Name="buttonValidate" Content="Validate"  HorizontalAlignment="Left" Margin="311,138,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonValidate_Click" />
+                        <Label x:Name="labelAccountId" Content="Account id" Margin="10,36,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxAccountId" Text="ip1-12345" Width="163" Margin="82,39,0,0" ToolTip="ip1-12345" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Label x:Name="labelPhone" Content="Phone" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxPhone" Text="46123456789" Width="186" Margin="59,64,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Label x:Name="labelFrom" Content="From" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxFrom" Text="iP1sms" Width="193" Margin="52,89,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Label x:Name="labelMessage" Content="Message" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxMessage" Text="Use {0} to verify yourself" Width="173" Margin="72,114,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Label x:Name="labelLength" Content="Length" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxLength" Text="6" Width="183" Margin="62,139,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Label x:Name="labelExpirationTime" Content="Expiration time" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxExpirationTime" Text="1200" Width="141" Margin="104,164,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Button x:Name="buttonCreateSendAuthentication" Content="Create and send authentication"  HorizontalAlignment="Left" Margin="10,189,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonCreateSendAuthentication_Click" />
+                        <Label x:Name="labelValidateAuthentication" Content="Validate Authentication" Margin="308,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                        <Label x:Name="labelAccountIdValidate" Content="Account id" Margin="308,36,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxAccountIdValidate" Text="ip1-12345" Width="163" Margin="380,39,0,0" ToolTip="ip1-12345" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Label x:Name="labelPhoneValidate" Content="Phone validate" HorizontalAlignment="Left" Margin="308,61,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxPhoneValidate" Text="46123456789" Width="142" Margin="401,64,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Label x:Name="labelSubmittedCode" Content="Submitted code" HorizontalAlignment="Left" Margin="308,86,0,0" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxSubmittedCode" Text="123456" Width="136" Margin="407,89,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Button x:Name="buttonValidate" Content="Validate"  HorizontalAlignment="Left" Margin="308,114,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonValidate_Click" />
                     </Grid>
                 </TabItem>
             </TabControl>
@@ -251,10 +247,12 @@
                 </Expander>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="groupBoxAPIkey" Header="API Key" Margin="168,10,5,0" Height="80" VerticalAlignment="Top" BorderBrush="#FF89B642">
-            <Grid Height="49" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="418" Margin="10,0,0,0">
+        <GroupBox x:Name="groupBoxAPIkey" Header="API Key" Margin="168,10,5,0" Height="100" VerticalAlignment="Top" BorderBrush="#FF89B642">
+            <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10,0,0,0">
                 <TextBox x:Name="textBoxAPIKey" HorizontalAlignment="Left" Margin="65,14,0,0" Text="2ve6kgCo0ID6nhgtkMqcaZeEQz1p8EI17VBZfdFRaBlDTpSE" TextWrapping="Wrap" VerticalAlignment="Top" Width="321" />
                 <Label x:Name="labelAPIKey" Content="API Key" HorizontalAlignment="Left" Margin="10,10,0,0" Height="26" VerticalAlignment="Top" />
+                <Label x:Name="labelBasicApiKey" Content="Basic Api Key" Margin="10,35,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                <TextBox x:Name="textBoxBasicApiKey" Text="abcdefghijklmnopqrst" Width="291" Margin="95,38,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
             </Grid>
         </GroupBox>
         <GroupBox x:Name="groupBoxResponse" Header="Response" Margin="5,10,10,0" Grid.Column="1" BorderBrush="#FF89B642">
