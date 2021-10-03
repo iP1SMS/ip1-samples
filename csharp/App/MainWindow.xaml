@@ -215,11 +215,40 @@
                         <Button x:Name="buttonValidate" Content="Validate"  HorizontalAlignment="Left" Margin="308,114,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonValidate_Click" />
                     </Grid>
                 </TabItem>
+                <TabItem x:Name="tabItemManageShop" Height="4" VerticalAlignment="Top">
+                    <Grid Margin="0,0,0,0" Background="#fff5f5f5">
+                        <Label x:Name="labelAccountIdShop" Content="Account id" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxAccountIdShop" Text="ip1-12345" Width="163" Margin="82,14,0,0" ToolTip="ip1-12345" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Label x:Name="labelCountries" Content="Countries" Margin="10,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                        <Button x:Name="buttonGetCountries" Content="Get countries"  HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetCountries_Click" />
+                        <Label x:Name="labelMe" Content="Me" Margin="10,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                        <Button x:Name="buttonGetAccountSummary" Content="Get Summary"  HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetAccountSummary_Click" />
+                        <Label x:Name="labelOrder" Content="Order" Margin="10,160,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                        <Button x:Name="buttonGetAllOrders" Content="Get all orders"  HorizontalAlignment="Left" Margin="10,186,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetAllOrders_Click" />
+                        <Label x:Name="labelOrderId" Content="Order id" Margin="10,216,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxOrderId" Text="" Width="163" Margin="82,221,0,0" ToolTip="ip1-12345" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Button x:Name="buttonGetOrder" Content="Get order"  HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetOrder_Click" />
+                        <Label x:Name="labelNewOrder" Content="New order" Margin="10,282,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                        <TextBox x:Name="textBoxNewOrder" AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Left" Margin="11,308,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Height="288" />
+                        <Button x:Name="buttonPostOrderForNewClient" Content="Post Order For New Client"  HorizontalAlignment="Left" Margin="11,601,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonPostOrderForNewClient_Click" />
+                        <Button x:Name="buttonPostOrderForOldClient" Content="Post Order For Old Client"  HorizontalAlignment="Left" Margin="11,636,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonPostOrderForOldClient_Click" />
+                        <Label x:Name="labelOrganization" Content="Organization" Margin="311,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                        <Label x:Name="labelVatNumber" Content="Vat number" Margin="311,63,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBox x:Name="textBoxVatNumber" Text="" Width="163" Margin="390,67,0,0" ToolTip="ip1-12345" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Button x:Name="buttonVatValidate" Content="Vat Validate"  HorizontalAlignment="Left" Margin="318,94,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonVatValidate_Click" />
+                        <Label x:Name="labelProducts" Content="Products" Margin="311,136,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                        <Button x:Name="buttonGetMainProducts" Content="Get main products"  HorizontalAlignment="Left" Margin="318,166,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetMainProducts_Click" />
+                        <Button x:Name="buttonGetExtraProducts" Content="Get extra products"  HorizontalAlignment="Left" Margin="318,201,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetExtraProducts_Click" />
+                        <Button x:Name="buttonGetavailableBalanceProducts" Content="Get available balance products"  HorizontalAlignment="Left" Margin="318,235,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetavailableBalanceProducts_Click" />
+                        <Button x:Name="buttonGetYourOwnedProducts" Content="Get extra products"  HorizontalAlignment="Left" Margin="318,270,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetYourOwnedProducts_Click" />
+                    </Grid>
+                </TabItem>
             </TabControl>
         </GroupBox>
         <GroupBox x:Name="groupBoxAPI" Header="Choose API" HorizontalAlignment="Left" Margin="10,10,0,0" Width="153" BorderBrush="#FF89B642">
             <Grid HorizontalAlignment="Left" Width="141" VerticalAlignment="Stretch">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
@@ -245,6 +274,11 @@
                         <ListViewItem x:Name="ListViewItemManage2FA"  Content="Manage 2FA" Selected="ListViewItemManage2FA_Selected" />
                     </ListView>
                 </Expander>
+                <Expander Name="ExpanderControlShop" Header="Shop API's"  HorizontalAlignment="Left" Grid.Row="2">
+                    <ListView Name="listViewShop" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderBrush="#FF89B642">
+                        <ListViewItem x:Name="ListViewItemShop"  Content="Manage shop" Selected="ListViewItemShop_Selected" />
+                    </ListView>
+                </Expander>
             </Grid>
         </GroupBox>
         <GroupBox x:Name="groupBoxAPIkey" Header="API Key" Margin="168,10,5,0" Height="100" VerticalAlignment="Top" BorderBrush="#FF89B642">
@@ -252,7 +286,7 @@
                 <TextBox x:Name="textBoxAPIKey" HorizontalAlignment="Left" Margin="65,14,0,0" Text="2ve6kgCo0ID6nhgtkMqcaZeEQz1p8EI17VBZfdFRaBlDTpSE" TextWrapping="Wrap" VerticalAlignment="Top" Width="321" />
                 <Label x:Name="labelAPIKey" Content="API Key" HorizontalAlignment="Left" Margin="10,10,0,0" Height="26" VerticalAlignment="Top" />
                 <Label x:Name="labelBasicApiKey" Content="Basic Api Key" Margin="10,35,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                <TextBox x:Name="textBoxBasicApiKey" Text="abcdefghijklmnopqrst" Width="291" Margin="95,38,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                <TextBox x:Name="textBoxBasicApiKey" Text="Nbs6YZ6zGRXP5L3TQzyz" Width="291" Margin="95,38,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
             </Grid>
         </GroupBox>
         <GroupBox x:Name="groupBoxResponse" Header="Response" Margin="5,10,10,0" Grid.Column="1" BorderBrush="#FF89B642">
