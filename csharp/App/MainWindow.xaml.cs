@@ -43,10 +43,13 @@ namespace IP1.Samples
                     Type = Enum.Parse<SmsType>(comboBoxSMSType.Text),
                     Datacoding = Enum.Parse<Datacoding>(comboBoxDatacoding.Text),
                     Priority = Enum.Parse<Priority>(comboBoxPriority.Text),
-                    DeliveryWindows = new List<DeliveryWindow> { new DeliveryWindow { Opens = datePickerDeliveryWindow.SelectedDate.Value.AddHours(12) } },
                     Reference = textBoxReference.Text,
                     Tags = new List<string> { textBoxTags.Text }
                 };
+
+                if (radioButtonDeliveryWindow.IsChecked == true) {
+                    sms.DeliveryWindows = new List<DeliveryWindow> { new DeliveryWindow { Opens = datePickerDeliveryWindow.SelectedDate.Value.AddHours(12) } };
+                }
 
                 HttpResponseMessage response = await client.PostAsJsonAsync("batches", sms);
                 await ShowResultAsync(response);
@@ -865,7 +868,7 @@ namespace IP1.Samples
             }
         }
 
-        private async void buttonPostOrderForOldClient_Click(object sender, RoutedEventArgs e)
+        private async void buttonPostOrder_Click(object sender, RoutedEventArgs e)
         {
             using (var client = new HttpClient())
             {
