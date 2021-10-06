@@ -43,10 +43,14 @@ namespace IP1.Samples
                     Type = Enum.Parse<SmsType>(comboBoxSMSType.Text),
                     Datacoding = Enum.Parse<Datacoding>(comboBoxDatacoding.Text),
                     Priority = Enum.Parse<Priority>(comboBoxPriority.Text),
-                    DeliveryWindows = new List<DeliveryWindow> { new DeliveryWindow { Opens = datePickerDeliveryWindow.SelectedDate.Value.AddHours(12) } },
                     Reference = textBoxReference.Text,
                     Tags = new List<string> { textBoxTags.Text }
                 };
+
+                if (radioButtonDeliveryWindow.IsChecked == true)
+                {
+                    sms.DeliveryWindows = new List<DeliveryWindow> { new DeliveryWindow { Opens = datePickerDeliveryWindow.SelectedDate.Value.AddHours(12) } };
+                }
 
                 HttpResponseMessage response = await client.PostAsJsonAsync("batches", sms);
                 await ShowResultAsync(response);
@@ -768,7 +772,7 @@ namespace IP1.Samples
                 client.BaseAddress = new Uri("http://api.ip1sms.com/api/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountIdValidate.Text, textBoxBasicApiKeyValidate.Text))));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountId.Text, textBoxBasicApiKey.Text))));
 
                 var validation = new AuthenticationValidationRequest()
                 {
@@ -781,88 +785,246 @@ namespace IP1.Samples
             }
         }
 
+        private async void buttonGetCountries_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountId.Text, textBoxBasicApiKey.Text))));
+
+                HttpResponseMessage response = await client.GetAsync("api/countries");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonGetMainProducts_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountId.Text, textBoxBasicApiKey.Text))));
+
+                HttpResponseMessage response = await client.GetAsync("api/products/main");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonGetAccountSummary_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountId.Text, textBoxBasicApiKey.Text))));
+
+                HttpResponseMessage response = await client.GetAsync("api/me");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonGetAllOrders_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountId.Text, textBoxBasicApiKey.Text))));
+
+                HttpResponseMessage response = await client.GetAsync($"api/me/orders");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonGetOrder_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountId.Text, textBoxBasicApiKey.Text))));
+
+                HttpResponseMessage response = await client.GetAsync($"api/me/orders/{textBoxOrderId.Text}");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonPostOrder_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountId.Text, textBoxBasicApiKey.Text))));
+
+                HttpResponseMessage response = await client.PostAsync($"api/me/orders", new StringContent(textBoxNewOrder.Text, Encoding.UTF8, "application/json"));
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonVatValidate_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage response = await client.GetAsync($"api/organization/vat/{textBoxVatNumber.Text}");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonGetExtraProducts_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage response = await client.GetAsync($"api/products/extra");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonGetavailableBalanceProducts_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage response = await client.GetAsync($"api/products/balance");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonGetYourOwnedProducts_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountId.Text, textBoxBasicApiKey.Text))));
+
+                HttpResponseMessage response = await client.GetAsync($"api/me/products");
+                await ShowResultAsync(response);
+            }
+        }
+
         private void ListViewItemRegisterSender_Selected(object sender, RoutedEventArgs e)
         {
             tabItemRegisterSender.IsSelected = true;
             listViewSurveyApis.SelectedItem = null;
+            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemSendingSMS_Selected(object sender, RoutedEventArgs e)
         {
             tabItemSendMessage.IsSelected = true;
             listViewSurveyApis.SelectedItem = null;
+            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemReadingBatches_Selected(object sender, RoutedEventArgs e)
         {
             tabItemReadingBatches.IsSelected = true;
             listViewSurveyApis.SelectedItem = null;
+            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemReadingMessages_Selected(object sender, RoutedEventArgs e)
         {
             tabItemReadingMessages.IsSelected = true;
             listViewSurveyApis.SelectedItem = null;
+            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemConversations_Selected(object sender, RoutedEventArgs e)
         {
             tabItemConversations.IsSelected = true;
             listViewSurveyApis.SelectedItem = null;
+            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemBlackList_Selected(object sender, RoutedEventArgs e)
         {
             tabItemBlackList.IsSelected = true;
             listViewSurveyApis.SelectedItem = null;
+            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemAccountManagement_Selected(object sender, RoutedEventArgs e)
         {
             tabItemAccountManagement.IsSelected = true;
             listViewSurveyApis.SelectedItem = null;
+            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemManageSurveys_Selected(object sender, RoutedEventArgs e)
         {
             tabItemGetSurveys.IsSelected = true;
             listViewSurveyApis.SelectedItem = null;
+            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemManageQuestions_Selected(object sender, RoutedEventArgs e)
         {
             tabItemGetquestions.IsSelected = true;
             listViewSurveyApis.SelectedItem = null;
+            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemGetAnswers_Selected(object sender, RoutedEventArgs e)
         {
             tabItemGetAnswers.IsSelected = true;
             listViewSurveyApis.SelectedItem = null;
+            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemManageTemplates_Selected(object sender, RoutedEventArgs e)
         {
             tabItemManageTemplates.IsSelected = true;
             listViewSurveyApis.SelectedItem = null;
+            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemManageLinks_Selected(object sender, RoutedEventArgs e)
         {
             tabItemManageLinks.IsSelected = true;
             listViewSurveyApis.SelectedItem = null;
+            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemManageSendings_Selected(object sender, RoutedEventArgs e)
         {
             tabItemManageSendings.IsSelected = true;
             listViewSurveyApis.SelectedItem = null;
+            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemManage2FA_Selected(object sender, RoutedEventArgs e)
         {
             tabItemManage2FA.IsSelected = true;
             listViewSurveyApis.SelectedItem = null;
+            listViewShop.SelectedItem = null;
+        }
+
+        private void ListViewItemShop_Selected(object sender, RoutedEventArgs e)
+        {
+            tabItemManageShop.IsSelected = true;
+            listViewSurveyApis.SelectedItem = null;
+            listViewSmsApis.SelectedItem = null;
         }
 
         private async Task ShowResultAsync(HttpResponseMessage response)
