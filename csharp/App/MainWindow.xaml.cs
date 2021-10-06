@@ -772,7 +772,7 @@ namespace IP1.Samples
                 client.BaseAddress = new Uri("http://api.ip1sms.com/api/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountIdValidate.Text, textBoxBasicApiKey.Text))));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountId.Text, textBoxBasicApiKey.Text))));
 
                 var validation = new AuthenticationValidationRequest()
                 {
@@ -792,7 +792,7 @@ namespace IP1.Samples
                 client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountIdShop.Text, textBoxBasicApiKey.Text))));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountId.Text, textBoxBasicApiKey.Text))));
 
                 HttpResponseMessage response = await client.GetAsync("api/countries");
                 await ShowResultAsync(response);
@@ -806,7 +806,7 @@ namespace IP1.Samples
                 client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountIdShop.Text, textBoxBasicApiKey.Text))));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountId.Text, textBoxBasicApiKey.Text))));
 
                 HttpResponseMessage response = await client.GetAsync("api/products/main");
                 await ShowResultAsync(response);
@@ -820,7 +820,7 @@ namespace IP1.Samples
                 client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountIdShop.Text, textBoxBasicApiKey.Text))));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountId.Text, textBoxBasicApiKey.Text))));
 
                 HttpResponseMessage response = await client.GetAsync("api/me");
                 await ShowResultAsync(response);
@@ -834,7 +834,7 @@ namespace IP1.Samples
                 client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountIdShop.Text, textBoxBasicApiKey.Text))));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountId.Text, textBoxBasicApiKey.Text))));
 
                 HttpResponseMessage response = await client.GetAsync($"api/me/orders");
                 await ShowResultAsync(response);
@@ -848,7 +848,7 @@ namespace IP1.Samples
                 client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountIdShop.Text, textBoxBasicApiKey.Text))));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountId.Text, textBoxBasicApiKey.Text))));
 
                 HttpResponseMessage response = await client.GetAsync($"api/me/orders/{textBoxOrderId.Text}");
                 await ShowResultAsync(response);
@@ -862,7 +862,7 @@ namespace IP1.Samples
                 client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountIdShop.Text, textBoxBasicApiKey.Text))));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountId.Text, textBoxBasicApiKey.Text))));
 
                 HttpResponseMessage response = await client.PostAsync($"api/me/orders", new StringContent(textBoxNewOrder.Text, Encoding.UTF8, "application/json"));
                 await ShowResultAsync(response);
@@ -909,7 +909,7 @@ namespace IP1.Samples
                 client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountIdShop.Text, textBoxBasicApiKey.Text))));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountId.Text, textBoxBasicApiKey.Text))));
 
                 HttpResponseMessage response = await client.GetAsync($"api/me/products");
                 await ShowResultAsync(response);
