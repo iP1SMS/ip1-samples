@@ -874,6 +874,8 @@ namespace IP1.Samples
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 HttpResponseMessage response = await client.GetAsync($"api/organization/vat/{textBoxVatNumber.Text}");
                 await ShowResultAsync(response);
@@ -885,6 +887,8 @@ namespace IP1.Samples
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 HttpResponseMessage response = await client.GetAsync($"api/products/extra");
                 await ShowResultAsync(response);
@@ -896,6 +900,8 @@ namespace IP1.Samples
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 HttpResponseMessage response = await client.GetAsync($"api/products/balance");
                 await ShowResultAsync(response);
