@@ -47,7 +47,8 @@ namespace IP1.Samples
                     Tags = new List<string> { textBoxTags.Text }
                 };
 
-                if (radioButtonDeliveryWindow.IsChecked == true) {
+                if (radioButtonDeliveryWindow.IsChecked == true)
+                {
                     sms.DeliveryWindows = new List<DeliveryWindow> { new DeliveryWindow { Opens = datePickerDeliveryWindow.SelectedDate.Value.AddHours(12) } };
                 }
 
@@ -850,20 +851,6 @@ namespace IP1.Samples
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountIdShop.Text, textBoxBasicApiKey.Text))));
 
                 HttpResponseMessage response = await client.GetAsync($"api/me/orders/{textBoxOrderId.Text}");
-                await ShowResultAsync(response);
-            }
-        }
-
-        private async void buttonPostOrderForNewClient_Click(object sender, RoutedEventArgs e)
-        {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("https://shopapi.ip1sms.com/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", textBoxAccountIdShop.Text, textBoxBasicApiKey.Text))));
-
-                HttpResponseMessage response = await client.PostAsync($"api/orders", new StringContent(textBoxNewOrder.Text, Encoding.UTF8, "application/json"));
                 await ShowResultAsync(response);
             }
         }
