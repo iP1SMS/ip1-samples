@@ -922,109 +922,240 @@ namespace IP1.Samples
             }
         }
 
+        private async void buttonGetAllContacts_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"contacts");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonGetFilteredContacts_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"contacts?labels={textBoxFilterLabel.Text}");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonGetContact_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"contacts/{textBoxContactId.Text}");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonDeleteContact_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.DeleteAsync($"contacts/{textBoxContactId.Text}");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonAddContacts_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.PostAsync($"contacts", new StringContent(textBoxNewUpdateContact.Text, Encoding.UTF8, "application/json"));
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonUpdateContact_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.PutAsync($"contacts/{textBoxContactId.Text}", new StringContent(textBoxNewUpdateContact.Text, Encoding.UTF8, "application/json"));
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonGetMeta_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.GetAsync($"contacts/meta");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonAddNewLabel_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.PostAsync($"labels/{textBoxNewLabel.Text}/contacts", new StringContent(textBoxContactsId.Text, Encoding.UTF8, "application/json"));
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonDeleteLabel_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.DeleteAsync($"labels/{textBoxLabelName.Text}");
+                await ShowResultAsync(response);
+            }
+        }
+
+        private async void buttonDeleteContactsByLabel_Click(object sender, RoutedEventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.ip1sms.com/v2/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", textBoxAPIKey.Text);
+
+                HttpResponseMessage response = await client.DeleteAsync($"contacts?labels={textBoxLabelNameDeleteContacts.Text}");
+                await ShowResultAsync(response);
+            }
+        }
+
         private void ListViewItemRegisterSender_Selected(object sender, RoutedEventArgs e)
         {
+            unselectAll();
             tabItemRegisterSender.IsSelected = true;
-            listViewSurveyApis.SelectedItem = null;
-            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemSendingSMS_Selected(object sender, RoutedEventArgs e)
         {
+            unselectAll();
             tabItemSendMessage.IsSelected = true;
-            listViewSurveyApis.SelectedItem = null;
-            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemReadingBatches_Selected(object sender, RoutedEventArgs e)
         {
+            unselectAll();
             tabItemReadingBatches.IsSelected = true;
-            listViewSurveyApis.SelectedItem = null;
-            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemReadingMessages_Selected(object sender, RoutedEventArgs e)
         {
+            unselectAll();
             tabItemReadingMessages.IsSelected = true;
-            listViewSurveyApis.SelectedItem = null;
-            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemConversations_Selected(object sender, RoutedEventArgs e)
         {
+            unselectAll();
             tabItemConversations.IsSelected = true;
-            listViewSurveyApis.SelectedItem = null;
-            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemBlackList_Selected(object sender, RoutedEventArgs e)
         {
+            unselectAll();
             tabItemBlackList.IsSelected = true;
-            listViewSurveyApis.SelectedItem = null;
-            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemAccountManagement_Selected(object sender, RoutedEventArgs e)
         {
+            unselectAll();
             tabItemAccountManagement.IsSelected = true;
-            listViewSurveyApis.SelectedItem = null;
-            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemManageSurveys_Selected(object sender, RoutedEventArgs e)
         {
+            unselectAll();
             tabItemGetSurveys.IsSelected = true;
-            listViewSurveyApis.SelectedItem = null;
-            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemManageQuestions_Selected(object sender, RoutedEventArgs e)
         {
+            unselectAll();
             tabItemGetquestions.IsSelected = true;
-            listViewSurveyApis.SelectedItem = null;
-            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemGetAnswers_Selected(object sender, RoutedEventArgs e)
         {
+            unselectAll();
             tabItemGetAnswers.IsSelected = true;
-            listViewSurveyApis.SelectedItem = null;
-            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemManageTemplates_Selected(object sender, RoutedEventArgs e)
         {
+            unselectAll();
             tabItemManageTemplates.IsSelected = true;
-            listViewSurveyApis.SelectedItem = null;
-            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemManageLinks_Selected(object sender, RoutedEventArgs e)
         {
+            unselectAll();
             tabItemManageLinks.IsSelected = true;
-            listViewSurveyApis.SelectedItem = null;
-            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemManageSendings_Selected(object sender, RoutedEventArgs e)
         {
+            unselectAll();
             tabItemManageSendings.IsSelected = true;
-            listViewSurveyApis.SelectedItem = null;
-            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemManage2FA_Selected(object sender, RoutedEventArgs e)
         {
+            unselectAll();
             tabItemManage2FA.IsSelected = true;
-            listViewSurveyApis.SelectedItem = null;
-            listViewShop.SelectedItem = null;
         }
 
         private void ListViewItemShop_Selected(object sender, RoutedEventArgs e)
         {
+            unselectAll();
             tabItemManageShop.IsSelected = true;
-            listViewSurveyApis.SelectedItem = null;
-            listViewSmsApis.SelectedItem = null;
+        }
+
+        private void ListViewItemContacts_Selected(object sender, RoutedEventArgs e)
+        {
+            unselectAll();
+            tabItemManageContacts.IsSelected = true;
         }
 
         private async Task ShowResultAsync(HttpResponseMessage response)
@@ -1049,6 +1180,14 @@ namespace IP1.Samples
                 Console.WriteLine(e.Message);
                 textBoxResponse.Text = await response.Content.ReadAsStringAsync();
             }
+        }
+
+        private void unselectAll()
+        {
+            listViewSurveyApis.SelectedItem = null;
+            listViewSmsApis.SelectedItem = null;
+            listViewShopApis.SelectedItem = null;
+            listViewContactsApis.SelectedItem = null;
         }
     }
 }

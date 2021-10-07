@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IP1.Samples"
         mc:Ignorable="d"
-        Title="Ip1 Samples" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="CanResize" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="1412" Height="857" Background="#fff5f5f5" Icon="favicon.png">
+        Title="Ip1 Samples" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="CanResize" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="1505" Height="842" Background="#fff5f5f5" Icon="favicon.png">
     <Grid Margin="10,10,10,10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="149*" />
@@ -13,230 +13,258 @@
         </Grid.ColumnDefinitions>
         <GroupBox x:Name="groupBoxInputs" Header="Inputs" Margin="168,140,5,0" BorderBrush="#FF89B642">
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                <TabControl x:Name="tabControl" BorderBrush="#FF89B642">
-                    <TabItem x:Name="tabItemSendMessage" BorderBrush="#FF89B642">
-                        <Grid Margin="0,0,0,0" Background="#fff5f5f5">
-                            <Label x:Name="labelSender" Content="Sender" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxSender" HorizontalAlignment="Left" Margin="57,14,0,0" Text="iP1" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" BorderBrush="#FF89B642" />
-                            <Label x:Name="labelRecipients" Content="Recipients" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxRecipients" HorizontalAlignment="Left" Margin="74,40,0,0" Text="46123456789" TextWrapping="Wrap" VerticalAlignment="Top" Width="229" BorderBrush="#FF89B642" />
-                            <Label x:Name="labelBody" Content="Body" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxBody" HorizontalAlignment="Left" Margin="47,66,0,0" Text="Test message rest v2" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" BorderBrush="#FF89B642" />
-                            <Label x:Name="labelType" Content="Type " HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top" />
-                            <ComboBox x:Name="comboBoxSMSType" HorizontalAlignment="Left" Margin="48,90,0,0" VerticalAlignment="Top" Width="120" BorderBrush="#FF89B642">
+                <TabControl x:Name="tabControl" BorderBrush="#FF89B642" Background="#fff5f5f5">
+                    <TabItem x:Name="tabItemSendMessage" BorderBrush="#FF89B642" Visibility="Hidden">
+                        <Grid Margin="0,0,0,0" Background="#fff5f5f5" HorizontalAlignment="Center">
+                            <Label x:Name="labelSender" Content="Sender" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+                            <TextBox x:Name="textBoxSender" HorizontalAlignment="Left" Margin="75,14,0,0" Text="iP1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" BorderBrush="#FF89B642" />
+                            <Label x:Name="labelRecipients" Content="Recipients" HorizontalAlignment="Left" Margin="0,36,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+                            <TextBox x:Name="textBoxRecipients" HorizontalAlignment="Left" Margin="75,40,0,0" Text="46123456789" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" BorderBrush="#FF89B642" />
+                            <Label x:Name="labelBody" Content="Body" HorizontalAlignment="Left" Margin="0,62,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+                            <TextBox x:Name="textBoxBody" HorizontalAlignment="Left" Margin="75,66,0,0" Text="Test message rest v2" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" BorderBrush="#FF89B642" />
+                            <Label x:Name="labelType" Content="Type " HorizontalAlignment="Left" Margin="0,88,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+                            <ComboBox x:Name="comboBoxSMSType" HorizontalAlignment="Left" Margin="75,90,0,0" VerticalAlignment="Top" Width="238" BorderBrush="#FF89B642">
                                 <ComboBoxItem x:Name="comboBoxItemSMS" >SMS</ComboBoxItem>
                                 <ComboBoxItem x:Name="comboBoxItemFlash">Flash</ComboBoxItem>
                             </ComboBox>
-                            <Label x:Name="labelDatacoding" Content="Datacoding " HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" />
-                            <ComboBox x:Name="comboBoxDatacoding" HorizontalAlignment="Left" Margin="84,116,0,0" VerticalAlignment="Top" Width="120" BorderBrush="#FF89B642">
+                            <Label x:Name="labelDatacoding" Content="Datacoding " HorizontalAlignment="Left" Margin="0,114,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+                            <ComboBox x:Name="comboBoxDatacoding" HorizontalAlignment="Left" Margin="75,116,0,0" VerticalAlignment="Top" Width="238" BorderBrush="#FF89B642">
                                 <ComboBoxItem x:Name="comboBoxItemGSM">GSM</ComboBoxItem>
                                 <ComboBoxItem x:Name="comboBoxItemUCS">UCS</ComboBoxItem>
                             </ComboBox>
-                            <Label x:Name="labelPriority" Content="Priority" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top" />
-                            <ComboBox x:Name="comboBoxPriority" HorizontalAlignment="Left" Margin="63,143,0,0" VerticalAlignment="Top" Width="120" BorderBrush="#FF89B642">
+                            <Label x:Name="labelPriority" Content="Priority" HorizontalAlignment="Left" Margin="0,140,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+                            <ComboBox x:Name="comboBoxPriority" HorizontalAlignment="Left" Margin="75,143,0,0" VerticalAlignment="Top" Width="238" BorderBrush="#FF89B642">
                                 <ComboBoxItem x:Name="comboBoxItemNormal">Normal</ComboBoxItem>
                                 <ComboBoxItem x:Name="comboBoxItemHigh">High</ComboBoxItem>
                             </ComboBox>
-                            <Label x:Name="labelDeliveryWindow" Content="" HorizontalAlignment="Left" Margin="154,167,0,0" VerticalAlignment="Top" />
-                            <DatePicker x:Name="datePickerDeliveryWindow" HorizontalAlignment="Left" Margin="215,169,0,0" VerticalAlignment="Top" BorderBrush="#FF89B642" />
-                            <Label x:Name="labelReference" Content="Reference" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxReference" HorizontalAlignment="Left" Margin="72,197,0,0" Text="Test" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" BorderBrush="#FF89B642" />
-                            <Label x:Name="labelTags" Content="Tags" HorizontalAlignment="Left" Margin="10,219,0,0" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxTags" HorizontalAlignment="Left" Margin="42,223,0,0" Text="Test SMS" TextWrapping="Wrap" VerticalAlignment="Top" Width="261" BorderBrush="#FF89B642" />
-                            <Button x:Name="buttonSend" Content="Send" HorizontalAlignment="Left" Margin="15,250,0,0" VerticalAlignment="Top" Width="120" Height="30" Click="buttonSend_Click" Background="#FF89B642" />
-                            <RadioButton x:Name="radioButtonSendNow" Content="Send now" HorizontalAlignment="Left" Margin="15,174,0,0" VerticalAlignment="Top" IsChecked="True" />
-                            <RadioButton x:Name="radioButtonDeliveryWindow" Content="Delivery Window" HorizontalAlignment="Left" Margin="102,174,0,0" VerticalAlignment="Top" />
+                            <Label x:Name="labelDeliveryWindow" Content="" HorizontalAlignment="Left" Margin="137,167,0,0" VerticalAlignment="Top" Grid.Column="1" />
+                            <DatePicker x:Name="datePickerDeliveryWindow" HorizontalAlignment="Left" Margin="194,169,0,0" VerticalAlignment="Top" BorderBrush="#FF89B642" Width="119" />
+                            <Label x:Name="labelReference" Content="Reference" HorizontalAlignment="Left" Margin="0,193,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+                            <TextBox x:Name="textBoxReference" HorizontalAlignment="Left" Margin="75,197,0,0" Text="Test" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" BorderBrush="#FF89B642" />
+                            <Label x:Name="labelTags" Content="Tags" HorizontalAlignment="Left" Margin="0,219,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+                            <TextBox x:Name="textBoxTags" HorizontalAlignment="Left" Margin="75,223,0,0" Text="Test SMS" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" BorderBrush="#FF89B642" />
+                            <Button x:Name="buttonSend" Content="Send" HorizontalAlignment="Center" Margin="0,250,0,0" VerticalAlignment="Top" Width="312" Height="30" Click="buttonSend_Click" Background="#FF89B642" Grid.ColumnSpan="2" />
+                            <RadioButton x:Name="radioButtonSendNow" Content="Send now" HorizontalAlignment="Left" Margin="0,174,0,0" VerticalAlignment="Top" IsChecked="True" Grid.ColumnSpan="2" />
+                            <RadioButton x:Name="radioButtonDeliveryWindow" Content="Delivery Window" HorizontalAlignment="Left" Margin="76,174,0,0" VerticalAlignment="Top" />
                         </Grid>
                     </TabItem>
-                    <TabItem x:Name="tabItemRegisterSender">
+                    <TabItem x:Name="tabItemRegisterSender" Visibility="Hidden">
                         <Grid Background="#fff5f5f5">
-                            <Button x:Name="buttonGetAllSenders" Content="Get all senders" HorizontalAlignment="Left" Margin="104,70,0,0" Width="120" Height="30" Click="buttonGetAllSenders_Click" VerticalAlignment="Top" Background="#FF89B642" />
-                            <Label x:Name="labelAddNewSender" Content="Add new sender" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxAddNewSender" Text="" TextWrapping="Wrap" Width="120" Margin="104,8,194,-8" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonAddNewSender" Content="Add new sender" HorizontalAlignment="Left" Margin="234,8,0,0" VerticalAlignment="Top" Width="120" Height="20" Click="buttonAddNewSender_Click" Background="#FF89B642" />
-                            <Label x:Name="labelDeleteSender" Content="Delete sender" HorizontalAlignment="Left" Margin="5,35,0,0" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxDeleteSender" Text="" TextWrapping="Wrap" Width="120" Margin="104,38,194,-8" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonDeleteSender" Content="Delete new sender" HorizontalAlignment="Left" Margin="234,37,0,0" VerticalAlignment="Top" Width="120" Height="20" Click="buttonDeleteSender_Click" Background="#FF89B642" />
+                            <Button x:Name="buttonGetAllSenders" Content="Get all senders" HorizontalAlignment="Center" Margin="0,10,0,0" Height="30" Click="buttonGetAllSenders_Click" VerticalAlignment="Top" Background="#FF89B642" Width="300" />
+                            <Label x:Name="labelAddNewSender" Content="Add new sender" HorizontalAlignment="Center" Margin="0,61,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxAddNewSender" Text="" TextWrapping="Wrap" Width="300" Margin="0,85,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonAddNewSender" Content="Add new sender" HorizontalAlignment="Center" Margin="0,111,0,0" VerticalAlignment="Top" Height="30" Click="buttonAddNewSender_Click" Background="#FF89B642" Width="300" />
+                            <Label x:Name="labelDeleteSender" Content="Delete sender" HorizontalAlignment="Center" Margin="0,142,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxDeleteSender" Text="" TextWrapping="Wrap" Width="300" Margin="0,166,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonDeleteSender" Content="Delete new sender" HorizontalAlignment="Center" Margin="0,192,0,0" VerticalAlignment="Top" Height="30" Click="buttonDeleteSender_Click" Background="#FF89B642" Width="300" />
                         </Grid>
                     </TabItem>
-                    <TabItem x:Name="tabItemReadingBatches">
+                    <TabItem x:Name="tabItemReadingBatches" Visibility="Hidden">
                         <Grid Background="#fff5f5f5">
-                            <Label x:Name="labelGetBatch" Content="Batch id" Margin="5,18,0,0" />
-                            <TextBox x:Name="textBoxGetBatch" Text="" Width="220" Margin="60,22,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonGetBatch" Content="Get batch by id" HorizontalAlignment="Left" Margin="60,55,0,0" VerticalAlignment="Top" Width="120" Height="20" Click="buttonGetBatch_Click" Background="#FF89B642" />
-                            <Button x:Name="buttonGetAllBatches" Content="Get all batches" HorizontalAlignment="Left" Margin="60,85,0,0" VerticalAlignment="Top" Click="buttonGetAllBatches_Click" Width="120" Height="20" Background="#FF89B642" />
+                            <Button x:Name="buttonGetAllBatches" Content="Get all batches" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Click="buttonGetAllBatches_Click" Width="300" Height="30" Background="#FF89B642" />
+                            <Label x:Name="labelGetBatch" Content="Batch id" Margin="0,58,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxGetBatch" Text="" Width="300" Margin="0,84,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetBatch" Content="Get batch by id" HorizontalAlignment="Center" Margin="0,107,0,0" VerticalAlignment="Top" Width="300" Height="30" Click="buttonGetBatch_Click" Background="#FF89B642" />
                         </Grid>
                     </TabItem>
-                    <TabItem x:Name="tabItemReadingMessages">
+                    <TabItem x:Name="tabItemReadingMessages" Visibility="Hidden">
+                        <Grid Background="#fff5f5f5" HorizontalAlignment="Stretch">
+                            <Label x:Name="labelBatchId" Content="Batch id" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxBatchId" Text="" Width="300" Margin="0,36,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetBatchMessages" Content="Get batch messages" HorizontalAlignment="Center" Margin="0,61,0,0" VerticalAlignment="Top" Width="300" Height="30" Click="buttonGetBatchMessages_Click" Background="#FF89B642" />
+                            <Label x:Name="labelMessageId" Content="Message id" Margin="0,103,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxMessageId" Text="" Width="300" Margin="0,129,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetSingleMessage" Content="Get single message" HorizontalAlignment="Center" Margin="0,154,0,0" VerticalAlignment="Top" Width="300" Height="30" Click="buttonGetSingleMessage_Click" Background="#FF89B642" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabItemConversations" Visibility="Hidden">
                         <Grid Background="#fff5f5f5">
-                            <Label x:Name="labelBatchId" Content="Batch id" Margin="10,10,0,0" />
-                            <TextBox x:Name="textBoxBatchId" Text="" Width="220" Margin="82,13,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonGetBatchMessages" Content="Get batch messages" HorizontalAlignment="Left" Margin="82,45,0,0" VerticalAlignment="Top" Width="120" Height="20" Click="buttonGetBatchMessages_Click" Background="#FF89B642" />
-                            <Label x:Name="labelMessageId" Content="Message id" Margin="10,72,0,0" />
-                            <TextBox x:Name="textBoxMessageId" Text="" Width="220" Margin="82,75,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonGetSingleMessage" Content="Get single message" HorizontalAlignment="Left" Margin="82,105,0,0" VerticalAlignment="Top" Width="120" Height="20" Click="buttonGetSingleMessage_Click" Background="#FF89B642" />
+                            <Label x:Name="labelParticipant" Content="Participant" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxParticipant" Text="" Width="300" Margin="0,36,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetAllMessages" HorizontalAlignment="Center" Content="Get all messages"  Margin="0,71,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonGetAllMessages_Click" />
+                            <Button x:Name="buttonGetOutgoingMessages" Content="Get outgoing messages"  HorizontalAlignment="Center" Margin="0,106,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonGetOutgoingMessages_Click" />
+                            <Button x:Name="buttonGetIncomingMessages" Content="Get incoming messages"  HorizontalAlignment="Center" Margin="0,141,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonGetIncomingMessages_Click" />
                         </Grid>
                     </TabItem>
-                    <TabItem x:Name="tabItemConversations">
+                    <TabItem x:Name="tabItemBlackList" Height="4" VerticalAlignment="Top" Visibility="Hidden">
                         <Grid Background="#fff5f5f5">
-                            <Label x:Name="labelParticipant" Content="Participant" Margin="10,10,0,0" />
-                            <TextBox x:Name="textBoxParticipant" Text="" Width="220" Margin="82,15,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonGetAllMessages" Content="Get all messages" HorizontalAlignment="Left" Margin="82,45,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonGetAllMessages_Click" />
-                            <Button x:Name="buttonGetOutgoingMessages" Content="Get outgoing messages" HorizontalAlignment="Left" Margin="82,75,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonGetOutgoingMessages_Click" />
-                            <Button x:Name="buttonGetIncomingMessages" Content="Get incoming messages" HorizontalAlignment="Left" Margin="82,105,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonGetIncomingMessages_Click" />
+                            <Button x:Name="buttonGetBlackList" Content="Get Black List" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonGetBlackList_Click" />
+                            <Label x:Name="labelPhoneNumber" Content="Phone Number" Margin="0,50,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxPhoneNumber" Text="" Width="300" Margin="0,76,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonAddPhoneNumber" Content="Add phone number" HorizontalAlignment="Center" Margin="0,103,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonAddPhoneNumber_Click" />
+                            <Button x:Name="buttonRemovePhoneNumber" Content="Remove phone number" HorizontalAlignment="Center" Margin="0,138,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonRemovePhoneNumber_Click" />
                         </Grid>
                     </TabItem>
-                    <TabItem x:Name="tabItemBlackList" Height="4" VerticalAlignment="Top">
-                        <Grid Background="#fff5f5f5">
-                            <Button x:Name="buttonGetBlackList" Content="Get Black List" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" Height="20" Background="#FF89B642" Click="buttonGetBlackList_Click" />
-                            <Label x:Name="labelPhoneNumber" Content="Phone Number" Margin="5,36,5,6" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxPhoneNumber" Text="" Width="220" Margin="102,39,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonAddPhoneNumber" Content="Add phone number" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonAddPhoneNumber_Click" />
-                            <Button x:Name="buttonRemovePhoneNumber" Content="Remove phone number" HorizontalAlignment="Left" Margin="172,70,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonRemovePhoneNumber_Click" />
+                    <TabItem x:Name="tabItemAccountManagement" Visibility="Hidden">
+                        <Grid Background="#fff5f5f5" HorizontalAlignment="Stretch">
+                            <Button x:Name="buttonOverviewAccount" Content="Overview Account" Margin="0,10,0,0" VerticalAlignment="Top" Height="30" Background="#FF89B642" Click="buttonOverviewAccount_Click" HorizontalAlignment="Center" Width="300" />
+                            <Button x:Name="buttonDetailsAccount" Content="Details Account" HorizontalAlignment="Center" Margin="0,46,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonDetailsAccount_Click" />
+                            <Button x:Name="buttonGetAllSubAccounts" Content="Get All Sub Accounts" HorizontalAlignment="Center" Margin="0,82,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonGetAllSubAccounts_Click" />
+                            <Label x:Name="labelNewSubAccountName" Content="New Sub Account Name" Margin="0,130,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxNewSubAccountName" Text="" Width="300" Margin="0,156,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonAddSubAccount" Content="Add New Sub Account" HorizontalAlignment="Center" Margin="0,181,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonAddSubAccount_Click" />
+                            <Label x:Name="labelEditSubAccountName" Content="Edit Sub Account Name" Margin="0,238,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Label x:Name="labelSubAccountId" Content="Sub Account ID" Margin="0,264,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxSubAccountID" Text="" Width="300" Margin="0,290,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" ToolTip="ip1-12345" />
+                            <Label x:Name="labelSubAccountName" Content="Sub Account Name" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,315,0,0" />
+                            <TextBox x:Name="textBoxSubAccountName" Text="" Width="300" Margin="0,341,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" ToolTip="ip1-12345" />
+                            <Button x:Name="buttonEditSubAccount" Content="Edit New Sub Account" HorizontalAlignment="Center" Margin="0,366,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonEditSubAccount_Click" />
                         </Grid>
                     </TabItem>
-                    <TabItem x:Name="tabItemAccountManagement">
-                        <Grid Background="#fff5f5f5">
-                            <Button x:Name="buttonOverviewAccount" Content="Overview Account" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" Height="20" Background="#FF89B642" Click="buttonOverviewAccount_Click" />
-                            <Button x:Name="buttonDetailsAccount" Content="Details Account" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="120" Height="20" Background="#FF89B642" Click="buttonDetailsAccount_Click" />
-                            <Button x:Name="buttonGetAllSubAccounts" Content="Get All Sub Accounts" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="120" Height="20" Background="#FF89B642" Click="buttonGetAllSubAccounts_Click" />
-                            <Label x:Name="labelNewSubAccountName" Content="New Sub Account Name" Margin="10,98,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxNewSubAccountName" Text="" Width="120" Margin="154,102,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonAddSubAccount" Content="Add New Sub Account" HorizontalAlignment="Left" Margin="279,101,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonAddSubAccount_Click" />
-                            <Label x:Name="labelEditSubAccountName" Content="Edit Sub Account Name" Margin="10,132,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
-                            <Label x:Name="labelSubAccountId" Content="Sub Account ID" Margin="10,158,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxSubAccountID" Text="" Width="120" Margin="127,161,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="ip1-12345" />
-                            <Label x:Name="labelSubAccountName" Content="Sub Account Name" Margin="10,184,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxSubAccountName" Text="" Width="120" Margin="127,187,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="ip1-12345" />
-                            <Button x:Name="buttonEditSubAccount" Content="Edit New Sub Account" HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top" Width="237" Height="20" Background="#FF89B642" Click="buttonEditSubAccount_Click" />
+                    <TabItem x:Name="tabItemGetSurveys" Height="4" VerticalAlignment="Top" Visibility="Hidden">
+                        <Grid Background="#fff5f5f5" HorizontalAlignment="Center">
+                            <Button x:Name="buttonGetAllSurveys" Content="Get all surveys" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="306" Height="30" Background="#FF89B642" Click="buttonGetAllSurveys_Click" />
+                            <Button x:Name="buttonGetSummary" Content="Get summary" HorizontalAlignment="Center" Margin="0,45,0,0" VerticalAlignment="Top" Width="306" Height="30" Background="#FF89B642" Click="buttonGetSummary_Click" />
+                            <Button x:Name="buttonGetPinned" Content="Get pinned" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" Width="306" Height="30" Background="#FF89B642" Click="buttonGetPinned_Click" />
+                            <Label x:Name="labelSurveyId" Content="Survey id" Margin="0,124,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxSurveyId" Text="" Width="246" Margin="60,128,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetSurvey" Content="Get Survey" HorizontalAlignment="Left" Margin="0,153,0,0" VerticalAlignment="Top" Width="100" Height="30" Background="#FF89B642" Click="buttonGetSurvey_Click" />
+                            <Button x:Name="buttonGetSurveysummary" Content="Get summary" HorizontalAlignment="Center" Margin="0,153,0,0" VerticalAlignment="Top" Width="102" Height="30" Background="#FF89B642" Click="buttonGetSurveysummary_Click" />
+                            <Button x:Name="buttonDeleteSurvey" Content="Delete survey" HorizontalAlignment="Left" Margin="206,153,0,0" VerticalAlignment="Top" Width="100" Height="30" Background="#FF89B642" Click="buttonDeleteSurvey_Click" />
+                            <Button x:Name="buttonUpdateSurvey" Content="Update survey" HorizontalAlignment="Left" Margin="0,201,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF89B642" Click="buttonUpdateSurvey_Click" />
+                            <TextBox x:Name="textBoxNewUpdateSurvey"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Center" Margin="0,236,0,10" Text="" TextWrapping="Wrap" Width="306" />
+                            <Button x:Name="buttonAddSurvey" Content="Add survey" HorizontalAlignment="Left" Margin="156,201,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF89B642" Click="buttonAddSurvey_Click" />
                         </Grid>
                     </TabItem>
-                    <TabItem x:Name="tabItemGetSurveys" Height="4" VerticalAlignment="Top">
-                        <Grid Background="#fff5f5f5">
-                            <Button x:Name="buttonGetAllSurveys" Content="Get all surveys" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" Height="30" Background="#FF89B642" Click="buttonGetAllSurveys_Click" />
-                            <Button x:Name="buttonGetSummary" Content="Get summary" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="120" Height="30" Background="#FF89B642" Click="buttonGetSummary_Click" />
-                            <Button x:Name="buttonGetPinned" Content="Get pinned" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="120" Height="30" Background="#FF89B642" Click="buttonGetPinned_Click" />
-                            <Label x:Name="labelSurveyId" Content="Survey id" Margin="10,111,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxSurveyId" Text="" Width="245" Margin="70,114,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonGetSurvey" Content="Get Survey" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top" Width="100" Height="20" Background="#FF89B642" Click="buttonGetSurvey_Click" />
-                            <Button x:Name="buttonGetSurveysummary" Content="Get summary" HorizontalAlignment="Left" Margin="112,139,0,0" VerticalAlignment="Top" Width="100" Height="20" Background="#FF89B642" Click="buttonGetSurveysummary_Click" />
-                            <Button x:Name="buttonDeleteSurvey" Content="Delete survey" HorizontalAlignment="Left" Margin="215,139,0,0" VerticalAlignment="Top" Width="100" Height="20" Background="#FF89B642" Click="buttonDeleteSurvey_Click" />
-                            <Button x:Name="buttonUpdateSurvey" Content="Update survey" HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonUpdateSurvey_Click" />
-                            <TextBox x:Name="textBoxNewUpdateSurvey"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Left" Margin="10,189,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Height="405" />
-                            <Button x:Name="buttonAddSurvey" Content="Add survey" HorizontalAlignment="Left" Margin="165,164,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonAddSurvey_Click" />
+                    <TabItem x:Name="tabItemGetquestions" Height="4" VerticalAlignment="Top" Visibility="Hidden">
+                        <Grid Background="#fff5f5f5" HorizontalAlignment="Center">
+                            <Label x:Name="labelSurveyIdQuestion" Content="Survey id" Margin="0,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxSurveyIdQuestion" Text="6088feadbd33644186f0e2e5" Width="245" Margin="60,13,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetAllQuestions" Content="Get all question" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" Width="305" Height="30" Background="#FF89B642" Click="buttonGetAllQuestions_Click" />
+                            <Label x:Name="labelQuestionId" Content="Question id" Margin="0,87,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxQuestionId" Text="6088feb0b62c6b58ad24a73d" Width="229" Margin="76,90,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetQuestion" Content="Get question" HorizontalAlignment="Left" Margin="0,115,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonGetQuestion_Click" />
+                            <Button x:Name="buttonDeleteQuestion" Content="Delete question" HorizontalAlignment="Left" Margin="155,115,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonDeleteQuestion_Click" />
+                            <Button x:Name="buttonUpdateQuestion" Content="Update question" HorizontalAlignment="Left" Margin="0,153,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonUpdateQuestion_Click" />
+                            <TextBox x:Name="textBoxNewUpdateQuestion"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Center" Margin="0,178,0,10" Text="" TextWrapping="Wrap" Width="305" />
+                            <Button x:Name="buttonAddQuestion" Content="Add question" HorizontalAlignment="Left" Margin="155,153,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonAddQuestion_Click" />
                         </Grid>
                     </TabItem>
-                    <TabItem x:Name="tabItemGetquestions" Height="4" VerticalAlignment="Top">
-                        <Grid Background="#fff5f5f5">
-                            <Label x:Name="labelSurveyIdQuestion" Content="Survey id" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxSurveyIdQuestion" Text="6088feadbd33644186f0e2e5" Width="245" Margin="70,13,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonGetAllQuestions" Content="Get all question" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF89B642" Click="buttonGetAllQuestions_Click" />
-                            <Label x:Name="labelQuestionId" Content="Question id" Margin="10,73,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxQuestionId" Text="6088feb0b62c6b58ad24a73d" Width="229" Margin="86,76,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonGetQuestion" Content="Get question" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonGetQuestion_Click" />
-                            <Button x:Name="buttonDeleteQuestion" Content="Delete question" HorizontalAlignment="Left" Margin="165,101,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonDeleteQuestion_Click" />
-                            <Button x:Name="buttonUpdateQuestion" Content="Update question" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonUpdateQuestion_Click" />
-                            <TextBox x:Name="textBoxNewUpdateQuestion"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Left" Margin="10,151,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Height="405" />
-                            <Button x:Name="buttonAddQuestion" Content="Add question" HorizontalAlignment="Left" Margin="165,126,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonAddQuestion_Click" />
-                        </Grid>
-                    </TabItem>
-                    <TabItem x:Name="tabItemGetAnswers" Height="4" VerticalAlignment="Top">
+                    <TabItem x:Name="tabItemGetAnswers" Height="4" VerticalAlignment="Top" Visibility="Hidden">
                         <Grid Margin="0,0,0,0" Background="#fff5f5f5">
-                            <Label x:Name="labelAnswers" Content="Answers" Margin="10,51,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
-                            <Label x:Name="labelSurveyIdAnswers" Content="Survey id" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxSurveyIdAnswers" Text="" Width="245" Margin="73,13,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Label x:Name="labelQuestionIdAnswers" Content="Question id" Margin="10,73,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxQuestionIdAnswers" Text="" Width="232" Margin="86,76,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonGetAllAnswers" Content="Get all answers" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Width="120" Height="30" Background="#FF89B642" Click="buttonGetAllAnswers_Click" />
-                            <Label x:Name="labelParticipants" Content="Participants" Margin="10,146,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
-                            <Button x:Name="buttonGetAllParticipants" Content="Get all participants" HorizontalAlignment="Left" Margin="10,176,0,0" VerticalAlignment="Top" Width="120" Height="30" Background="#FF89B642" Click="buttonGetAllParticipants_Click" />
-                            <Label x:Name="labelParticipantId" Content="Participant id" Margin="10,209,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxParticipantId" Text="" Width="224" Margin="94,212,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonGetParticipant" Content="Get participant" HorizontalAlignment="Left" Margin="10,240,0,0" VerticalAlignment="Top" Width="120" Height="30" Background="#FF89B642" Click="buttonGetParticipant_Click" />
+                            <Label x:Name="labelAnswers" Content="Answers" Margin="0,94,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Label x:Name="labelSurveyIdAnswers" Content="Survey id" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxSurveyIdAnswers" Text="" Width="250" Margin="0,35,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Label x:Name="labelQuestionIdAnswers" Content="Question id" Margin="0,116,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxQuestionIdAnswers" Text="" Width="250" Margin="0,141,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetAllAnswers" Content="Get all answers" HorizontalAlignment="Center" Margin="0,169,0,0" VerticalAlignment="Top" Width="250" Height="30" Background="#FF89B642" Click="buttonGetAllAnswers_Click" />
+                            <Label x:Name="labelParticipants" Content="Participants" Margin="0,248,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Button x:Name="buttonGetAllParticipants" Content="Get all participants" HorizontalAlignment="Center" Margin="0,278,0,0" VerticalAlignment="Top" Width="250" Height="30" Background="#FF89B642" Click="buttonGetAllParticipants_Click" />
+                            <Label x:Name="labelParticipantId" Content="Participant id" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <TextBox x:Name="textBoxParticipantId" Text="" Width="250" Margin="0,336,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetParticipant" Content="Get participant" HorizontalAlignment="Center" Margin="0,364,0,0" VerticalAlignment="Top" Width="250" Height="30" Background="#FF89B642" Click="buttonGetParticipant_Click" />
                         </Grid>
                     </TabItem>
-                    <TabItem x:Name="tabItemManageTemplates" Height="4" VerticalAlignment="Top">
-                        <Grid Margin="0,0,0,0" Background="#fff5f5f5">
-                            <Button x:Name="buttonGetAllTemplates" Content="Get all templates" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF89B642" Click="buttonGetAllTemplates_Click" />
-                            <Label x:Name="labelTemplateId" Content="Template id" Margin="10,41,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxTemplateId" Text="" Width="229" Margin="87,45,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonGetTemplate" Content="Get template" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonGetTemplate_Click" />
-                            <Button x:Name="buttonDeleteTemplate" Content="Delete template" HorizontalAlignment="Left" Margin="165,70,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonDeleteTemplate_Click" />
-                            <Button x:Name="buttonAddTemplate" Content="Add template" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonAddTemplate_Click" />
-                            <TextBox x:Name="textBoxNewTemplate"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Left" Margin="10,120,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Height="405" />
+                    <TabItem x:Name="tabItemManageTemplates" Height="4" VerticalAlignment="Top" Visibility="Hidden">
+                        <Grid Margin="0,0,0,0" Background="#fff5f5f5" HorizontalAlignment="Center">
+                            <Button x:Name="buttonGetAllTemplates" Content="Get all templates" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonGetAllTemplates_Click" />
+                            <Label x:Name="labelTemplateId" Content="Template id" Margin="0,54,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxTemplateId" Text="" Width="300" Margin="0,80,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetTemplate" Content="Get template" HorizontalAlignment="Center" Margin="0,105,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonGetTemplate_Click" />
+                            <Button x:Name="buttonDeleteTemplate" Content="Delete template" HorizontalAlignment="Center" Margin="0,140,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonDeleteTemplate_Click" />
+                            <Button x:Name="buttonAddTemplate" Content="Add template" HorizontalAlignment="Center" Margin="0,196,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonAddTemplate_Click" />
+                            <TextBox x:Name="textBoxNewTemplate"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Center" Text="" TextWrapping="Wrap" Width="300" Margin="0,231,0,10" />
                         </Grid>
                     </TabItem>
-                    <TabItem x:Name="tabItemManageLinks" Height="4" VerticalAlignment="Top">
-                        <Grid Margin="0,0,0,0" Background="#fff5f5f5">
-                            <Label x:Name="labelSurveyIdLinks" Content="Survey id" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxSurveyIdLinks" Text="" Width="245" Margin="73,13,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonGetAllLinks" Content="Get all links" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF89B642" Click="buttonGetAllLinks_Click" />
-                            <Label x:Name="labelLinksId" Content="Link id" Margin="10,69,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxLinksId" Text="" Width="229" Margin="87,73,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonGetLink" Content="Get link" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonGetLink_Click" />
-                            <Button x:Name="buttonDeleteLink" Content="Delete link" HorizontalAlignment="Left" Margin="165,98,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonDeleteLink_Click" />
-                            <Button x:Name="buttonAddLink" Content="Add link" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonAddLink_Click" />
-                            <Button x:Name="buttonUpdateLink" Content="update link" HorizontalAlignment="Left" Margin="166,123,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonUpdateLink_Click" />
-                            <TextBox x:Name="textBoxNewUpdateLink"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Left" Margin="10,149,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Height="405" />
+                    <TabItem x:Name="tabItemManageLinks" Height="4" VerticalAlignment="Top" Visibility="Hidden">
+                        <Grid Margin="0,0,0,0" Background="#fff5f5f5" HorizontalAlignment="Center">
+                            <Label x:Name="labelSurveyIdLinks" Content="Survey id" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxSurveyIdLinks" Text="" Width="305" Margin="0,35,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetAllLinks" Content="Get all links" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" Width="305" Height="30" Background="#FF89B642" Click="buttonGetAllLinks_Click" />
+                            <Label x:Name="labelLinksId" Content="Link id" Margin="0,115,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxLinksId" Text="" Width="305" Margin="0,141,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetLink" Content="Get link" HorizontalAlignment="Left" Margin="0,166,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF89B642" Click="buttonGetLink_Click" />
+                            <Button x:Name="buttonDeleteLink" Content="Delete link" HorizontalAlignment="Right" Margin="0,166,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF89B642" Click="buttonDeleteLink_Click" />
+                            <Button x:Name="buttonAddLink" Content="Add link" HorizontalAlignment="Left" Margin="0,222,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF89B642" Click="buttonAddLink_Click" />
+                            <Button x:Name="buttonUpdateLink" Content="update link" HorizontalAlignment="Right" Margin="0,222,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF89B642" Click="buttonUpdateLink_Click" />
+                            <TextBox x:Name="textBoxNewUpdateLink"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Center" Margin="0,260,0,10" Text="" TextWrapping="Wrap" Width="305" />
                         </Grid>
                     </TabItem>
-                    <TabItem x:Name="tabItemManageSendings" Height="4" VerticalAlignment="Top">
+                    <TabItem x:Name="tabItemManageSendings" Height="4" VerticalAlignment="Top" Visibility="Hidden">
                         <Grid Margin="0,0,0,0" Background="#fff5f5f5">
-                            <Label x:Name="labelSurveyIdSendings" Content="Survey id" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxSurveyIdSendings" Text="" Width="245" Margin="73,13,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonGetAllSendings" Content="Get all sendings" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF89B642" Click="buttonGetAllSendings_Click" />
-                            <Label x:Name="labelSendingId" Content="Sending id" Margin="10,69,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxSendingId" Text="" Width="229" Margin="87,73,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonGetSending" Content="Get sending" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonGetSending_Click" />
-                            <Button x:Name="buttonAddSending" Content="Add sending" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonAddSending_Click" />
-                            <TextBox x:Name="textBoxNewSending"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Left" Margin="10,149,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Height="405" />
+                            <Label x:Name="labelSurveyIdSendings" Content="Survey id" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxSurveyIdSendings" Text="" Width="305" Margin="0,36,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetAllSendings" Content="Get all sendings" HorizontalAlignment="Center" Margin="0,61,0,0" VerticalAlignment="Top" Width="305" Height="30" Background="#FF89B642" Click="buttonGetAllSendings_Click" />
+                            <Label x:Name="labelSendingId" Content="Sending id" Margin="0,107,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxSendingId" Text="" Width="305" Margin="0,133,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetSending" Content="Get sending" HorizontalAlignment="Center" Margin="0,158,0,0" VerticalAlignment="Top" Width="305" Height="30" Background="#FF89B642" Click="buttonGetSending_Click" />
+                            <Button x:Name="buttonAddSending" Content="Add sending" HorizontalAlignment="Center" Margin="0,210,0,0" VerticalAlignment="Top" Width="305" Height="30" Background="#FF89B642" Click="buttonAddSending_Click" />
+                            <TextBox x:Name="textBoxNewSending"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Center" Margin="0,245,0,10" Text="" TextWrapping="Wrap" Width="305" />
                         </Grid>
                     </TabItem>
-                    <TabItem x:Name="tabItemManage2FA" Height="4" VerticalAlignment="Top">
-                        <Grid Margin="0,0,0,0" Background="#fff5f5f5">
-                            <Label x:Name="labelCreateAndSendAuthentication" Content="Create and send authentication" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
-                            <Label x:Name="labelPhone" Content="Phone" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxPhone" Text="46123456789" Width="186" Margin="59,36,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Label x:Name="labelFrom" Content="From" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxFrom" Text="iP1sms" Width="193" Margin="52,61,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Label x:Name="labelMessage" Content="Message" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxMessage" Text="Use {0} to verify yourself" Width="173" Margin="72,86,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Label x:Name="labelLength" Content="Length" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxLength" Text="6" Width="183" Margin="62,111,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Label x:Name="labelExpirationTime" Content="Expiration time" HorizontalAlignment="Left" Margin="10,133,0,0" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxExpirationTime" Text="1200" Width="141" Margin="104,136,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonCreateSendAuthentication" Content="Create and send authentication"  HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonCreateSendAuthentication_Click" />
-                            <Label x:Name="labelValidateAuthentication" Content="Validate Authentication" Margin="308,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
-                            <Label x:Name="labelPhoneValidate" Content="Phone validate" HorizontalAlignment="Left" Margin="308,33,0,0" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxPhoneValidate" Text="46123456789" Width="142" Margin="401,36,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Label x:Name="labelSubmittedCode" Content="Submitted code" HorizontalAlignment="Left" Margin="308,58,0,0" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxSubmittedCode" Text="123456" Width="136" Margin="407,61,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonValidate" Content="Validate"  HorizontalAlignment="Left" Margin="308,86,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonValidate_Click" />
+                    <TabItem x:Name="tabItemManage2FA" Height="4" VerticalAlignment="Top" Visibility="Hidden">
+                        <Grid Margin="0,0,0,0" Background="#fff5f5f5" HorizontalAlignment="Center">
+                            <Label x:Name="labelCreateAndSendAuthentication" Content="Create and send authentication" Margin="0,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Label x:Name="labelPhone" Content="Phone" HorizontalAlignment="Left" Margin="0,33,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxPhone" Text="46123456789" Width="190" Margin="59,36,0,0" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                            <Label x:Name="labelFrom" Content="From" HorizontalAlignment="Left" Margin="0,58,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxFrom" Text="iP1sms" Width="190" Margin="52,61,0,0" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                            <Label x:Name="labelMessage" Content="Message" HorizontalAlignment="Left" Margin="0,83,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxMessage" Text="Use {0} to verify yourself" Width="190" Margin="72,86,0,0" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                            <Label x:Name="labelLength" Content="Length" HorizontalAlignment="Left" Margin="0,111,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxLength" Text="6" Width="190" Margin="62,111,0,0" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                            <Label x:Name="labelExpirationTime" Content="Expiration time" HorizontalAlignment="Left" Margin="0,133,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxExpirationTime" Text="1200" Width="190" Margin="104,136,0,0" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                            <Button x:Name="buttonCreateSendAuthentication" Content="Create and send authentication"  HorizontalAlignment="Left" Margin="0,161,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonCreateSendAuthentication_Click" />
+                            <Label x:Name="labelValidateAuthentication" Content="Validate Authentication" Margin="0,247,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Label x:Name="labelPhoneValidate" Content="Phone validate" HorizontalAlignment="Left" Margin="0,270,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxPhoneValidate" Text="46123456789" Width="190" Margin="103,273,0,0" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                            <Label x:Name="labelSubmittedCode" Content="Submitted code" HorizontalAlignment="Left" Margin="0,295,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxSubmittedCode" Text="123456" Width="190" Margin="109,298,0,0" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                            <Button x:Name="buttonValidate" Content="Validate"  HorizontalAlignment="Left" Margin="0,323,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonValidate_Click" />
                         </Grid>
                     </TabItem>
-                    <TabItem x:Name="tabItemManageShop" Height="4" VerticalAlignment="Top">
-                        <Grid Margin="0,0,0,0" Background="#fff5f5f5">
-                            <Label x:Name="labelCountries" Content="Countries" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
-                            <Button x:Name="buttonGetCountries" Content="Get countries"  HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetCountries_Click" />
-                            <Label x:Name="labelMe" Content="Me" Margin="10,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
-                            <Button x:Name="buttonGetAccountSummary" Content="Get Summary"  HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetAccountSummary_Click" />
-                            <Label x:Name="labelOrder" Content="Order" Margin="10,130,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
-                            <Button x:Name="buttonGetAllOrders" Content="Get all orders"  HorizontalAlignment="Left" Margin="10,156,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetAllOrders_Click" />
-                            <Label x:Name="labelOrderId" Content="Order id" Margin="10,186,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxOrderId" Text="" Width="163" Margin="82,191,0,0" ToolTip="ip1-12345" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonGetOrder" Content="Get order"  HorizontalAlignment="Left" Margin="10,217,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetOrder_Click" />
-                            <Label x:Name="labelNewOrder" Content="New order" Margin="10,252,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
-                            <TextBox x:Name="textBoxNewOrder" AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Left" Margin="11,278,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Height="288" />
-                            <Button x:Name="buttonPostOrder" Content="Post Order"  HorizontalAlignment="Left" Margin="10,571,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonPostOrder_Click" />
-                            <Label x:Name="labelOrganization" Content="Organization" Margin="311,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
-                            <Label x:Name="labelVatNumber" Content="Vat number" Margin="311,33,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxVatNumber" Text="" Width="163" Margin="390,37,0,0" ToolTip="ip1-12345" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <Button x:Name="buttonVatValidate" Content="Vat Validate"  HorizontalAlignment="Left" Margin="318,64,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonVatValidate_Click" />
-                            <Label x:Name="labelProducts" Content="Products" Margin="311,106,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
-                            <Button x:Name="buttonGetMainProducts" Content="Get main products"  HorizontalAlignment="Left" Margin="318,136,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetMainProducts_Click" />
-                            <Button x:Name="buttonGetExtraProducts" Content="Get extra products"  HorizontalAlignment="Left" Margin="318,171,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetExtraProducts_Click" />
-                            <Button x:Name="buttonGetavailableBalanceProducts" Content="Get available balance products"  HorizontalAlignment="Left" Margin="318,205,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetavailableBalanceProducts_Click" />
-                            <Button x:Name="buttonGetYourOwnedProducts" Content="Get extra products"  HorizontalAlignment="Left" Margin="318,240,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetYourOwnedProducts_Click" />
+                    <TabItem x:Name="tabItemManageShop" Height="4" VerticalAlignment="Top" Visibility="Hidden">
+                        <Grid Margin="0,0,0,0" Background="#fff5f5f5" HorizontalAlignment="Center">
+                            <Label x:Name="labelCountries" Content="Countries" Margin="0,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Button x:Name="buttonGetCountries" Content="Get countries"  HorizontalAlignment="Left" Margin="0,36,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetCountries_Click" />
+                            <Label x:Name="labelMe" Content="Me" Margin="0,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Button x:Name="buttonGetAccountSummary" Content="Get Summary"  HorizontalAlignment="Left" Margin="0,96,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetAccountSummary_Click" />
+                            <Label x:Name="labelOrder" Content="Order" Margin="0,130,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Button x:Name="buttonGetAllOrders" Content="Get all orders"  HorizontalAlignment="Left" Margin="0,156,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetAllOrders_Click" />
+                            <Label x:Name="labelOrderId" Content="Order id" Margin="0,186,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxOrderId" Text="" Width="163" Margin="72,191,0,0" ToolTip="ip1-12345" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetOrder" Content="Get order"  HorizontalAlignment="Left" Margin="0,217,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetOrder_Click" />
+                            <Label x:Name="labelNewOrder" Content="New order" Margin="0,252,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                            <TextBox x:Name="textBoxNewOrder" AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Left" Margin="1,278,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Height="288" />
+                            <Button x:Name="buttonPostOrder" Content="Post Order"  HorizontalAlignment="Left" Margin="0,571,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonPostOrder_Click" />
+                            <Label x:Name="labelOrganization" Content="Organization" Margin="301,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Label x:Name="labelVatNumber" Content="Vat number" Margin="301,33,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxVatNumber" Text="" Width="163" Margin="380,37,0,0" ToolTip="ip1-12345" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Button x:Name="buttonVatValidate" Content="Vat Validate"  HorizontalAlignment="Left" Margin="308,64,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonVatValidate_Click" />
+                            <Label x:Name="labelProducts" Content="Products" Margin="301,106,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Button x:Name="buttonGetMainProducts" Content="Get main products"  HorizontalAlignment="Left" Margin="308,136,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetMainProducts_Click" />
+                            <Button x:Name="buttonGetExtraProducts" Content="Get extra products"  HorizontalAlignment="Left" Margin="308,171,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetExtraProducts_Click" />
+                            <Button x:Name="buttonGetavailableBalanceProducts" Content="Get available balance products"  HorizontalAlignment="Left" Margin="308,205,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetavailableBalanceProducts_Click" />
+                            <Button x:Name="buttonGetYourOwnedProducts" Content="Get extra products"  HorizontalAlignment="Left" Margin="308,240,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetYourOwnedProducts_Click" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabItemManageContacts" Height="4" VerticalAlignment="Top" Visibility="Hidden">
+                        <Grid Margin="0,0,0,0" Background="#fff5f5f5" HorizontalAlignment="Center">
+
+                            <Button x:Name="buttonGetAllContacts" Content="Get all contacts"  HorizontalAlignment="Left" Margin="0,12,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetAllContacts_Click" />
+                            <Button x:Name="buttonGetFilteredContacts" Content="Get filtered contacts"  HorizontalAlignment="Left" Margin="0,56,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetFilteredContacts_Click" />
+                            <Label x:Name="labelFilterLabel" Content="Filter Label" Margin="0,89,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxFilterLabel" Text="" Width="157" Margin="78,91,0,0"  Height="21" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Label x:Name="labelContactId" Content="Contact id" Margin="0,163,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxContactId" Text="" Width="166" Margin="69,165,0,0"  Height="21" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetContact" Content="Get contact"  HorizontalAlignment="Left" Margin="0,192,0,0" VerticalAlignment="Top" Width="111" Height="30" Background="#FF89B642" Click="buttonGetContact_Click" />
+                            <Button x:Name="buttonDeleteContact" Content="Delete contact"  HorizontalAlignment="Left" Margin="125,192,0,0" VerticalAlignment="Top" Width="110" Height="30" Background="#FF89B642" Click="buttonDeleteContact_Click" />
+                            <TextBox x:Name="textBoxNewUpdateContact"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Left" Margin="0,267,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="235" Height="311" />
+                            <Button x:Name="buttonAddContacts" Content="Add contacts"  HorizontalAlignment="Left" Margin="1,232,0,0" VerticalAlignment="Top" Width="110" Height="30" Background="#FF89B642" Click="buttonAddContacts_Click" />
+                            <Button x:Name="buttonUpdateContact" Content="Update contact"  HorizontalAlignment="Left" Margin="125,232,0,0" VerticalAlignment="Top" Width="110" Height="30" Background="#FF89B642" Click="buttonUpdateContact_Click" />
+                            <Button x:Name="buttonGetMeta" Content="Get meta"  HorizontalAlignment="Left" Margin="1,128,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetMeta_Click" />
+                            <Label x:Name="labelNewLabel" Content="New label" Margin="300,12,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxNewLabel" Text="" Width="161" Margin="0,14,0,0"  Height="21" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                            <Label x:Name="labelContactsId" Content="Contacts id" Margin="300,81,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxContactsId"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Right" Margin="0,41,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" Height="116" />
+                            <Button x:Name="buttonAddNewLabel" Content="Add new label"  HorizontalAlignment="Right" Margin="300,162,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonAddNewLabel_Click" />
+                            <Label x:Name="labelLabelName" Content="Label name" Margin="300,218,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxLabelName" Text="" Width="161" Margin="0,222,0,0"  Height="21" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                            <Button x:Name="buttonDeleteLabel" Content="Delete label"  HorizontalAlignment="Right" Margin="300,249,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonDeleteLabel_Click" />
+                            <Label x:Name="labelLabelNameDeleteContacts" Content="Label name" Margin="300,336,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxLabelNameDeleteContacts" Text="" Width="161" Margin="0,338,0,0"  Height="21" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                            <Button x:Name="buttonDeleteContactsByLabel" Content="Delete contacts by label"  HorizontalAlignment="Right" Margin="300,364,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonDeleteContactsByLabel_Click" />
                         </Grid>
                     </TabItem>
                 </TabControl>
@@ -245,6 +273,7 @@
         <GroupBox x:Name="groupBoxAPI" Header="Choose API" HorizontalAlignment="Left" Margin="10,10,0,0" Width="153" BorderBrush="#FF89B642">
             <Grid HorizontalAlignment="Left" Width="141" VerticalAlignment="Stretch">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -272,8 +301,13 @@
                     </ListView>
                 </Expander>
                 <Expander Name="ExpanderControlShop" Header="Shop API's"  HorizontalAlignment="Left" Grid.Row="2">
-                    <ListView Name="listViewShop" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderBrush="#FF89B642">
+                    <ListView Name="listViewShopApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderBrush="#FF89B642">
                         <ListViewItem x:Name="ListViewItemShop"  Content="Manage shop" Selected="ListViewItemShop_Selected" />
+                    </ListView>
+                </Expander>
+                <Expander Name="ExpanderControlContacts" Header="Contacts API's"  HorizontalAlignment="Left" Grid.Row="3">
+                    <ListView Name="listViewContactsApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderBrush="#FF89B642">
+                        <ListViewItem x:Name="ListViewItemContacts"  Content="Manage contacts" Selected="ListViewItemContacts_Selected" />
                     </ListView>
                 </Expander>
             </Grid>
@@ -285,7 +319,7 @@
                 <Label x:Name="labelBasicApiKey" Content="Basic Api Key" Margin="10,35,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
                 <TextBox x:Name="textBoxBasicApiKey" Width="291" Margin="95,38,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
                 <Label x:Name="labelAccountId" Content="Account id" Margin="10,61,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                <TextBox x:Name="textBoxAccountId" Width="93" ToolTip="ip1-12345" Margin="95,64,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Text="" />
+                <TextBox x:Name="textBoxAccountId" Width="93" ToolTip="ip1-12345" Margin="95,64,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Text="ip1-12345" />
             </Grid>
         </GroupBox>
         <GroupBox x:Name="groupBoxResponse" Header="Response" Margin="5,10,10,0" Grid.Column="1" BorderBrush="#FF89B642">
