@@ -154,10 +154,10 @@
                         <Grid Background="#fff5f5f5" HorizontalAlignment="Center">
                             <Label x:Name="labelQuestionsHeader" Content="Questions" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontWeight="Bold" FontStyle="Normal" />
                             <Label x:Name="labelSurveyIdQuestion" Content="Survey id" Margin="0,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxSurveyIdQuestion" Text="6088feadbd33644186f0e2e5" Width="245" Margin="60,43,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxSurveyIdQuestion" Text="" Width="245" Margin="60,43,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
                             <Button x:Name="buttonGetAllQuestions" Content="Get all question" HorizontalAlignment="Center" Margin="0,70,0,0" VerticalAlignment="Top" Width="305" Height="30" Background="#FF89B642" Click="buttonGetAllQuestions_Click" />
                             <Label x:Name="labelQuestionId" Content="Question id" Margin="0,117,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                            <TextBox x:Name="textBoxQuestionId" Text="6088feb0b62c6b58ad24a73d" Width="229" Margin="76,120,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxQuestionId" Text="" Width="229" Margin="76,120,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
                             <Button x:Name="buttonGetQuestion" Content="Get question" HorizontalAlignment="Left" Margin="0,145,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonGetQuestion_Click" />
                             <Button x:Name="buttonDeleteQuestion" Content="Delete question" HorizontalAlignment="Left" Margin="155,145,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonDeleteQuestion_Click" />
                             <Button x:Name="buttonUpdateQuestion" Content="Update question" HorizontalAlignment="Left" Margin="0,183,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonUpdateQuestion_Click" />
@@ -335,7 +335,7 @@
                     </ListView>
                 </Expander>
                 <Expander Name="ExpanderControlSurvey" Header="Survey API's"  HorizontalAlignment="Left" Grid.Row="1">
-                    <ListView Name="listViewSurveyApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderBrush="#FF89B642">
+                    <ListView Name="listViewSurveyApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderThickness="0">
                         <ListViewItem x:Name="ListViewItemManageSurveys"  Content="Manage surveys" Selected="ListViewItemManageSurveys_Selected" />
                         <ListViewItem x:Name="ListViewItemManageQuestions"  Content="Manage questions" Selected="ListViewItemManageQuestions_Selected" />
                         <ListViewItem x:Name="ListViewItemGetAnswers"  Content="Get Answers" Selected="ListViewItemGetAnswers_Selected" />
@@ -346,12 +346,12 @@
                     </ListView>
                 </Expander>
                 <Expander Name="ExpanderControlShop" Header="Shop API's"  HorizontalAlignment="Left" Grid.Row="2">
-                    <ListView Name="listViewShopApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderBrush="#FF89B642">
+                    <ListView Name="listViewShopApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderThickness="0">
                         <ListViewItem x:Name="ListViewItemShop"  Content="Manage shop" Selected="ListViewItemShop_Selected" />
                     </ListView>
                 </Expander>
                 <Expander Name="ExpanderControlContacts" Header="Contacts API's"  HorizontalAlignment="Left" Grid.Row="3">
-                    <ListView Name="listViewContactsApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderBrush="#FF89B642">
+                    <ListView Name="listViewContactsApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderThickness="0">
                         <ListViewItem x:Name="ListViewItemContacts"  Content="Manage contacts" Selected="ListViewItemContacts_Selected" />
                     </ListView>
                 </Expander>
