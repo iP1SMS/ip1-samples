@@ -1212,7 +1212,7 @@ namespace IP1.Samples
         //"go to" methods
         private void buttonLinkPortal_Click(object sender, RoutedEventArgs e)
         {
-            var ps = new ProcessStartInfo("https://portal.ip1sms.com/#/accounts")
+            var ps = new ProcessStartInfo("https://portal.ip1.net/#/accounts")
             {
                 UseShellExecute = true,
                 Verb = "open"
