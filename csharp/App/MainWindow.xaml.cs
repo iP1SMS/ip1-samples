@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -26,6 +27,7 @@ namespace IP1.Samples
             datePickerDeliveryWindow.SelectedDate = DateTime.Today;
         }
 
+        //Sending SMS
         private async void buttonSend_Click(object sender, RoutedEventArgs e)
         {
             using (var client = new HttpClient())
@@ -57,6 +59,7 @@ namespace IP1.Samples
             }
         }
 
+        //Register Sender
         private async void buttonGetAllSenders_Click(object sender, RoutedEventArgs e)
         {
             using (var client = new HttpClient())
@@ -99,6 +102,7 @@ namespace IP1.Samples
             }
         }
 
+        //Reading Batches
         private async void buttonGetAllBatches_Click(object sender, RoutedEventArgs e)
         {
             using (var client = new HttpClient())
@@ -127,6 +131,7 @@ namespace IP1.Samples
             }
         }
 
+        //Reading Messages
         private async void buttonGetBatchMessages_Click(object sender, RoutedEventArgs e)
         {
             using (var client = new HttpClient())
@@ -155,6 +160,7 @@ namespace IP1.Samples
             }
         }
 
+        //Conversations
         private async void buttonGetAllMessages_Click(object sender, RoutedEventArgs e)
         {
             using (var client = new HttpClient())
@@ -197,6 +203,7 @@ namespace IP1.Samples
             }
         }
 
+        //Black List
         private async void buttonGetBlackList_Click(object sender, RoutedEventArgs e)
         {
             using (var client = new HttpClient())
@@ -239,6 +246,7 @@ namespace IP1.Samples
             }
         }
 
+        //Account Management
         private async void buttonOverviewAccount_Click(object sender, RoutedEventArgs e)
         {
             using (var client = new HttpClient())
@@ -320,6 +328,7 @@ namespace IP1.Samples
             }
         }
 
+        //Manage surveys
         private async void buttonGetAllSurveys_Click(object sender, RoutedEventArgs e)
         {
             using (var client = new HttpClient())
@@ -432,6 +441,7 @@ namespace IP1.Samples
             }
         }
 
+        //Manage questions
         private async void buttonGetAllQuestions_Click(object sender, RoutedEventArgs e)
         {
             using (var client = new HttpClient())
@@ -502,6 +512,7 @@ namespace IP1.Samples
             }
         }
 
+        //Get Answers
         private async void buttonGetAllAnswers_Click(object sender, RoutedEventArgs e)
         {
             using (var client = new HttpClient())
@@ -544,6 +555,7 @@ namespace IP1.Samples
             }
         }
 
+        //Manage Templates
         private async void buttonGetAllTemplates_Click(object sender, RoutedEventArgs e)
         {
             using (var client = new HttpClient())
@@ -600,6 +612,7 @@ namespace IP1.Samples
             }
         }
 
+        //Manage Links
         private async void buttonGetAllLinks_Click(object sender, RoutedEventArgs e)
         {
             using (var client = new HttpClient())
@@ -690,6 +703,7 @@ namespace IP1.Samples
             }
         }
 
+        //Manage Sendings
         private async void buttonGetAllSendings_Click(object sender, RoutedEventArgs e)
         {
             using (var client = new HttpClient())
@@ -742,6 +756,7 @@ namespace IP1.Samples
             }
         }
 
+        //Manage 2FA
         private async void buttonCreateSendAuthentication_Click(object sender, RoutedEventArgs e)
         {
             using (var client = new HttpClient())
@@ -785,6 +800,7 @@ namespace IP1.Samples
             }
         }
 
+        //Manage shop
         private async void buttonGetCountries_Click(object sender, RoutedEventArgs e)
         {
             using (var client = new HttpClient())
@@ -922,6 +938,7 @@ namespace IP1.Samples
             }
         }
 
+        //Manage contacts
         private async void buttonGetAllContacts_Click(object sender, RoutedEventArgs e)
         {
             using (var client = new HttpClient())
@@ -1062,6 +1079,32 @@ namespace IP1.Samples
             }
         }
 
+        //Printing results on screen
+        private async Task ShowResultAsync(HttpResponseMessage response)
+        {
+            JsonSerializerOptions options = new JsonSerializerOptions()
+            {
+                WriteIndented = true
+            };
+
+            labelStatus.Content = $"StatusCode: {(int)response.StatusCode} {response.ReasonPhrase}";
+
+            treeViewResponse.Items.Clear();
+            treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
+
+            try
+            {
+                var jsonElement = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
+                textBoxResponse.Text = JsonSerializer.Serialize(jsonElement, options);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                textBoxResponse.Text = await response.Content.ReadAsStringAsync();
+            }
+        }
+
+        //organizing methods
         private void ListViewItemRegisterSender_Selected(object sender, RoutedEventArgs e)
         {
             unselectAll();
@@ -1158,36 +1201,103 @@ namespace IP1.Samples
             tabItemManageContacts.IsSelected = true;
         }
 
-        private async Task ShowResultAsync(HttpResponseMessage response)
-        {
-            JsonSerializerOptions options = new JsonSerializerOptions()
-            {
-                WriteIndented = true
-            };
-
-            labelStatus.Content = $"StatusCode: {(int)response.StatusCode} {response.ReasonPhrase}";
-
-            treeViewResponse.Items.Clear();
-            treeViewResponse.ProcessJson(await response.Content.ReadAsStringAsync());
-
-            try
-            {
-                var jsonElement = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
-                textBoxResponse.Text = JsonSerializer.Serialize(jsonElement, options);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                textBoxResponse.Text = await response.Content.ReadAsStringAsync();
-            }
-        }
-
         private void unselectAll()
         {
             listViewSurveyApis.SelectedItem = null;
             listViewSmsApis.SelectedItem = null;
             listViewShopApis.SelectedItem = null;
             listViewContactsApis.SelectedItem = null;
+        }
+
+        //"go to" methods
+        private void buttonLinkPortal_Click(object sender, RoutedEventArgs e)
+        {
+            var ps = new ProcessStartInfo("https://portal.ip1.net/#/accounts")
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            };
+            Process.Start(ps);
+        }
+
+        private void buttonLinkCapacity_Click(object sender, RoutedEventArgs e)
+        {
+            var ps = new ProcessStartInfo("https://capacity.ip1.net/")
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            };
+            Process.Start(ps);
+        }
+
+        private void buttonLinkSettings_Click(object sender, RoutedEventArgs e)
+        {
+            var ps = new ProcessStartInfo("https://capacity.ip1.net/en-US/settings/services")
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            };
+            Process.Start(ps);
+        }
+
+        private void buttonLinkBatches_Click(object sender, RoutedEventArgs e)
+        {
+            var ps = new ProcessStartInfo("https://capacity.ip1.net/en-US/batch/list")
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            };
+            Process.Start(ps);
+        }
+
+        private void buttonLinkBlackList_Click(object sender, RoutedEventArgs e)
+        {
+            var ps = new ProcessStartInfo("https://contacts.ip1.net/en-US/privacy")
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            };
+            Process.Start(ps);
+        }
+
+        private void buttonLinkSurveys_Click(object sender, RoutedEventArgs e)
+        {
+            var ps = new ProcessStartInfo("https://onesurvey.ip1.net/")
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            };
+            Process.Start(ps);
+        }
+
+        private void buttonLinkShop_Click(object sender, RoutedEventArgs e)
+        {
+            var ps = new ProcessStartInfo("https://shop.ip1sms.com/")
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            };
+            Process.Start(ps);
+        }
+
+        private void buttonLinkContacts_Click(object sender, RoutedEventArgs e)
+        {
+            var ps = new ProcessStartInfo("https://contacts.ip1.net/")
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            };
+            Process.Start(ps);
+        }
+
+        private void buttonLinkDeveloper_Click(object sender, RoutedEventArgs e)
+        {
+            var ps = new ProcessStartInfo("https://www.ip1sms.com/en/developer/")
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            };
+            Process.Start(ps);
         }
     }
 }
