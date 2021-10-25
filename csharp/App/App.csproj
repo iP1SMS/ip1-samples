@@ -1,9 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>IP1.Samples</RootNamespace>
+    <Authors>iP1SMS</Authors>
+    <Company>iP.1 Networks AB</Company>
+    <Product>C# Sample App</Product>
+    <Description>A collection of code samples in C#.</Description>
+    <Version>1.0.0</Version>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
