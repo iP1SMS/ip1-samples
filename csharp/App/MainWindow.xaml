@@ -1,0 +1,384 @@
+<Window x:Class="IP1.Samples.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IP1.Samples"
+        mc:Ignorable="d"
+        Title="Ip1 Samples" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="CanResize" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="1505" Height="842" Background="#fff5f5f5" Icon="favicon.png">
+    <Grid Margin="10,10,10,10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="149*" />
+            <ColumnDefinition Width="106*" />
+        </Grid.ColumnDefinitions>
+        <GroupBox x:Name="groupBoxInputs" Header="Inputs" Margin="168,140,5,0" BorderBrush="#FF89B642">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <TabControl x:Name="tabControl" BorderBrush="#FF89B642" Background="#fff5f5f5">
+                    <TabItem x:Name="tabItemSendMessage" BorderBrush="#FF89B642" Visibility="Hidden">
+                        <Grid Margin="0,0,0,0" Background="#fff5f5f5" HorizontalAlignment="Center">
+                            <Label x:Name="labelSendMessageHeader" Content="Sending SMS" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontWeight="Bold" FontStyle="Normal" />
+                            <Label x:Name="labelSender" Content="Sender" HorizontalAlignment="Left" Margin="0,42,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxSender" HorizontalAlignment="Left" Margin="75,46,0,0" Text="iP1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" BorderBrush="#FF89B642" />
+                            <Label x:Name="labelRecipients" Content="Recipients" HorizontalAlignment="Left" Margin="0,68,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxRecipients" HorizontalAlignment="Left" Margin="75,72,0,0" Text="46123456789" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" BorderBrush="#FF89B642" />
+                            <Label x:Name="labelBody" Content="Body" HorizontalAlignment="Left" Margin="0,94,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxBody" HorizontalAlignment="Left" Margin="75,98,0,0" Text="Test message rest v2" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" BorderBrush="#FF89B642" />
+                            <Label x:Name="labelType" Content="Type " HorizontalAlignment="Left" Margin="0,120,0,0" VerticalAlignment="Top" />
+                            <ComboBox x:Name="comboBoxSMSType" HorizontalAlignment="Left" Margin="75,122,0,0" VerticalAlignment="Top" Width="238" BorderBrush="#FF89B642">
+                                <ComboBoxItem x:Name="comboBoxItemSMS" >SMS</ComboBoxItem>
+                                <ComboBoxItem x:Name="comboBoxItemFlash">Flash</ComboBoxItem>
+                            </ComboBox>
+                            <Label x:Name="labelDatacoding" Content="Datacoding " HorizontalAlignment="Left" Margin="0,146,0,0" VerticalAlignment="Top" />
+                            <ComboBox x:Name="comboBoxDatacoding" HorizontalAlignment="Left" Margin="75,148,0,0" VerticalAlignment="Top" Width="238" BorderBrush="#FF89B642">
+                                <ComboBoxItem x:Name="comboBoxItemGSM">GSM</ComboBoxItem>
+                                <ComboBoxItem x:Name="comboBoxItemUCS">UCS</ComboBoxItem>
+                            </ComboBox>
+                            <Label x:Name="labelPriority" Content="Priority" HorizontalAlignment="Left" Margin="0,172,0,0" VerticalAlignment="Top" />
+                            <ComboBox x:Name="comboBoxPriority" HorizontalAlignment="Left" Margin="75,175,0,0" VerticalAlignment="Top" Width="238" BorderBrush="#FF89B642">
+                                <ComboBoxItem x:Name="comboBoxItemNormal">Normal</ComboBoxItem>
+                                <ComboBoxItem x:Name="comboBoxItemHigh">High</ComboBoxItem>
+                            </ComboBox>
+                            <Label x:Name="labelDeliveryWindow" Content="" HorizontalAlignment="Left" Margin="137,167,0,0" VerticalAlignment="Top" Grid.Column="1" />
+                            <DatePicker x:Name="datePickerDeliveryWindow" HorizontalAlignment="Left" Margin="194,201,0,0" VerticalAlignment="Top" BorderBrush="#FF89B642" Width="119" />
+                            <Label x:Name="labelReference" Content="Reference" HorizontalAlignment="Left" Margin="0,225,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxReference" HorizontalAlignment="Left" Margin="75,229,0,0" Text="Test" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" BorderBrush="#FF89B642" />
+                            <Label x:Name="labelTags" Content="Tags" HorizontalAlignment="Left" Margin="0,251,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxTags" HorizontalAlignment="Left" Margin="75,255,0,0" Text="Test SMS" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" BorderBrush="#FF89B642" />
+                            <Button x:Name="buttonSend" Content="Send" HorizontalAlignment="Center" Margin="0,282,0,0" VerticalAlignment="Top" Width="312" Height="30" Click="buttonSend_Click" Background="#FF89B642" />
+                            <RadioButton x:Name="radioButtonSendNow" Content="Send now" HorizontalAlignment="Left" Margin="1,206,0,0" VerticalAlignment="Top" IsChecked="True" />
+                            <RadioButton x:Name="radioButtonDeliveryWindow" Content="Delivery Window" HorizontalAlignment="Left" Margin="76,206,0,0" VerticalAlignment="Top" />
+                            <Label x:Name="labelSendingInfo" Content="*This method require Only Api Key" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,313,0,0" />
+                            <Button x:Name="buttonLinkCapacity" Content="Go to Capacity SMS" HorizontalAlignment="Center" VerticalAlignment="Top" Width="312" Height="30" Background="#FF89B642" Margin="0,453,0,0" Click="buttonLinkCapacity_Click" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabItemRegisterSender" Visibility="Hidden">
+                        <Grid Background="#fff5f5f5">
+                            <Label x:Name="labelRegisterSenderHeader" Content="Register Senders" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontWeight="Bold" FontStyle="Normal" />
+                            <Button x:Name="buttonGetAllSenders" Content="Get all senders" HorizontalAlignment="Center" Margin="0,51,0,0" Height="30" Click="buttonGetAllSenders_Click" VerticalAlignment="Top" Background="#FF89B642" Width="300" />
+                            <Label x:Name="labelAddNewSender" Content="Add new sender" HorizontalAlignment="Center" Margin="0,102,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxAddNewSender" Text="" TextWrapping="Wrap" Width="300" Margin="0,126,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonAddNewSender" Content="Add new sender" HorizontalAlignment="Center" Margin="0,152,0,0" VerticalAlignment="Top" Height="30" Click="buttonAddNewSender_Click" Background="#FF89B642" Width="300" />
+                            <Label x:Name="labelDeleteSender" Content="Delete sender" HorizontalAlignment="Center" Margin="0,183,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxDeleteSender" Text="" TextWrapping="Wrap" Width="300" Margin="0,207,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonDeleteSender" Content="Delete new sender" HorizontalAlignment="Center" Margin="0,233,0,0" VerticalAlignment="Top" Height="30" Click="buttonDeleteSender_Click" Background="#FF89B642" Width="300" />
+                            <Label x:Name="labelSenderInfo" Content="*These methods require Only Api Key" HorizontalAlignment="Center" Margin="0,271,0,0" VerticalAlignment="Top" />
+                            <Button x:Name="buttonLinkSettings" Content="Go to Capacity SMS Settings" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Margin="0,453,0,0" Click="buttonLinkSettings_Click" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabItemReadingBatches" Visibility="Hidden">
+                        <Grid Background="#fff5f5f5">
+                            <Label x:Name="labelReadingBatchesHeader" Content="Reading Batches" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontWeight="Bold" FontStyle="Normal" />
+                            <Button x:Name="buttonGetAllBatches" Content="Get all batches" HorizontalAlignment="Center" Margin="0,58,0,0" VerticalAlignment="Top" Click="buttonGetAllBatches_Click" Width="300" Height="30" Background="#FF89B642" />
+                            <Label x:Name="labelGetBatch" Content="Batch id" Margin="0,106,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxGetBatch" Text="" Width="300" Margin="0,132,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetBatch" Content="Get batch by id" HorizontalAlignment="Center" Margin="0,155,0,0" VerticalAlignment="Top" Width="300" Height="30" Click="buttonGetBatch_Click" Background="#FF89B642" />
+                            <Label x:Name="labelReadingBatchesInfo" Content="*These methods require Only Api Key" HorizontalAlignment="Center" Margin="0,230,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+                            <Button x:Name="buttonLinkBatches" Content="Go to Capacity SMS Batches" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Margin="0,453,0,0" Click="buttonLinkBatches_Click" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabItemReadingMessages" Visibility="Hidden">
+                        <Grid Background="#fff5f5f5" HorizontalAlignment="Stretch">
+                            <Label x:Name="labelReadingMessagesHeader" Content="Reading Messages" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontWeight="Bold" FontStyle="Normal" />
+                            <Label x:Name="labelBatchId" Content="Batch id" Margin="0,40,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxBatchId" Text="" Width="300" Margin="0,66,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetBatchMessages" Content="Get batch messages" HorizontalAlignment="Center" Margin="0,91,0,0" VerticalAlignment="Top" Width="300" Height="30" Click="buttonGetBatchMessages_Click" Background="#FF89B642" />
+                            <Label x:Name="labelMessageId" Content="Message id" Margin="0,133,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxMessageId" Text="" Width="300" Margin="0,159,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetSingleMessage" Content="Get single message" HorizontalAlignment="Center" Margin="0,184,0,0" VerticalAlignment="Top" Width="300" Height="30" Click="buttonGetSingleMessage_Click" Background="#FF89B642" />
+                            <Label x:Name="labelReadingMessagesInfo" Content="*These methods require Only Api Key" HorizontalAlignment="Center" Margin="0,230,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+                            <Button x:Name="buttonLinkMessages" Content="Go to Capacity SMS Batches" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Margin="0,453,0,0" Click="buttonLinkBatches_Click" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabItemConversations" Visibility="Hidden">
+                        <Grid Background="#fff5f5f5">
+                            <Label x:Name="labelConversationsHeader" Content="Conversations" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontWeight="Bold" FontStyle="Normal" />
+                            <Label x:Name="labelParticipant" Content="Participant id" Margin="0,35,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxParticipant" Text="" Width="300" Margin="0,61,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetAllMessages" HorizontalAlignment="Center" Content="Get all messages"  Margin="0,96,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonGetAllMessages_Click" />
+                            <Button x:Name="buttonGetOutgoingMessages" Content="Get outgoing messages"  HorizontalAlignment="Center" Margin="0,131,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonGetOutgoingMessages_Click" />
+                            <Button x:Name="buttonGetIncomingMessages" Content="Get incoming messages"  HorizontalAlignment="Center" Margin="0,166,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonGetIncomingMessages_Click" />
+                            <Label x:Name="labelConversationsInfo" Content="*These methods require Only Api Key" HorizontalAlignment="Center" Margin="0,230,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+                            <Button x:Name="buttonLinkmessages" Content="Go to Capacity SMS Batches" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Margin="0,453,0,0" Click="buttonLinkBatches_Click" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabItemBlackList" Height="4" VerticalAlignment="Top" Visibility="Hidden">
+                        <Grid Background="#fff5f5f5">
+                            <Label x:Name="labelBlackListHeader" Content="BlackList" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontWeight="Bold" FontStyle="Normal" />
+                            <Button x:Name="buttonGetBlackList" Content="Get Black List" HorizontalAlignment="Center" Margin="0,47,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonGetBlackList_Click" />
+                            <Label x:Name="labelPhoneNumber" Content="Phone Number" Margin="0,87,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxPhoneNumber" Text="" Width="300" Margin="0,113,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonAddPhoneNumber" Content="Add phone number" HorizontalAlignment="Center" Margin="0,140,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonAddPhoneNumber_Click" />
+                            <Button x:Name="buttonRemovePhoneNumber" Content="Remove phone number" HorizontalAlignment="Center" Margin="0,175,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonRemovePhoneNumber_Click" />
+                            <Label x:Name="labelBlackListInfo" Content="*These methods require Only Api Key" HorizontalAlignment="Center" Margin="0,230,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+                            <Button x:Name="buttonLinkBlackList" Content="Go to Contacts Blacklist" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Margin="0,453,0,0" Click="buttonLinkBlackList_Click" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabItemAccountManagement" Visibility="Hidden">
+                        <Grid Background="#fff5f5f5" HorizontalAlignment="Stretch">
+                            <Label x:Name="labelAccountManagementHeader" Content="Account Management" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontWeight="Bold" FontStyle="Normal" />
+                            <Button x:Name="buttonOverviewAccount" Content="Overview Account" Margin="0,45,0,0" VerticalAlignment="Top" Height="30" Background="#FF89B642" Click="buttonOverviewAccount_Click" HorizontalAlignment="Center" Width="300" />
+                            <Button x:Name="buttonDetailsAccount" Content="Details Account" HorizontalAlignment="Center" Margin="0,81,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonDetailsAccount_Click" />
+                            <Button x:Name="buttonGetAllSubAccounts" Content="Get All Sub Accounts" HorizontalAlignment="Center" Margin="0,117,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonGetAllSubAccounts_Click" />
+                            <Label x:Name="labelNewSubAccountName" Content="New Sub Account Name" Margin="0,165,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxNewSubAccountName" Text="" Width="300" Margin="0,191,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonAddSubAccount" Content="Add New Sub Account" HorizontalAlignment="Center" Margin="0,216,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonAddSubAccount_Click" />
+                            <Label x:Name="labelEditSubAccountName" Content="Edit Sub Account Name" Margin="0,273,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Label x:Name="labelSubAccountId" Content="Sub Account ID" Margin="0,299,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxSubAccountID" Text="" Width="300" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" ToolTip="ip1-12345" Margin="0,326,0,0" />
+                            <Label x:Name="labelSubAccountName" Content="Sub Account Name" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,350,0,0" />
+                            <TextBox x:Name="textBoxSubAccountName" Text="" Width="300" Margin="0,376,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" ToolTip="ip1-12345" />
+                            <Button x:Name="buttonEditSubAccount" Content="Edit New Sub Account" HorizontalAlignment="Center" Margin="0,401,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonEditSubAccount_Click" />
+                            <Label x:Name="labelAccountManagementInfo" Content="*These methods require Only Api Key" HorizontalAlignment="Center" Margin="0,469,0,0" VerticalAlignment="Top" />
+                            <Button x:Name="buttonLinkAccountManagement" Content="Go to Portal " HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Margin="0,499,0,0" Click="buttonLinkPortal_Click" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabItemGetSurveys" Height="4" VerticalAlignment="Top" Visibility="Hidden">
+                        <Grid Background="#fff5f5f5" HorizontalAlignment="Center">
+                            <Label x:Name="labelSurveysHeader" Content="Surveys" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontWeight="Bold" FontStyle="Normal" />
+                            <Button x:Name="buttonGetAllSurveys" Content="Get all surveys" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" Width="306" Height="30" Background="#FF89B642" Click="buttonGetAllSurveys_Click" />
+                            <Button x:Name="buttonGetSummary" Content="Get summary" HorizontalAlignment="Center" Margin="0,75,0,0" VerticalAlignment="Top" Width="306" Height="30" Background="#FF89B642" Click="buttonGetSummary_Click" />
+                            <Button x:Name="buttonGetPinned" Content="Get pinned" HorizontalAlignment="Center" Margin="0,110,0,0" VerticalAlignment="Top" Width="306" Height="30" Background="#FF89B642" Click="buttonGetPinned_Click" />
+                            <Label x:Name="labelSurveyId" Content="Survey id" Margin="0,154,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxSurveyId" Text="" Width="246" Margin="60,158,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetSurvey" Content="Get Survey" HorizontalAlignment="Left" Margin="0,183,0,0" VerticalAlignment="Top" Width="100" Height="30" Background="#FF89B642" Click="buttonGetSurvey_Click" />
+                            <Button x:Name="buttonGetSurveysummary" Content="Get summary" HorizontalAlignment="Center" Margin="0,183,0,0" VerticalAlignment="Top" Width="102" Height="30" Background="#FF89B642" Click="buttonGetSurveysummary_Click" />
+                            <Button x:Name="buttonDeleteSurvey" Content="Delete survey" HorizontalAlignment="Left" Margin="206,183,0,0" VerticalAlignment="Top" Width="100" Height="30" Background="#FF89B642" Click="buttonDeleteSurvey_Click" />
+                            <Button x:Name="buttonUpdateSurvey" Content="Update survey" HorizontalAlignment="Left" Margin="0,231,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF89B642" Click="buttonUpdateSurvey_Click" />
+                            <TextBox x:Name="textBoxNewUpdateSurvey"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Center" Margin="0,266,0,75" Text="" TextWrapping="Wrap" Width="306" />
+                            <Button x:Name="buttonAddSurvey" Content="Add survey" HorizontalAlignment="Left" Margin="156,231,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF89B642" Click="buttonAddSurvey_Click" />
+                            <Label x:Name="labelSurveysInfo" Content="*These methods require Only Api Key" HorizontalAlignment="Center" Margin="0,561,0,44" VerticalAlignment="Bottom" />
+                            <Button x:Name="buttonLinkSurveys" Content="Go to Surveys " HorizontalAlignment="Center" Width="306" Background="#FF89B642" Margin="0,592,0,9" Height="30" VerticalAlignment="Bottom" Click="buttonLinkSurveys_Click" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabItemGetquestions" Height="4" VerticalAlignment="Top" Visibility="Hidden">
+                        <Grid Background="#fff5f5f5" HorizontalAlignment="Center">
+                            <Label x:Name="labelQuestionsHeader" Content="Questions" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontWeight="Bold" FontStyle="Normal" />
+                            <Label x:Name="labelSurveyIdQuestion" Content="Survey id" Margin="0,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxSurveyIdQuestion" Text="" Width="245" Margin="60,43,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetAllQuestions" Content="Get all question" HorizontalAlignment="Center" Margin="0,70,0,0" VerticalAlignment="Top" Width="305" Height="30" Background="#FF89B642" Click="buttonGetAllQuestions_Click" />
+                            <Label x:Name="labelQuestionId" Content="Question id" Margin="0,117,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxQuestionId" Text="" Width="229" Margin="76,120,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetQuestion" Content="Get question" HorizontalAlignment="Left" Margin="0,145,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonGetQuestion_Click" />
+                            <Button x:Name="buttonDeleteQuestion" Content="Delete question" HorizontalAlignment="Left" Margin="155,145,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonDeleteQuestion_Click" />
+                            <Button x:Name="buttonUpdateQuestion" Content="Update question" HorizontalAlignment="Left" Margin="0,183,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonUpdateQuestion_Click" />
+                            <TextBox x:Name="textBoxNewUpdateQuestion"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Center" Margin="0,208,0,75" Text="" TextWrapping="Wrap" Width="306" />
+                            <Button x:Name="buttonAddQuestion" Content="Add question" HorizontalAlignment="Left" Margin="155,183,0,0" VerticalAlignment="Top" Width="150" Height="20" Background="#FF89B642" Click="buttonAddQuestion_Click" />
+                            <Label x:Name="labelQuestionsInfo" Content="*These methods require Only Api Key" HorizontalAlignment="Center" Margin="0,561,0,44" VerticalAlignment="Bottom" />
+                            <Button x:Name="buttonLinkQuestions" Content="Go to Surveys " HorizontalAlignment="Center" Width="306" Background="#FF89B642" Margin="0,592,0,9" Height="30" VerticalAlignment="Bottom" Click="buttonLinkSurveys_Click" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabItemGetAnswers" Height="4" VerticalAlignment="Top" Visibility="Hidden">
+                        <Grid Margin="0,0,0,0" Background="#fff5f5f5">
+                            <Label x:Name="labelAnswers" Content="Answers" Margin="0,94,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Label x:Name="labelSurveyIdAnswers" Content="Survey id" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxSurveyIdAnswers" Text="" Width="250" Margin="0,35,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Label x:Name="labelQuestionIdAnswers" Content="Question id" Margin="0,116,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxQuestionIdAnswers" Text="" Width="250" Margin="0,141,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetAllAnswers" Content="Get all answers" HorizontalAlignment="Center" Margin="0,169,0,0" VerticalAlignment="Top" Width="250" Height="30" Background="#FF89B642" Click="buttonGetAllAnswers_Click" />
+                            <Label x:Name="labelParticipants" Content="Participants" Margin="0,248,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Button x:Name="buttonGetAllParticipants" Content="Get all participants" HorizontalAlignment="Center" Margin="0,278,0,0" VerticalAlignment="Top" Width="250" Height="30" Background="#FF89B642" Click="buttonGetAllParticipants_Click" />
+                            <Label x:Name="labelParticipantId" Content="Participant id" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,317,0,0" />
+                            <TextBox x:Name="textBoxParticipantId" Text="" Width="250" Margin="0,343,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetParticipant" Content="Get participant" HorizontalAlignment="Center" Margin="0,371,0,0" VerticalAlignment="Top" Width="250" Height="30" Background="#FF89B642" Click="buttonGetParticipant_Click" />
+                            <Label x:Name="labelAnswersInfo" Content="*These methods require Only Api Key" HorizontalAlignment="Center" Margin="0,561,0,44" VerticalAlignment="Bottom" />
+                            <Button x:Name="buttonLinkAnswers" Content="Go to Surveys " HorizontalAlignment="Center" Width="306" Background="#FF89B642" Margin="0,592,0,9" Height="30" VerticalAlignment="Bottom" Click="buttonLinkSurveys_Click" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabItemManageTemplates" Height="4" VerticalAlignment="Top" Visibility="Hidden">
+                        <Grid Margin="0,0,0,0" Background="#fff5f5f5" HorizontalAlignment="Center">
+                            <Label x:Name="labelTemplates" Content="Templates" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Button x:Name="buttonGetAllTemplates" Content="Get all templates" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonGetAllTemplates_Click" />
+                            <Label x:Name="labelTemplateId" Content="Template id" Margin="0,84,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxTemplateId" Text="" Width="300" Margin="0,110,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetTemplate" Content="Get template" HorizontalAlignment="Center" Margin="0,135,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonGetTemplate_Click" />
+                            <Button x:Name="buttonDeleteTemplate" Content="Delete template" HorizontalAlignment="Center" Margin="0,170,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonDeleteTemplate_Click" />
+                            <Button x:Name="buttonAddTemplate" Content="Add template" HorizontalAlignment="Center" Margin="0,226,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonAddTemplate_Click" />
+                            <TextBox x:Name="textBoxNewTemplate"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Center" Text="" TextWrapping="Wrap" Width="300" Margin="0,261,0,75" />
+                            <Label x:Name="labelTemplatesInfo" Content="*These methods require Only Api Key" HorizontalAlignment="Center" Margin="0,561,0,44" VerticalAlignment="Bottom" />
+                            <Button x:Name="buttonLinkTemplates" Content="Go to Surveys " HorizontalAlignment="Center" Width="306" Background="#FF89B642" Margin="0,592,0,9" Height="30" VerticalAlignment="Bottom" Click="buttonLinkSurveys_Click" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabItemManageLinks" Height="4" VerticalAlignment="Top" Visibility="Hidden">
+                        <Grid Margin="0,0,0,0" Background="#fff5f5f5" HorizontalAlignment="Center">
+                            <Label x:Name="labelLinks" Content="Links" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Label x:Name="labelSurveyIdLinks" Content="Survey id" Margin="0,40,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxSurveyIdLinks" Text="" Width="305" Margin="0,65,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetAllLinks" Content="Get all links" HorizontalAlignment="Center" Margin="0,90,0,0" VerticalAlignment="Top" Width="305" Height="30" Background="#FF89B642" Click="buttonGetAllLinks_Click" />
+                            <Label x:Name="labelLinksId" Content="Link id" Margin="0,145,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxLinksId" Text="" Width="305" Margin="0,171,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetLink" Content="Get link" HorizontalAlignment="Left" Margin="0,196,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF89B642" Click="buttonGetLink_Click" />
+                            <Button x:Name="buttonDeleteLink" Content="Delete link" HorizontalAlignment="Right" Margin="0,196,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF89B642" Click="buttonDeleteLink_Click" />
+                            <Button x:Name="buttonAddLink" Content="Add link" HorizontalAlignment="Left" Margin="0,252,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF89B642" Click="buttonAddLink_Click" />
+                            <Button x:Name="buttonUpdateLink" Content="Update link" HorizontalAlignment="Right" Margin="0,252,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF89B642" Click="buttonUpdateLink_Click" />
+                            <TextBox x:Name="textBoxNewUpdateLink"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Center" Margin="0,290,0,75" Text="" TextWrapping="Wrap" Width="306" />
+                            <Label x:Name="labelLinksInfo" Content="*These methods require Only Api Key" HorizontalAlignment="Center" Margin="0,561,0,44" VerticalAlignment="Bottom" />
+                            <Button x:Name="buttonLinkLinks" Content="Go to Surveys " HorizontalAlignment="Center" Width="306" Background="#FF89B642" Margin="0,592,0,9" Height="30" VerticalAlignment="Bottom" Click="buttonLinkSurveys_Click" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabItemManageSendings" Height="4" VerticalAlignment="Top" Visibility="Hidden">
+                        <Grid Margin="0,0,0,0" Background="#fff5f5f5">
+                            <Label x:Name="labelSendings" Content="Sendings" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Label x:Name="labelSurveyIdSendings" Content="Survey id" Margin="0,40,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxSurveyIdSendings" Text="" Width="305" Margin="0,66,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetAllSendings" Content="Get all sendings" HorizontalAlignment="Center" Margin="0,91,0,0" VerticalAlignment="Top" Width="305" Height="30" Background="#FF89B642" Click="buttonGetAllSendings_Click" />
+                            <Label x:Name="labelSendingId" Content="Sending id" Margin="0,137,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxSendingId" Text="" Width="305" Margin="0,163,0,0" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetSending" Content="Get sending" HorizontalAlignment="Center" Margin="0,188,0,0" VerticalAlignment="Top" Width="305" Height="30" Background="#FF89B642" Click="buttonGetSending_Click" />
+                            <Button x:Name="buttonAddSending" Content="Add sending" HorizontalAlignment="Center" Margin="0,240,0,0" VerticalAlignment="Top" Width="305" Height="30" Background="#FF89B642" Click="buttonAddSending_Click" />
+                            <TextBox x:Name="textBoxNewSending"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Center" Margin="0,275,0,75" Text="" TextWrapping="Wrap" Width="305" />
+                            <Label x:Name="labelSendingsInfo" Content="*These methods require Only Api Key" HorizontalAlignment="Center" Margin="0,561,0,44" VerticalAlignment="Bottom" />
+                            <Button x:Name="buttonLinkSendings" Content="Go to Surveys " HorizontalAlignment="Center" Width="306" Background="#FF89B642" Margin="0,592,0,9" Height="30" VerticalAlignment="Bottom" Click="buttonLinkSurveys_Click" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabItemManage2FA" Height="4" VerticalAlignment="Top" Visibility="Hidden">
+                        <Grid Margin="0,0,0,0" Background="#fff5f5f5" HorizontalAlignment="Center">
+                            <Label x:Name="labelCreateAndSendAuthentication" Content="Create and send authentication" Margin="0,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Label x:Name="labelPhone" Content="Phone" HorizontalAlignment="Left" Margin="0,33,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxPhone" Text="46123456789" Width="190" Margin="59,36,0,0" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                            <Label x:Name="labelFrom" Content="From" HorizontalAlignment="Left" Margin="0,58,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxFrom" Text="iP1sms" Width="190" Margin="52,61,0,0" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                            <Label x:Name="labelMessage" Content="Message" HorizontalAlignment="Left" Margin="0,83,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxMessage" Text="Use {0} to verify yourself" Width="190" Margin="72,86,0,0" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                            <Label x:Name="labelLength" Content="Length" HorizontalAlignment="Left" Margin="0,111,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxLength" Text="6" Width="190" Margin="62,111,0,0" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                            <Label x:Name="labelExpirationTime" Content="Expiration time" HorizontalAlignment="Left" Margin="0,133,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxExpirationTime" Text="1200" Width="190" Margin="104,136,0,0" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                            <Button x:Name="buttonCreateSendAuthentication" Content="Create and send authentication"  HorizontalAlignment="Left" Margin="0,161,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonCreateSendAuthentication_Click" />
+                            <Label x:Name="labelValidateAuthentication" Content="Validate Authentication" Margin="0,247,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Label x:Name="labelPhoneValidate" Content="Phone validate" HorizontalAlignment="Left" Margin="0,270,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxPhoneValidate" Text="46123456789" Width="190" Margin="103,273,0,0" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                            <Label x:Name="labelSubmittedCode" Content="Submitted code" HorizontalAlignment="Left" Margin="0,295,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxSubmittedCode" Text="123456" Width="190" Margin="109,298,0,0" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                            <Button x:Name="buttonValidate" Content="Validate"  HorizontalAlignment="Left" Margin="0,323,0,0" VerticalAlignment="Top" Width="300" Height="30" Background="#FF89B642" Click="buttonValidate_Click" />
+                            <Label x:Name="label2FAInfo" Content="*These methods require Basic Api Key and Account Id" HorizontalAlignment="Center" Margin="0,561,0,44" VerticalAlignment="Bottom" />
+                            <Button x:Name="buttonLink2FA" Content="Go to Portal " HorizontalAlignment="Center" Width="306" Background="#FF89B642" Margin="0,592,0,9" Height="30" VerticalAlignment="Bottom" Click="buttonLinkPortal_Click" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabItemManageShop" Height="4" VerticalAlignment="Top" Visibility="Hidden">
+                        <Grid Margin="0,0,0,0" Background="#fff5f5f5" HorizontalAlignment="Center">
+                            <Label x:Name="labelCountries" Content="Countries" Margin="0,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Button x:Name="buttonGetCountries" Content="Get countries"  HorizontalAlignment="Left" Margin="0,36,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetCountries_Click" />
+                            <Label x:Name="labelMe" Content="Me" Margin="0,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Button x:Name="buttonGetAccountSummary" Content="Get Summary"  HorizontalAlignment="Left" Margin="0,96,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetAccountSummary_Click" />
+                            <Label x:Name="labelOrder" Content="Order" Margin="0,130,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Button x:Name="buttonGetAllOrders" Content="Get all orders"  HorizontalAlignment="Left" Margin="0,156,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetAllOrders_Click" />
+                            <Label x:Name="labelOrderId" Content="Order id" Margin="0,186,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxOrderId" Text="" Width="163" Margin="72,191,0,0" ToolTip="ip1-12345" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetOrder" Content="Get order"  HorizontalAlignment="Left" Margin="0,217,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetOrder_Click" />
+                            <Label x:Name="labelNewOrder" Content="New order" Margin="0,252,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                            <TextBox x:Name="textBoxNewOrder" AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Left" Margin="1,278,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Height="288" />
+                            <Button x:Name="buttonPostOrder" Content="Post Order"  HorizontalAlignment="Left" Margin="0,571,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonPostOrder_Click" />
+                            <Label x:Name="labelOrganization" Content="Organization" Margin="301,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Label x:Name="labelVatNumber" Content="Vat number" Margin="301,33,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxVatNumber" Text="" Width="163" Margin="380,37,0,0" ToolTip="ip1-12345" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Button x:Name="buttonVatValidate" Content="Vat Validate"  HorizontalAlignment="Left" Margin="308,64,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonVatValidate_Click" />
+                            <Label x:Name="labelProducts" Content="Products" Margin="301,106,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Button x:Name="buttonGetMainProducts" Content="Get main products"  HorizontalAlignment="Left" Margin="308,136,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetMainProducts_Click" />
+                            <Button x:Name="buttonGetExtraProducts" Content="Get extra products"  HorizontalAlignment="Left" Margin="308,171,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetExtraProducts_Click" />
+                            <Button x:Name="buttonGetavailableBalanceProducts" Content="Get available balance products"  HorizontalAlignment="Left" Margin="308,205,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetavailableBalanceProducts_Click" />
+                            <Button x:Name="buttonGetYourOwnedProducts" Content="Get extra products"  HorizontalAlignment="Left" Margin="308,240,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetYourOwnedProducts_Click" />
+                            <Label x:Name="labelShopInfo" Content="*These methods require Basic Api Key and Account Id" HorizontalAlignment="Left" Margin="279,0,0,290" VerticalAlignment="Bottom" Grid.Row="0" />
+                            <Button x:Name="buttonLinkShop" Content="Go to Shop" HorizontalAlignment="Left" Width="235" Background="#FF89B642" Margin="308,0,0,255" Height="30" VerticalAlignment="Bottom" Click="buttonLinkShop_Click" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabItemManageContacts" Height="4" VerticalAlignment="Top" Visibility="Hidden">
+                        <Grid Margin="0,0,0,0" Background="#fff5f5f5" HorizontalAlignment="Center">
+                            <Label x:Name="labelContacts" Content="Contacts" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Button x:Name="buttonGetAllContacts" Content="Get all contacts"  HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetAllContacts_Click" />
+                            <Button x:Name="buttonGetFilteredContacts" Content="Get filtered contacts"  HorizontalAlignment="Left" Margin="0,85,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetFilteredContacts_Click" />
+                            <Label x:Name="labelFilterLabel" Content="Filter Label" Margin="0,118,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxFilterLabel" Text="" Width="157" Margin="78,120,0,0"  Height="21" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Label x:Name="labelContactId" Content="Contact id" Margin="0,192,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxContactId" Text="" Width="166" Margin="69,194,0,0"  Height="21" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Button x:Name="buttonGetContact" Content="Get contact"  HorizontalAlignment="Left" Margin="0,221,0,0" VerticalAlignment="Top" Width="111" Height="30" Background="#FF89B642" Click="buttonGetContact_Click" />
+                            <Button x:Name="buttonDeleteContact" Content="Delete contact"  HorizontalAlignment="Left" Margin="125,221,0,0" VerticalAlignment="Top" Width="110" Height="30" Background="#FF89B642" Click="buttonDeleteContact_Click" />
+                            <TextBox x:Name="textBoxNewUpdateContact"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Left" Margin="0,296,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="235" Height="265" />
+                            <Button x:Name="buttonAddContacts" Content="Add contacts"  HorizontalAlignment="Left" Margin="1,261,0,0" VerticalAlignment="Top" Width="110" Height="30" Background="#FF89B642" Click="buttonAddContacts_Click" />
+                            <Button x:Name="buttonUpdateContact" Content="Update contact"  HorizontalAlignment="Left" Margin="125,261,0,0" VerticalAlignment="Top" Width="110" Height="30" Background="#FF89B642" Click="buttonUpdateContact_Click" />
+                            <Button x:Name="buttonGetMeta" Content="Get meta"  HorizontalAlignment="Left" Margin="1,157,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonGetMeta_Click" />
+                            <Label x:Name="labelNewLabel" Content="New label" Margin="300,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxNewLabel" Text="" Width="160" Margin="375,42,0,0"  Height="21" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Label x:Name="labelContactsId" Content="Contacts id" Margin="300,109,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxContactsId"  AcceptsReturn="True"  VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Left" Margin="375,69,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Height="116" />
+                            <Button x:Name="buttonAddNewLabel" Content="Add new label"  HorizontalAlignment="Left" Margin="300,190,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonAddNewLabel_Click" />
+                            <Label x:Name="labelLabelName" Content="Label name" Margin="300,246,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxLabelName" Text="" Width="160" Margin="375,250,0,0"  Height="21" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Button x:Name="buttonDeleteLabel" Content="Delete label"  HorizontalAlignment="Left" Margin="300,277,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonDeleteLabel_Click" />
+                            <Label x:Name="labelLabelNameDeleteContacts" Content="Label name" Margin="300,364,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBox x:Name="textBoxLabelNameDeleteContacts" Text="" Width="160" Margin="375,366,0,0"  Height="21" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Button x:Name="buttonDeleteContactsByLabel" Content="Delete contacts by label"  HorizontalAlignment="Left" Margin="300,392,0,0" VerticalAlignment="Top" Width="235" Height="30" Background="#FF89B642" Click="buttonDeleteContactsByLabel_Click" />
+                            <Label x:Name="labelContactsInfo" Content="*This method require Only Api Key" HorizontalAlignment="Left" Margin="321,0,0,105" VerticalAlignment="Bottom" Grid.Row="0" />
+                            <Button x:Name="buttonLinkContacts" Content="Go to Contacts" HorizontalAlignment="Left" Width="235" Background="#FF89B642" Margin="300,0,0,70" Height="30" VerticalAlignment="Bottom" Click="buttonLinkContacts_Click" />
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </ScrollViewer>
+        </GroupBox>
+        <GroupBox x:Name="groupBoxAPI" Header="Choose API" HorizontalAlignment="Left" Margin="10,10,0,0" Width="153" BorderBrush="#FF89B642">
+            <Grid HorizontalAlignment="Left" Width="141" VerticalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Expander Name="ExpanderControl" Header="SMS API's"  HorizontalAlignment="Left">
+                    <ListView Name="listViewSmsApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderThickness="0">
+                        <ListViewItem x:Name="ListViewItemSendingSMS" Selected="ListViewItemSendingSMS_Selected" Content="Sending SMS" />
+                        <ListViewItem x:Name="ListViewItemRegisterSender" Selected="ListViewItemRegisterSender_Selected" Content="Register Sender" />
+                        <ListViewItem x:Name="ListViewItemReadingBatches" Selected="ListViewItemReadingBatches_Selected" Content="Reading Batches" />
+                        <ListViewItem x:Name="ListViewItemReadingMessages" Selected="ListViewItemReadingMessages_Selected" Content="Reading Messages" />
+                        <ListViewItem x:Name="ListViewItemConversations" Selected="ListViewItemConversations_Selected" Content="Conversations" />
+                        <ListViewItem x:Name="ListViewItemBlackList" Selected="ListViewItemBlackList_Selected" Content="Black List" />
+                        <ListViewItem x:Name="ListViewItemAccountManagement" Selected="ListViewItemAccountManagement_Selected" Content="Account Management" />
+                    </ListView>
+                </Expander>
+                <Expander Name="ExpanderControlSurvey" Header="Survey API's"  HorizontalAlignment="Left" Grid.Row="1">
+                    <ListView Name="listViewSurveyApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderThickness="0">
+                        <ListViewItem x:Name="ListViewItemManageSurveys"  Content="Manage surveys" Selected="ListViewItemManageSurveys_Selected" />
+                        <ListViewItem x:Name="ListViewItemManageQuestions"  Content="Manage questions" Selected="ListViewItemManageQuestions_Selected" />
+                        <ListViewItem x:Name="ListViewItemGetAnswers"  Content="Get Answers" Selected="ListViewItemGetAnswers_Selected" />
+                        <ListViewItem x:Name="ListViewItemManageTemplates"  Content="Manage Templates" Selected="ListViewItemManageTemplates_Selected" />
+                        <ListViewItem x:Name="ListViewItemManageLinks"  Content="Manage Links" Selected="ListViewItemManageLinks_Selected" />
+                        <ListViewItem x:Name="ListViewItemManageSendings"  Content="Manage Sendings" Selected="ListViewItemManageSendings_Selected" />
+                        <ListViewItem x:Name="ListViewItemManage2FA"  Content="Manage 2FA" Selected="ListViewItemManage2FA_Selected" />
+                    </ListView>
+                </Expander>
+                <Expander Name="ExpanderControlShop" Header="Shop API's"  HorizontalAlignment="Left" Grid.Row="2">
+                    <ListView Name="listViewShopApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderThickness="0">
+                        <ListViewItem x:Name="ListViewItemShop"  Content="Manage shop" Selected="ListViewItemShop_Selected" />
+                    </ListView>
+                </Expander>
+                <Expander Name="ExpanderControlContacts" Header="Contacts API's"  HorizontalAlignment="Left" Grid.Row="3">
+                    <ListView Name="listViewContactsApis" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#fff5f5f5" BorderThickness="0">
+                        <ListViewItem x:Name="ListViewItemContacts"  Content="Manage contacts" Selected="ListViewItemContacts_Selected" />
+                    </ListView>
+                </Expander>
+                <Button x:Name="buttonLinkDeveloper" Content="Go to Developer Doc" HorizontalAlignment="Center" Background="#FF89B642" Grid.Row="4" Width="121" Height="51" VerticalAlignment="Top" Margin="0,10,0,0" FontWeight="Normal" FontStyle="Normal" Click="buttonLinkDeveloper_Click" />
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="groupBoxAPIkey" Header="API Key" Margin="168,10,5,0" Height="130" VerticalAlignment="Top" BorderBrush="#FF89B642">
+            <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10,0,0,0">
+                <TextBox x:Name="textBoxAPIKey" HorizontalAlignment="Left" Margin="95,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="321" />
+                <Label x:Name="labelAPIKey" Content="API Key" HorizontalAlignment="Left" Margin="10,10,0,0" Height="26" VerticalAlignment="Top" />
+                <Label x:Name="labelBasicApiKey" Content="Basic Api Key" Margin="10,35,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                <TextBox x:Name="textBoxBasicApiKey" Width="321" Margin="95,38,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                <Label x:Name="labelAccountId" Content="Account id" Margin="10,61,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                <TextBox x:Name="textBoxAccountId" Width="100" ToolTip="ip1-12345" Margin="95,64,0,0" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Text="ip1-12345" />
+                <Button x:Name="buttonLinkPortal" Content="Go to Portal" HorizontalAlignment="Left" Margin="316,64,0,0" VerticalAlignment="Top" Width="100" Height="20" Background="#FF89B642" Click="buttonLinkPortal_Click" />
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="groupBoxResponse" Header="Response" Margin="5,10,10,0" Grid.Column="1" BorderBrush="#FF89B642">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="400*" />
+                    <RowDefinition Height="400*" />
+                </Grid.RowDefinitions>
+                <Label x:Name="labelStatus" Content="StatusCode:" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" />
+                <TextBox x:Name="textBoxResponse" IsReadOnly="True" Background="Transparent" Margin="0,40,0,5" TextWrapping="Wrap" BorderBrush="#FF89B642" />
+                <TreeView x:Name="treeViewResponse" Background="#fff5f5f5" Grid.Row="1" Margin="0,5,0,13" BorderBrush="#FF89B642" />
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>
